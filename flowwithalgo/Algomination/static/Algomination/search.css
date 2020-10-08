@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #162c3b;
+  overflow-x: hidden;
+}
+
+nav {
+  background: black;
+}
+
+.navbar {
+  height: 70px;
+}
+
+.tags {
+  right: 30%;
+}
+
+.tags a {
+  padding: 10px;
+  padding-right: 40px;
+  text-decoration: none;
+  color: white;
+}
+
+.collapse {
+  padding-top: 0px;
+  border-top: lightslategrey solid 2px;
+}
+
+.collapsed_content {
+  padding-top: 0px;
+  background-color: black;
+  color: white;
+}
+
+.nav-item {
+  padding: 10px;
+}
+
+.navbar-nav .nav-link {
+  border-radius: 0.35rem;
+  padding-left: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.content {
+  background: #162c3b;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.inputs {
+  width: 55%;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.inputs .block {
+  padding-bottom: 20px;
+}
+
+.info {
+  width: 45%;
+  padding: 20px;
+  padding-left: 30px;
+  text-align: center;
+}
+
+.infobox {
+  padding: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: white solid;
+  color: white;
+  height: 91%;
+}
+
+.infobox p {
+  font-size: 14px;
+}
+
+.animation {
+  padding: 20px;
+}
+
+.animation_box {
+  background: lightgrey;
+  padding: 10px;
+  height: 60%;
+  min-height: 300px;
+  -webkit-box-shadow: 2px black;
+          box-shadow: 2px black;
+}
+
+.final {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.resultbox {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+}
+
+.resultbox .text {
+  padding-top: .375rem;
+  background: #e9ecef;
+  color: black;
+  border: white solid;
+  height: 40px;
+  width: 10%;
+  text-align: center;
+  border-radius: .35rem;
+}
+
+.resultbox .output {
+  background: white;
+  border: white solid;
+  width: 60%;
+  margin-left: 20px;
+  height: 40px;
+  border-radius: .35rem;
+}
+
+.external_link {
+  margin-left: 10%;
+  padding-top: .375rem;
+  background: #e9ecef;
+  color: black;
+  border: white solid;
+  width: 15%;
+  height: 40px;
+  text-align: center;
+  border-radius: .35rem;
+}
+/*# sourceMappingURL=search.css.map */
