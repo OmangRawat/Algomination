@@ -1,0 +1,319 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+nav {
+  background: black;
+}
+
+.navbar {
+  height: 70px;
+}
+
+.tags {
+  right: 30%;
+}
+
+.tags a {
+  padding: 10px;
+  padding-right: 40px;
+  text-decoration: none;
+  color: white;
+}
+
+.collapse {
+  padding-top: 0px;
+  border-top: lightslategrey solid 2px;
+}
+
+.collapsed_content {
+  padding-top: 0px;
+  background-color: black;
+  color: white;
+}
+
+.nav-item {
+  padding: 10px;
+}
+
+.navbar-nav .nav-link {
+  border-radius: 0.35rem;
+  padding-left: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: black;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.banner .content {
+  position: relative;
+  max-width: 750px;
+  text-align: center;
+}
+
+.banner-content h1 {
+  top: -20px;
+  font-family: 'Sedgwick Ave Display', cursive;
+  color: black;
+  font-size: 150px;
+}
+
+.banner-content p {
+  top: -80px;
+  font-family: 'Lovers Quarrel', cursive;
+  text-align: center;
+  color: black;
+  font-size: 50px;
+}
+
+.purpose {
+  color: #ffffff;
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #162c3b;
+}
+
+.purpose .content1 {
+  background: #162c3b;
+  padding: 100px;
+  width: 50%;
+}
+
+.heading {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.purpose .img1 {
+  margin: 150px;
+  margin-left: 0px;
+  margin-right: 50px;
+  background: url(purposeimg1.jpg);
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.algo {
+  background: #12222d;
+  padding: 150px;
+  text-align: center;
+  color: white;
+}
+
+.algo .container {
+  margin: 4%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 60px;
+}
+
+.algo .container .algobox {
+  margin: 10px;
+  position: relative;
+  background: #ffffff;
+  width: 30%;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+  border-radius: 0.35rem;
+}
+
+.algo .container .algobox img {
+  max-width: 100%;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
+.algo .container .algobox h2 {
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.testimonials {
+  position: relative;
+  padding: 150px;
+  background: #162c3b;
+  text-align: center;
+}
+
+.testimonials .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.carousel-inner {
+  height: 20vw;
+  width: 100%;
+}
+
+.carousel-caption {
+  margin-bottom: 40%;
+  font-size: 15px;
+}
+
+.developers {
+  background: #12222d;
+  padding: 150px;
+  text-align: center;
+  color: white;
+}
+
+.developers .container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 60px;
+  align-items: center;
+  background: #12222d;
+}
+
+.developers .devbx {
+  background: black;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: dashed white;
+  margin-bottom: 10px;
+  left: 4%;
+}
+
+.developers .devbx img {
+  width: 30%;
+}
+
+.footer {
+  background: #162c3b;
+  padding: 20px 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+.footer p {
+  margin-left: 40%;
+  text-align: center;
+}
+
+.footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer ul li {
+  list-style: none;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.footer ul li a img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  max-width: 20px;
+}
+/*# sourceMappingURL=try4.css.map */
