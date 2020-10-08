@@ -1,2 +1,0 @@
-# Algomination
- Algorithms with Animations
