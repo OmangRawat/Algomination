@@ -82,6 +82,12 @@ nav
     padding-bottom: 20px;
 }
 
+//reduced size of block for type of search
+.inputs .op
+{
+width: 80%;
+}
+
 .info
 {
     width: 45%;
@@ -118,6 +124,8 @@ nav
     height: 60%;
     min-height: 300px;
     box-shadow: 2px black;
+    position: relative;
+    display: flex;
 }
 
 .final
