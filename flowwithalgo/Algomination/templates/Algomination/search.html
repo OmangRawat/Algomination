@@ -105,23 +105,6 @@
                       </div>
                 </div>
 
-                <!--<div class="op block">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Select your Sorting Method</label>
-                        </div>
-                        <select name = 'opt' class="custom-select" id="inputGroupSelect01">
-                          <option selected>Choose...</option>
-                          <option value="1">Linear Search</option>
-                          <option value="2">Binary Search</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <button type="submit" class="btn btn-success">Go</button>
-                </div>-->
-
                 <div class="selection_box">
                     <div class="op block">
                         <div class="input-group mb-3">
@@ -137,11 +120,19 @@
                     </div>
     
                     <div class="run_button">
-                        <!--<button type="submit" class="btn btn-success">Go</button>-->
+                        <button type="submit" class="btn btn-success" style="margin-left: 44px; width: 100%;">Run</button>
                     </div>
                 </div>
             </form>
+            <h1>{{truth}}</h1>
+            {% if truth == 'F'%}
+                <h1>{{truth}}</h1>
+                <div class="alert alert-danger">
+                    <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                </div>
+            {% endif %}
         </div>
+
         <div class="info">
             <div class="infobox">
                 <h4 class="heading">Heading</h4>
@@ -154,17 +145,19 @@
 
     <section class="animation">
         <div class="animation_box">
-            {% for i in elements %}
-                {% if i == ele %}
-                    <span class="card fill" style="width: 10%; background-color: green">
-                        <p>{{i}}</p>
-                    </span>
-                {% else %}
-                    <span class="card" style="width: 10%; background-color: red">
-                        <p>{{i}}</p>
-                    </span>
-                {% endif %}
-            {% endfor %}
+            {% if truth == 'T'%}
+                {% for i in elements %}
+                    {% if i == ele %}
+                        <span class="card fill" style="width: 10%; background-color: green">
+                            <p>{{i}}</p>
+                        </span>
+                    {% else %}
+                        <span class="card" style="width: 10%; background-color: red">
+                            <p>{{i}}</p>
+                        </span>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
     </section>
 
