@@ -72,6 +72,21 @@ nav {
   padding-bottom: 20px;
 }
 
+.selection_box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.selection_box .op {
+  width: 80%;
+}
+
+.run_button {
+  width: 15%;
+}
+
 .info {
   width: 45%;
   padding: 20px;
@@ -103,6 +118,10 @@ nav {
   min-height: 300px;
   -webkit-box-shadow: 2px black;
           box-shadow: 2px black;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .final {

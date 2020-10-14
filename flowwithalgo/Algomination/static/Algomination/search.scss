@@ -82,10 +82,21 @@ nav
     padding-bottom: 20px;
 }
 
-//reduced size of block for type of search
-.inputs .op
+.selection_box
 {
-width: 80%;
+    position: relative;
+    display: flex;
+}
+
+//reduced size of block for type of search
+.selection_box .op
+{
+    width: 80%;
+}
+
+.run_button
+{
+    width: 15%;
 }
 
 .info
