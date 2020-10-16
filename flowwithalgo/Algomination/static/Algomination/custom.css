@@ -58,3 +58,34 @@
   text-align: center;
   top: 200px;
 }
+
+/* Search page css */
+.submit-button{
+    margin-left:44px;
+    width:100%;
+}
+
+.fill-green{
+   height: 115px;
+   width: 10%;
+   margin-left: 1px;
+   margin-right: 1px;
+   background-color: green;
+}
+
+.fill-red{
+    height: 115px;
+    width: 10%;
+    margin-left:1px;
+    margin-right: 1px;
+    background-color: red;
+}
+
+.invalid-inputs{
+    height: 30px;
+    padding: 2px;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+/* End Search page css */
