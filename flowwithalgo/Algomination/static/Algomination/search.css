@@ -83,10 +83,6 @@ nav {
   width: 80%;
 }
 
-.run_button {
-  width: 15%;
-}
-
 .info {
   width: 45%;
   padding: 20px;
@@ -115,13 +111,15 @@ nav {
   background: lightgrey;
   padding: 10px;
   height: 60%;
-  min-height: 300px;
+  min-height: 250px;
   -webkit-box-shadow: 2px black;
           box-shadow: 2px black;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-radius: 0.35rem;
+  overflow: hidden;
 }
 
 .final {

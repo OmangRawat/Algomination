@@ -94,11 +94,6 @@ nav
     width: 80%;
 }
 
-.button
-{
-
-}
-
 .info
 {
     width: 45%;
@@ -133,10 +128,12 @@ nav
     //border: white solid;
     padding: 10px;
     height: 60%;
-    min-height: 300px;
+    min-height: 250px;
     box-shadow: 2px black;
     position: relative;
     display: flex;
+    border-radius: 0.35rem;
+    overflow: hidden;
 }
 
 .final
