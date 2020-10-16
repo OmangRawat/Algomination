@@ -87,6 +87,7 @@
                           </div>
                     </div>
                 </div>
+
                 <div class="block">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -124,11 +125,12 @@
                     </div>
                 </div>
             </form>
-            <h1>{{truth}}</h1>
+
+            <!--<h1>{{truth}}</h1>-->
             {% if truth == 'F'%}
-                <h1>{{truth}}</h1>
-                <div class="alert alert-danger">
-                    <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                <!--<h1>{{truth}}</h1>-->
+                <div class="alert alert-danger" style="height: 30px; padding: 2px; background-color: red; color: white; text-align: center;">
+                    <strong>Invalid Inputs!</strong> 
                 </div>
             {% endif %}
         </div>
@@ -148,12 +150,12 @@
             {% if truth == 'T'%}
                 {% for i in elements %}
                     {% if i == ele %}
-                        <span class="card fill" style="width: 10%; background-color: green">
-                            <p>{{i}}</p>
+                        <span class="card fill" style="height: 115px; width: 10%; background-color:green; margin-left: 1px; margin-right: 1px;">
+                            <p style="margin: auto;">{{i}}</p>
                         </span>
                     {% else %}
-                        <span class="card" style="width: 10%; background-color: red">
-                            <p>{{i}}</p>
+                        <span class="card" style="height: 115px; width: 10%; background-color: red; margin-left:1px; margin-right: 1px;">
+                            <p style="margin: auto;">{{i}}</p>
                         </span>
                     {% endif %}
                 {% endfor %}
@@ -166,11 +168,13 @@
     <section class="final">
         <div class="resultbox">
             <div class="text"><h5><b>Result</b></h5></div>
-            <div class="output">
+            <div class="output" style="text-align: center;">
                 {% if index == -1 %}
-                <p>Element not found in the array</p>
+                <p style="font-weight: bold; margin: auto;">Element not found in the array</p>
+                {% elif index >= 0 %}
+                <p style="font-weight: bold; margin: auto;">Index of {{ele}} is {{index}} </p>
                 {% else %}
-                <p>Index of {{ele}} is {{index}} </p>
+                <p style="font-weight: bold;"> </p>
                 {% endif %}
             </div>
         </div>
