@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--{% load static %}
+    <script src="{% static 'Algomination/search_animationbox.js' %}"></script>-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Algorithms</title>
@@ -130,7 +132,7 @@
             <!--<h1>{{truth}}</h1>-->
             {% if truth == 'F'%}
                 <!--<h1>{{truth}}</h1>-->
-                <div class="invalid-inputs alert alert-danger" style="">
+                <div class="invalid-inputs alert alert-danger">
                     <strong>Invalid Inputs!</strong>Enter Valid inputs...
                 </div>
             {% endif %}
@@ -146,22 +148,68 @@
 
     <!-- Animation Box -->
 
-    <section class="animation">
-        <div class="animation_box">
-            {% if truth == 'T'%}
-                {% for i in elements %}
-                    {% if i == ele %}
-                        <span class="fill-green card">
-                            <p style="margin: auto;">{{i}}</p>
-                        </span>
-                    {% else %}
-                        <span class="fill-red card">
-                            <p style="margin: auto;">{{i}}</p>
-                        </span>
+    <section id="animation_box" class="animation">
+
+        {% if opt == '1' %}
+
+    <!-- Linear Search Animation Box -->
+
+            <div id="liearsearch" class="animation_box">
+                {% if truth == 'T'%}
+                    {% for i in elements %}
+                        {% if forloop.counter == 8 %}
+                            <br>
+                        {% endif %}
+                        {% if i == ele %}
+                            <span id ="turn_blue{{forloop.counter}}" class = "fill-red card">
+                                <p id="answer" style="margin: auto;">{{i}}</p>
+                            </span>
+                        {% else %}
+                            <span id ="turn_blue{{forloop.counter}}" class="fill-red card">
+                                <p style="margin: auto;">{{i}}</p>
+                            </span>
+                        {% endif %}
+                        <!--<h1>{{forloop.counter}}</h1>-->
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        {% elif opt == '2' %}
+
+    <!-- Binary Search Animation Box -->
+
+            <div id="binarysearch">
+                <div class="animation_box">
+                    {% if truth == 'T'%}
+                        {% for i in elements %}
+                            {% if forloop.counter == 8 %}
+                                <br>
+                            {% endif %}
+                            {% if i == ele %}
+                                <span id ="turn_blue{{forloop.counter}}" class = "fill-red card">
+                                    <p id="answer" style="margin: auto;">{{i}}</p>
+                                </span>
+                            {% else %}
+                                <span id ="turn_blue{{forloop.counter}}" class="fill-red card">
+                                    <p style="margin: auto;">{{i}}</p>
+                                </span>
+                            {% endif %}
+                            <!--<h1>{{forloop.counter}}</h1>-->
+                        {% endfor %}
                     {% endif %}
-                {% endfor %}
-            {% endif %}
-        </div>
+                </div>
+                <div class="directions">
+                    <p style="font-weight: bold; margin: auto;">Something</p>
+                </div>
+            </div>
+
+        {% else %}
+
+    <!-- Basic Search Animation Box -->
+
+            <div id="basic" class="animation_box">
+            </div>
+        {% endif %}
     </section>
 
     <!-- Result Box -->
@@ -188,6 +236,7 @@
         {% endif %}
     </section>
 
+    <script src="{% static 'Algomination/search_animationbox.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

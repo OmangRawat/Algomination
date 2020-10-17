@@ -15,11 +15,10 @@ def search(request):
 
 
         elements = elements.split(" ")
-        num = int(num)
 
         print(num)
         print(elements)
-        if int(num) ==len(elements):
+        if int(num) == len(elements):
             truth = 'T'
             flag = 0
             for i in elements:
@@ -31,7 +30,7 @@ def search(request):
             if flag == 0:
                 index = -1
 
-            params = {'index' : index, 'elements' : elements, 'ele': ele, 'opt' : opt, 'truth': truth}
+            params = {'index' : index, 'elements' : elements, 'ele': ele, 'opt' : opt, 'truth': truth, 'num': num}
 
         else:
             truth = 'F'
