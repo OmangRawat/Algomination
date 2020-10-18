@@ -148,24 +148,24 @@
 
     <!-- Animation Box -->
 
-    <section id="animation_box" class="animation">
+    <section id="animation_box_main" class="animation">
 
         {% if opt == '1' %}
 
     <!-- Linear Search Animation Box -->
 
-            <div id="liearsearch" class="animation_box">
+            <div id="linearsearch" class="animation_box">
                 {% if truth == 'T'%}
                     {% for i in elements %}
                         {% if forloop.counter == 8 %}
                             <br>
                         {% endif %}
                         {% if i == ele %}
-                            <span id ="turn_blue{{forloop.counter}}" class = "fill-red card">
+                            <span id ="card{{forloop.counter}}" class = "fill-red card">
                                 <p id="answer" style="margin: auto;">{{i}}</p>
                             </span>
                         {% else %}
-                            <span id ="turn_blue{{forloop.counter}}" class="fill-red card">
+                            <span id ="card{{forloop.counter}}" class="fill-red card">
                                 <p style="margin: auto;">{{i}}</p>
                             </span>
                         {% endif %}
@@ -186,11 +186,11 @@
                                 <br>
                             {% endif %}
                             {% if i == ele %}
-                                <span id ="turn_blue{{forloop.counter}}" class = "fill-red card">
+                                <span id ="card{{forloop.counter}}" class = "fill-red card">
                                     <p id="answer" style="margin: auto;">{{i}}</p>
                                 </span>
                             {% else %}
-                                <span id ="turn_blue{{forloop.counter}}" class="fill-red card">
+                                <span id ="card{{forloop.counter}}" class="fill-red card">
                                     <p style="margin: auto;">{{i}}</p>
                                 </span>
                             {% endif %}
