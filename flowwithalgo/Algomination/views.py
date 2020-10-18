@@ -39,7 +39,7 @@ def search(request):
 
         # print(num)
         print(elements)
-        if int(num) == len(elements) and ele != '':
+        if int(num) == len(elements) and ele != '' and 1 <= (num and len(elements)) <= 20:
             truth = 'T'
             flag = 0
             for i in elements:

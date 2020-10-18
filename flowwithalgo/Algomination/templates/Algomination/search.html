@@ -3,8 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--{% load static %}
-    <script src="{% static 'Algomination/search_animationbox.js' %}"></script>-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Algorithms</title>
@@ -129,21 +127,54 @@
                 </div>
             </form>
 
-            <!--<h1>{{truth}}</h1>-->
+        
             {% if truth == 'F'%}
-                <!--<h1>{{truth}}</h1>-->
                 <div class="invalid-inputs alert alert-danger">
                     <strong>Invalid Inputs!</strong>Enter Valid inputs...
                 </div>
             {% endif %}
         </div>
 
-        <div class="info">
-            <div class="infobox">
-                <h4 class="heading">Heading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        {% if opt == '1' %}
+            <div class="info">
+                <div class="infobox">
+                    <h4 class="heading">LINEAR SEARCH</h4>
+                    <p style="text-align: left">Linear search is the simplest search algorithm and often called sequential search. In this type of searching, we simply traverse the list completely and match each element of the list with the item whose location is to be found. </p>
+                    <p ><h6 style="text-align: left">Algorithm</h6></p>
+                    <p style="text-align: left">
+                        <li style="text-align: left; font-size: small">Start from the leftmost element of arr[] and one by one compare x with each element of arr[]</li>
+                        <li style="text-align: left; font-size: small">If x matches with an element, return the index.</li>
+                    </p>
+                </div>
             </div>
-        </div>
+        {% elif opt == '2' %}
+            <div class="info">
+                <div class="infobox">
+                    <h4 class="heading">BINARY SEARCH</h4>
+                    <p>Binary search is a faster search algorithm than linear search. This search algorithm works on the principle of divide and conquer. For this algorithm to work properly, the data collection should be in the sorted form.</p>
+                    <p><h6 style="text-align: left">Algorithm</h6>
+                        <p style="text-align: left">
+                            <li style="text-align: left; font-size: small">Compare x with the middle element.</li>
+                            <li style="text-align: left; font-size: small">If x matches with middle element, we return the mid index.</li>
+                            <li style="text-align: left; font-size: small">Else If x is greater than the mid element, then x can only lie in right half subarray after the mid element. So we recur for right half.</li>
+                            <li style="text-align: left; font-size: small">Else (x is smaller) recur for the left half.</li>
+                        </p>
+                    </p>
+                </div>
+            </div>
+        {% else %}
+            <div class="info">
+                <div class="infobox">
+                    <h4 class="heading">SEARCHING ALGORITHMS</h4>
+                    <p style="text-align: left;">The searching algorithms are used to search or find one or more than one element from a dataset. These type of algorithms are used to find elements from a specific data structures.</p>
+                    <p style="text-align: left; font-size: large">Types of Searching Algorithms:
+                        <li style="text-align: left; font-size: small">Linear Search</li>
+                        <li style="text-align: left; font-size: small">Binary Search</li>
+                    </p>
+                    <p style="text-align: left; font-size: large">Binary Search is faster than Linear Search</p>
+                </div>
+            </div>
+        {% endif %}
     </section>
 
     <!-- Animation Box -->
@@ -199,7 +230,7 @@
                     {% endif %}
                 </div>
                 <div class="directions">
-                    <p style="font-weight: bold; margin: auto;">Something</p>
+                    <p id = "directions" style="font-weight: bold; margin: auto;">Something</p>
                 </div>
             </div>
 
@@ -223,7 +254,7 @@
                 {% elif index >= 0 %}
                 <p style="font-weight: bold; margin: auto;">Index of {{ele}} is {{index}} </p>
                 {% else %}
-                <p style="font-weight: bold;"> </p>
+                <p style="font-weight: bold;">Input values for result</p>
                 {% endif %}
             </div>
         </div>
@@ -231,7 +262,7 @@
         <div class="external_link"><a href="https://en.wikipedia.org/wiki/Linear_search">Linear search</a></div>
         {% elif opt == '2' %}
         <div class="external_link"><a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">Binary Search</a></div>
-        <!--{% else %}
+        {% else %}
         <div class="external_link"><a href="">Kuch toh select karo</a></div> -->
         {% endif %}
     </section>
