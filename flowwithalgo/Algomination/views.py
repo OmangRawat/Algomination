@@ -13,12 +13,33 @@ def search(request):
         opt = request.POST.get('opt', '0')
         ele = request.POST.get('ele', '')
 
+        print(opt)
+
+        if len(num) == 0:
+            num = '0'
+        
 
         elements = elements.split(" ")
 
-        print(num)
+        elements = [float(x) for x in elements]
+
+        if opt == '2':
+            # elements = [int(x) for x in elements.split()]
+            elements = sorted(elements)
+            # print('Sorted')
+
+        tempele = []
+        for x in elements:
+            if int(x) == x:
+                tempele.append(f"{int(x)}")
+            else:
+                tempele.append(f"{x}")
+
+        elements = tempele
+
+        # print(num)
         print(elements)
-        if int(num) == len(elements):
+        if int(num) == len(elements) and ele != '':
             truth = 'T'
             flag = 0
             for i in elements:

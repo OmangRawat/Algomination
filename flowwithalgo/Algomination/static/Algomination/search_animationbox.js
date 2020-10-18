@@ -1,10 +1,14 @@
+let choice = document.getElementById("animation_box_main");
+//console.log(choice);
 
+if (choice.querySelector('#linearsearch') != null)
+{
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
        
     let elems = document.getElementsByClassName('card');
-
+    
     /*
     for (let index = 0; index < elems.length; index++) {
         //const element = elems[index] ;
@@ -18,19 +22,17 @@
         console.log(element);  });
     }  
     */
-
+    
     var index = 1;                 
-
+    
     function myLoop() {        
     setTimeout(function() { 
-        const element = document.getElementById('turn_blue' + (index));
+        const element = document.getElementById('card' + (index));
         //console.log(element.style.backgroundColor)
         
         console.log(element);
         if (element.querySelector("#answer") != null)
         {
-            //element.style.backgroundColor = 'blue';
-            //element.style.border = ""
             sleep(2000).then(() => {
             element.style.backgroundColor = 'green'; }); 
             var found = true;
@@ -51,5 +53,119 @@
         }                      
     }, 2000)
     }
+    
+    myLoop();
+}
+else if (choice.querySelector('#binarysearch') != null)
+{
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+       
+    let elems = document.getElementsByClassName('card');
+    max = elems.length;
+    checker = 0;
+    partition = 0;
 
-    myLoop(); 
+    var found = false;
+
+    function myLoop() {        
+        setTimeout(function() { 
+            if (found == true)
+            {
+                return
+            }
+            else
+            {
+                if (partition == 0)
+                {
+                    for (let index = 0; index < checker; index++) 
+                    {
+                        const ele = elems[index];
+                        ele.style.backgroundColor = 'lightgrey';
+                        ele.style.color = 'lightgrey';
+                        ele.style.border = 'none';
+                    }
+                }
+                else
+                {
+                    for (let index = max; index < elems.length; index++) 
+                    {
+                        const ele = elems[index];
+                        ele.style.backgroundColor = 'lightgrey';
+                        ele.style.color = 'lightgrey';
+                        ele.style.border = 'none';
+                    }
+                }
+                const element = document.getElementById('card' + (Math.floor((max + checker)/2) + 1));
+                console.log(element.innerText)
+                element.style.backgroundColor = 'red';
+                if (document.querySelector('#answer').innerText == element.innerText)
+                {
+                    element.style.backgroundColor = 'green';
+                    found = true;
+                    myLoop();
+                }
+                else if (document.querySelector('#answer').innerText > element.innerText)
+                {
+                    partition = 0;
+                    checker += (Math.floor((max - checker)/2) + 1);
+                    myLoop();
+                }
+                else if (document.querySelector('#answer').innerText < element.innerText)
+                {
+                    partition = 1;
+                    max -= Math.floor((max - checker)/2);
+                    myLoop();
+                }
+                var last = (Math.floor((max + checker)/2) + 1);
+            } /*
+            if (partition == 0)
+            {
+                for (let index = 0; index < checker; index++) 
+                {
+                    const ele = elems[index];
+                    ele.style.backgroundColor = 'lightgrey';
+                    ele.style.color = 'lightgrey';
+                }
+            }
+            else
+            {
+                for (let index = max; index < elems.length; index++) 
+                {
+                    const ele = elems[index];
+                    ele.style.backgroundColor = 'lightgrey';
+                    ele.style.color = 'lightgrey';
+                }
+            }
+            if (found == true)
+            {
+                return
+            }
+            const element = document.getElementById('card' + (Math.floor((max + checker)/2) + 1));
+            console.log(element.innerText)
+            element.style.backgroundColor = 'red';
+            if (document.querySelector('#answer').innerText == element.innerText)
+            {
+                checker = Math.floor((max + checker)/2);
+                element.style.backgroundColor = 'green';
+                found = true;
+
+                myLoop();
+            }
+            else if (document.querySelector('#answer').innerText > element.innerText)
+            {
+                partition = 0;
+                checker += Math.floor((max - checker)/2);
+                myLoop();
+            }
+            else if (document.querySelector('#answer').innerText < element.innerText)
+            {
+                partition = 1;
+                max -= Math.floor((max - checker)/2);
+                myLoop();
+            }    */
+        }, 2000)
+    }
+    myLoop();
+}
