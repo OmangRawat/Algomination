@@ -56,6 +56,7 @@ if (choice.querySelector('#linearsearch') != null)
     
     myLoop();
 }
+
 else if (choice.querySelector('#binarysearch') != null)
 {
     function sleep(ms) {
@@ -69,6 +70,8 @@ else if (choice.querySelector('#binarysearch') != null)
 
     var found = false;
 
+    document.getElementById('directions').innerText = "<-- For Binary Search, we need a sorted array, here it is -->";
+    
     function myLoop() {        
         setTimeout(function() { 
             if (found == true)
@@ -104,19 +107,26 @@ else if (choice.querySelector('#binarysearch') != null)
                 {
                     element.style.backgroundColor = 'green';
                     found = true;
+                    document.getElementById('directions').innerText = "<-- Found it -->";
                     myLoop();
                 }
                 else if (document.querySelector('#answer').innerText > element.innerText)
                 {
                     partition = 0;
                     checker += (Math.floor((max - checker)/2) + 1);
+                    document.getElementById('directions').innerText = "<-- As the element " + document.querySelector('#answer').innerText + " is greater than " + element.innerText + " so we need to search the right part -->";
+                    sleep(3000).then(() => {
                     myLoop();
+                    });
                 }
                 else if (document.querySelector('#answer').innerText < element.innerText)
                 {
                     partition = 1;
                     max -= Math.floor((max - checker)/2);
+                    document.getElementById('directions').innerText = "<-- As the element " + document.querySelector('#answer').innerText + " is smaller than " + element.innerText + " so we need to search the left part -->";
+                    sleep(3000).then(() => {
                     myLoop();
+                    });
                 }
                 var last = (Math.floor((max + checker)/2) + 1);
             } /*
