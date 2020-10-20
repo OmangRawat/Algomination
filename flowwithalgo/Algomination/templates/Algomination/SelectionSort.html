@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Algorithms</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="Sort.css">-->
+    <link rel="stylesheet" href="{% static 'Algomination/Sort.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'Algomination/custom.css' %}">-->
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navbar -->
+
+    <nav class="sticky-top navbar navbar-dark">
+        <a href="../" class="brand-name" style="color: white; font-size: large; text-decoration: none; font-family: 'Sedgwick Ave Display', cursive;"><strong><h4>Algomination</h4></strong></a>
+        <div class="tags">
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="pos-f-t">
+        <div class="sticky-top collapse" id="navbarToggleExternalContent">
+          <div class="p-4 collapsed_content">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="../" >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" >Search</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" style="background: brown;">Sorting<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" >Traversals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" >Login</a>
+                </li>
+              </ul>
+          </div>
+    </div>
+
+    <!-- Content Box -->
+
+    <section class="content">
+        <div class="inputs">
+            <div class="left_info">
+                <div class="left_infobox">
+
+                </div>
+            </div>
+            <form action="/Algomination/Bubble_Sort/" method="post">  {% csrf_token %}
+                <div class="block">
+                    <div class="array_input input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-default">Enter elements of the array</span>
+                        </div>
+                        <input type="text" name = 'elements' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="run_button">
+                        <button type="submit" class="submit-button btn btn-success">Sort</button>
+                    </div>
+                </div>
+            </form>
+            <div class="left_info">
+                <div class="left_infobox">
+
+                </div>
+            </div>
+
+            <!--{% if truth == 'F'%}
+                <div class="invalid-inputs alert alert-danger">
+                    <strong>Invalid Inputs!</strong>Enter Valid inputs...
+                </div>
+            {% endif %}-->
+        </div>
+
+        <div class="info">
+                <div class="infobox">
+                    <h4 class="heading">SELECTION SORT</h4>
+                    <p style="text-align: left">Linear search is the simplest search algorithm and often called sequential search. In this type of searching, we simply traverse the list completely and match each element of the list with the item whose location is to be found. </p>
+                    <p ><h6 style="text-align: left">Algorithm</h6></p>
+                    <p style="text-align: left">
+                        <li style="text-align: left; font-size: small">Start from the leftmost element of arr[] and one by one compare x with each element of arr[]</li>
+                        <li style="text-align: left; font-size: small">If x matches with an element, return the index.</li>
+                    </p>
+                </div>
+        </div>
+    </section>
+
+    <!-- Animation Box -->
+
+    <section id="animation_box_main" class="animation">
+        <div id="linearsearch" class="animation_box">
+        </div>
+        <div class="directions">
+            <p id = "directions" style="font-weight: bold; margin: auto;">Something</p>
+        </div>
+    </section>
+
+    <div class="external_link"><a href="https://en.wikipedia.org/wiki/Linear_search">Bubble Sort</a></div>
+
+    <script src="{% static 'Algomination/search_animationbox.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
