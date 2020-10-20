@@ -79,11 +79,18 @@ nav
 
 .inputs .block
 {
+    margin-top: 24px;
     padding-bottom: 20px;
     width: 95%;
     position: relative;
     display: flex;
     height: 60px;
+}
+
+.submit-button 
+{
+    margin-left: 28px !important;
+    width: 140%;
 }
 
 .left_info
@@ -104,7 +111,12 @@ nav
     border: white solid;
     color: white;
     height: 91%;
-    min-height: 60px;
+    min-height: 140px;
+}
+
+.invalid-inputs
+{
+    width: 98%;
 }
 
 .info
@@ -123,6 +135,7 @@ nav
     border: white solid;
     color: white;
     height: 91%;
+    max-height: 225px;
 }
 
 .array_input

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="Sort.css">-->
     <link rel="stylesheet" href="{% static 'Algomination/Sort.css' %}">
-    <!--<link rel="stylesheet" href="{% static 'Algomination/custom.css' %}">-->
+    <link rel="stylesheet" href="{% static 'Algomination/custom.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -33,7 +35,7 @@
                     <a class="nav-link" href="../" >Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" >Search</a>
+                    <a class="nav-link" href="../search/" >Search</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#" style="background: brown;">Sorting<span class="sr-only">(current)</span></a>
@@ -57,30 +59,33 @@
 
                 </div>
             </div>
-            <form action="/Algomination/Bubble_Sort/" method="post">  {% csrf_token %}
+            <form action="/Algomination/BubbleSort/" method="post">  {% csrf_token %}
                 <div class="block">
                     <div class="array_input input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-default">Enter elements of the array</span>
                         </div>
                         <input type="text" name = 'elements' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default" style="border-top-right-radius: 0.35rem; border-bottom-right-radius: 0.35rem;">< 10 elements</span>
+                        </div>
                     </div>
                     <div class="run_button">
                         <button type="submit" class="submit-button btn btn-success">Sort</button>
                     </div>
                 </div>
             </form>
-            <div class="left_info">
+            <!--<div class="left_info">
                 <div class="left_infobox">
 
                 </div>
-            </div>
+            </div>-->
 
-            <!--{% if truth == 'F'%}
+            {% if truth == 'F'%}
                 <div class="invalid-inputs alert alert-danger">
                     <strong>Invalid Inputs!</strong>Enter Valid inputs...
                 </div>
-            {% endif %}-->
+            {% endif %}
         </div>
 
         <div class="info">
@@ -99,7 +104,17 @@
     <!-- Animation Box -->
 
     <section id="animation_box_main" class="animation">
-        <div id="linearsearch" class="animation_box">
+        <div id="BubbleSort" class="animation_box">
+            {% if truth == 'T'%}
+                {% for i in elements %}
+                    {% if forloop.counter == 10 %}
+                        <br>
+                    {% endif %}
+                    <span id ="card{{forloop.counter}}" class="fill-red card">
+                        <p style="margin: auto;">{{i}}</p>
+                    </span>
+                {% endfor %}
+            {% endif %}
         </div>
         <div class="directions">
             <p id = "directions" style="font-weight: bold; margin: auto;">Something</p>
@@ -108,7 +123,7 @@
 
     <div class="external_link"><a href="https://en.wikipedia.org/wiki/Linear_search">Bubble Sort</a></div>
 
-    <script src="{% static 'Algomination/search_animationbox.js' %}"></script>
+    <script src="{% static 'Algomination/sort_animationbox.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
