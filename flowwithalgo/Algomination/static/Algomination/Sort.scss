@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+body 
+{
+    background: #162c3b;
+    overflow-x: hidden;
+}
+
+nav
+{
+    background: black;
+}
+
+.navbar 
+{
+    height: 70px;
+}
+
+.tags
+{
+    right: 30%;
+    a 
+    {
+        padding: 10px;
+        padding-right: 40px;
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.collapse 
+{
+    padding-top: 0px;
+    border-top: lightslategrey solid 2px;
+}
+
+.collapsed_content
+{
+    padding-top: 0px;
+    background-color: black;
+    color: white;
+}
+
+.nav-item
+{
+    padding: 10px;
+}
+
+.navbar-nav .nav-link
+{
+    border-radius: 0.35rem;
+    padding-left: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.content
+{
+    background: #162c3b;
+    position: relative;
+    display: flex;
+}
+
+.inputs
+{
+    width: 65%;
+    padding-top:20px;
+    padding-left: 20px;
+}
+
+.inputs .block
+{
+    padding-bottom: 20px;
+    width: 95%;
+    position: relative;
+    display: flex;
+    height: 60px;
+}
+
+.left_info
+{
+    width: 100%;
+    padding: 20px;
+    padding-top: 2px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    text-align: center;
+}
+
+.left_infobox
+{
+    padding: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: white solid;
+    color: white;
+    height: 91%;
+    min-height: 60px;
+}
+
+.info
+{
+    width: 55%;
+    padding: 20px;
+    padding-left: 30px;
+    text-align: center;
+}
+
+.infobox
+{
+    padding: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: white solid;
+    color: white;
+    height: 91%;
+}
+
+.array_input
+{
+    //padding-left: 20px;
+    margin-right: 20px;
+    //margin-left: 20px;
+}
+
+.infobox p
+{
+    font-size: 14px;
+}
+
+.animation
+{
+    padding: 20px;
+}
+
+.animation_box
+{
+    background: lightgrey;
+    //border: white solid;
+    padding: 10px;
+    height: 60%;
+    min-height: 280px;
+    box-shadow: 2px black;
+    position: relative;
+    display: flex;
+    border-radius: 0.35rem;
+    overflow: hidden;
+}
+
+.directions
+{
+    margin-top: 10px;
+}
+
+.directions p
+{
+    background-color: black;
+    color: white;
+    border-radius: 0.35rem;
+    border: black solid;
+    text-align: center;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.external_link
+{
+    margin-left: 10%;
+    padding-top: .375rem;
+    background: #e9ecef;
+    color: black;
+    border: white solid;
+    width: 15%;
+    height: 40px;
+    text-align: center;
+    border-radius: .35rem;
+    left: 73.5%;
+}
