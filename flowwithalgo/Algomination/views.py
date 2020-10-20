@@ -60,3 +60,84 @@ def search(request):
         
     else:
         return render(request, 'Algomination/search.html')
+
+def BubbleSort(request):
+    if request.method == "POST":
+        elements = request.POST.get('elements', '');
+        elements = elements.split(" ");
+        length = len(elements)
+
+        if length > 10:
+            truth = 'F'
+            params = {'truth': truth}
+
+        else:
+            truth = 'T'
+            elements = [float(x) for x in elements]
+            tempele = []
+            for x in elements:
+                if int(x) == x:
+                    tempele.append(f"{int(x)}")
+                else:
+                    tempele.append(f"{x}")
+
+            elements = tempele
+            params = {'elements': elements, 'num': length, 'truth': truth}
+
+        
+        return render(request, 'Algomination/BubbleSort.html', params)
+    else:
+        return render(request, 'Algomination/BubbleSort.html')
+
+def SelectionSort(request):
+    if request.method == "POST":
+        elements = request.POST.get('elements', '');
+        elements = elements.split(" ");
+        length = len(elements)
+
+        if length > 10:
+            truth = 'F'
+            params = {'truth': truth}
+
+        else:
+            truth = 'T'
+            elements = [float(x) for x in elements]
+            tempele = []
+            for x in elements:
+                if int(x) == x:
+                    tempele.append(f"{int(x)}")
+                else:
+                    tempele.append(f"{x}")
+
+            elements = tempele
+            params = {'elements': elements, 'num': length, 'truth': 'T'}
+
+        return render(request, 'Algomination/SelectionSort.html', params)
+    else:
+        return render(request, 'Algomination/SelectionSort.html')
+
+def InsertionSort(request):
+    if request.method == "POST":
+        elements = request.POST.get('elements', '');
+        elements = elements.split(" ");
+        length = len(elements)
+
+        if length > 10:
+            truth = 'F'
+            params = {'truth': truth}
+
+        else:
+            elements = [float(x) for x in elements]
+            tempele = []
+            for x in elements:
+                if int(x) == x:
+                    tempele.append(f"{int(x)}")
+                else:
+                    tempele.append(f"{x}")
+
+            elements = tempele
+            params = {'elements': elements, 'num': length, 'truth': 'T'}
+
+        return render(request, 'Algomination/InsertionSort.html', params)
+    else:
+        return render(request, 'Algomination/InsertionSort.html')        
