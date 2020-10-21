@@ -112,6 +112,35 @@ nav
     color: white;
     height: 91%;
     min-height: 140px;
+    display: flex;
+    position: relative;
+}
+
+.info_ele 
+{
+    width: 30%;
+    border: white solid 2px;
+    border-radius: 0.35rem;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #162c3b;
+    margin: auto;
+    height: 100px;
+}
+
+.info_ele_title
+{
+    border-bottom: white dashed 2px;
+    margin: auto;
+    height: 50%;
+}
+
+.info_ele_data
+{
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+    height: 50%;
 }
 
 .invalid-inputs
