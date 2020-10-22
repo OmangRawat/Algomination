@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="Sort.css">-->
     <link rel="stylesheet" href="{% static 'Algomination/Sort.css' %}">
-    <!--<link rel="stylesheet" href="{% static 'Algomination/custom.css' %}">-->
+    <link rel="stylesheet" href="{% static 'Algomination/custom.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -54,10 +56,33 @@
         <div class="inputs">
             <div class="left_info">
                 <div class="left_infobox">
-
+                    <div class="info_ele">
+                        <div class="info_ele_title">
+                            Worst Case Time Complexity
+                        </div>
+                        <div class="info_ele_data">
+                            O(n^2)
+                        </div>
+                    </div>
+                    <div class="info_ele">
+                        <div class="info_ele_title">
+                            Space Complexity
+                        </div>
+                        <div class="info_ele_data">
+                            O(1)
+                        </div>
+                    </div>
+                    <div class="info_ele">
+                        <div class="info_ele_title">
+                            Stability
+                        </div>
+                        <div class="info_ele_data">
+                            Stable
+                        </div>
+                    </div>
                 </div>
             </div>
-            <form action="/Algomination/Bubble_Sort/" method="post">  {% csrf_token %}
+            <form action="/Algomination/InsertionSort/" method="post">  {% csrf_token %}
                 <div class="block">
                     <div class="array_input input-group mb-3">
                         <div class="input-group-prepend">
@@ -70,27 +95,23 @@
                     </div>
                 </div>
             </form>
-            <div class="left_info">
-                <div class="left_infobox">
 
-                </div>
-            </div>
-
-            <!--{% if truth == 'F'%}
+            {% if truth == 'F'%}
                 <div class="invalid-inputs alert alert-danger">
                     <strong>Invalid Inputs!</strong>Enter Valid inputs...
                 </div>
-            {% endif %}-->
+            {% endif %}
         </div>
 
         <div class="info">
                 <div class="infobox">
                     <h4 class="heading">INSERTION SORT</h4>
-                    <p style="text-align: left">Linear search is the simplest search algorithm and often called sequential search. In this type of searching, we simply traverse the list completely and match each element of the list with the item whose location is to be found. </p>
+                    <p style="text-align: left">The array is searched sequentially and unsorted items are moved and inserted into the sorted sub-list (in the same array). </p>
                     <p ><h6 style="text-align: left">Algorithm</h6></p>
                     <p style="text-align: left">
-                        <li style="text-align: left; font-size: small">Start from the leftmost element of arr[] and one by one compare x with each element of arr[]</li>
-                        <li style="text-align: left; font-size: small">If x matches with an element, return the index.</li>
+                        <li style="text-align: left; font-size: small">Iterate from arr[1] to arr[n] over the array.</li>
+                        <li style="text-align: left; font-size: small">Compare the current element (key) to its predecessor.</li>
+                        <li style="text-align: left; font-size: small">If the key element is smaller than its predecessor, compare it to the elements before and move the greater elements one position up to make space for the swapped element.</li>
                     </p>
                 </div>
         </div>
@@ -99,17 +120,27 @@
     <!-- Animation Box -->
 
     <section id="animation_box_main" class="animation">
-        <div id="linearsearch" class="animation_box">
+        <div id="InsertionSort" class="animation_box">
+            {% if truth == 'T'%}
+                {% for i in elements %}
+                    {% if forloop.counter == 10 %}
+                        <br>
+                    {% endif %}
+                    <span id ="card{{forloop.counter}}" class="fill-red card">
+                        <p style="margin: auto;">{{i}}</p>
+                    </span>
+                {% endfor %}
+            {% endif %}
         </div>
         <div class="directions">
             <p id = "directions" style="font-weight: bold; margin: auto;">Something</p>
         </div>
     </section>
 
-    <div class="external_link"><a href="https://en.wikipedia.org/wiki/Linear_search">Bubble Sort</a></div>
+    <div class="external_link"><a href="https://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></div>
 
-    <script src="{% static 'Algomination/search_animationbox.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+    <script src="{% static 'Algomination/insertion_animationbox.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -122,11 +122,12 @@ nav {
   border-bottom: white dashed 2px;
   margin: auto;
   height: 50%;
+  padding-top: 10px;
 }
 
 .info_ele_data {
   margin: auto;
-  margin-top: 10px;
+  padding-top: 10px;
   text-align: center;
   height: 50%;
 }
@@ -148,7 +149,7 @@ nav {
   padding-right: 5px;
   border: white solid;
   color: white;
-  height: 91%;
+  height: 98%;
   max-height: 225px;
 }
 
