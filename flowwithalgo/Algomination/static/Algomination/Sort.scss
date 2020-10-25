@@ -114,6 +114,7 @@ nav
     min-height: 140px;
     display: flex;
     position: relative;
+    background-color:#696969;
 }
 
 .info_ele 
@@ -134,7 +135,9 @@ nav
     margin: auto;
     height: 50%;
     padding-top: 10px;
+    font-size: 15px;
     //background-color:#696969;
+    background-color: black;
 }
 
 .info_ele_data
@@ -144,6 +147,7 @@ nav
     text-align: center;
     height: 50%;
     //background-color:#696969;
+    background-color: black;
 }
 
 .invalid-inputs
