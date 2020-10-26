@@ -105,6 +105,7 @@ nav {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  background-color: #696969;
 }
 
 .info_ele {
@@ -123,6 +124,8 @@ nav {
   margin: auto;
   height: 50%;
   padding-top: 10px;
+  font-size: 15px;
+  background-color: black;
 }
 
 .info_ele_data {
@@ -130,6 +133,7 @@ nav {
   padding-top: 10px;
   text-align: center;
   height: 50%;
+  background-color: black;
 }
 
 .invalid-inputs {
