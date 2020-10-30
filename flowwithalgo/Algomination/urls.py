@@ -8,4 +8,5 @@ urlpatterns = [
     path("BubbleSort/", views.BubbleSort, name="BubbleSort"),
     path("SelectionSort/", views.SelectionSort, name="SelectionSort"),
     path("InsertionSort/", views.InsertionSort, name="InsertionSort"),
+    path("Stack/", views.Stack, name="Stack")
 ]
