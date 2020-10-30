@@ -151,6 +151,10 @@ nav {
   max-width: 50%;
 }
 
+.block1 {
+  margin-top: 10px;
+}
+
 .block1 .run_button {
   margin-left: 20px;
   margin-right: 0px;
@@ -177,6 +181,7 @@ nav {
 
 .invalid-inputs {
   width: 98%;
+  margin-top: 15px;
 }
 
 .animation {
@@ -201,11 +206,11 @@ nav {
 
 .left_ani {
   width: 50%;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .bottom_info {
-  top: 70%;
+  top: 48%;
   height: 30%;
   background-color: black;
   padding: 20px;
@@ -240,6 +245,7 @@ nav {
   width: 50%;
   border: 5px black solid;
   padding: 5px;
+  margin-left: 10px;
 }
 
 .directions {

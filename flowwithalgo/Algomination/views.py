@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Card
 
 # Create your views here.
 def index(request):
@@ -140,4 +141,55 @@ def InsertionSort(request):
 
         return render(request, 'Algomination/InsertionSort.html', params)
     else:
-        return render(request, 'Algomination/InsertionSort.html')        
+        return render(request, 'Algomination/InsertionSort.html')
+
+def Stack(request):
+    if request.method == "POST":
+        elements = request.POST.get('elements', '');
+        elements = elements.split(" ");
+        length = len(elements)
+
+        
+        # if length == 1:
+        #     truth = 'T'
+        #     elements = [float(x) for x in elements]
+        #     tempele = []
+        #     for x in elements:
+        #         if int(x) == x:
+        #             tempele.append(f"{int(x)}")
+        #         else:
+        #             tempele.append(f"{x}")
+
+        #     elements = tempele
+        
+        if 'push' in request.POST:
+            if length == 1:
+                truth = 'T'
+                elements = [float(x) for x in elements]
+                tempele = []
+                for x in elements:
+                    if int(x) == x:
+                        tempele.append(f"{int(x)}")
+                    else:
+                        tempele.append(f"{x}")
+
+                elements = tempele
+            else: 
+                truth = 'F'
+                params = {'truth': truth}    
+            operation = 'push'
+        elif 'pop' in request.POST:
+            operation = 'pop'
+            truth = 'T'
+        else:
+            operation = 'peek'
+        #print("element --> "+ elements[0])
+        params = {'operation': operation, 'elements': elements[0], 'truth': truth}
+        
+        # else: 
+        #     truth = 'F'
+        #     params = {'truth': truth}
+    
+        return render(request, 'Algomination/Stack.html', params)  
+    else:
+        return render(request, 'Algomination/Stack.html')                 

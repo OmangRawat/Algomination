@@ -62,10 +62,10 @@
 }
 
 /* Search page css */
-.submit-button{
+/* .submit-button{
     margin-left:44px;
     width:100%;
-}
+} */
 
 .fill-green{
    height: 115px;
@@ -76,10 +76,11 @@
 }
 
 .fill-red{
-    height: 115px;
-    width: 10%;
+    height: 8.3%;
+    width: 96%;
     margin-left:1px;
     margin-right: 1px;
+    margin-top:10px;
     background-color: blue;
     color: white;
     font-size: 30px;
