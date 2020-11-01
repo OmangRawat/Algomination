@@ -64,8 +64,8 @@ def search(request):
 
 def BubbleSort(request):
     if request.method == "POST":
-        elements = request.POST.get('elements', '');
-        elements = elements.split(" ");
+        elements = request.POST.get('elements', '')
+        elements = elements.split(" ")
         length = len(elements)
 
         if length > 10:
@@ -92,8 +92,8 @@ def BubbleSort(request):
 
 def SelectionSort(request):
     if request.method == "POST":
-        elements = request.POST.get('elements', '');
-        elements = elements.split(" ");
+        elements = request.POST.get('elements', '')
+        elements = elements.split(" ")
         length = len(elements)
 
         if length > 10:
@@ -119,8 +119,8 @@ def SelectionSort(request):
 
 def InsertionSort(request):
     if request.method == "POST":
-        elements = request.POST.get('elements', '');
-        elements = elements.split(" ");
+        elements = request.POST.get('elements', '')
+        elements = elements.split(" ")
         length = len(elements)
 
         if length > 10:
@@ -145,8 +145,8 @@ def InsertionSort(request):
 
 def Stack(request):
     if request.method == "POST":
-        elements = request.POST.get('elements', '');
-        elements = elements.split(" ");
+        elements = request.POST.get('elements', '')
+        elements = elements.split(" ")
         length = len(elements)
 
         
@@ -163,7 +163,7 @@ def Stack(request):
         #     elements = tempele
         
         if 'push' in request.POST:
-            if length == 1:
+            if length == 1 and elements != ['']:
                 truth = 'T'
                 elements = [float(x) for x in elements]
                 tempele = []
@@ -181,8 +181,11 @@ def Stack(request):
         elif 'pop' in request.POST:
             operation = 'pop'
             truth = 'T'
-        else:
+        elif 'peek' in request.POST:
             operation = 'peek'
+            truth = 'T'
+        else:
+            operation = 'none'
         #print("element --> "+ elements[0])
         params = {'operation': operation, 'elements': elements[0], 'truth': truth}
         

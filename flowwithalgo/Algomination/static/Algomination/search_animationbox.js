@@ -110,7 +110,7 @@ else if (choice.querySelector('#binarysearch') != null)
                     document.getElementById('directions').innerText = "<-- Found it -->";
                     myLoop();
                 }
-                else if (document.querySelector('#answer').innerText > element.innerText)
+                else if (parseFloat(document.querySelector('#answer').innerText) > parseFloat(element.innerText))
                 {
                     partition = 0;
                     checker += (Math.floor((max - checker)/2) + 1);
@@ -119,7 +119,7 @@ else if (choice.querySelector('#binarysearch') != null)
                     myLoop();
                     });
                 }
-                else if (document.querySelector('#answer').innerText < element.innerText)
+                else if (parseFloat(document.querySelector('#answer').innerText) < parseFloat(element.innerText))
                 {
                     partition = 1;
                     max -= Math.floor((max - checker)/2);
