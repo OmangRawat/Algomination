@@ -1,9 +1,11 @@
 from django.db import models
 
 # Create your models here.
-class Card(models.Model):
-    card_id = models.AutoField
-    card_value = models.CharField(max_length = 50, default="")
-   
+class Client(models.Model):
+    client_id = models.AutoField
+    name = models.CharField(max_length = 70, default="")
+    email = models.CharField(max_length = 70, default="")
+    password = models.CharField(max_length = 20, default="")
+
     def __str__(self):
-        return self.card_value
+        return self.name

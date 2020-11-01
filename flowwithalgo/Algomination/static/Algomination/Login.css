@@ -342,4 +342,15 @@ nav {
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
+
+.invalid-inputs {
+  margin: auto;
+  height: 7vh;
+  padding: 1.5vh;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  width: 30vw;
+  margin-top: 15vh;
+}
 /*# sourceMappingURL=Login.css.map */

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Card
+from .models import Client
 
-admin.site.register(Card)
+admin.site.register(Client)

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Card
+from .models import Client
 
 # Create your views here.
 def index(request):
@@ -196,3 +196,40 @@ def Stack(request):
         return render(request, 'Algomination/Stack.html', params)  
     else:
         return render(request, 'Algomination/Stack.html')                 
+
+def SignUp(request):
+    if request.method == "POST":
+        if 'signup' in request.POST:
+            name = request.POST.get('name', '')
+            Email = request.POST.get('signupemail', '')
+            password = request.POST.get('signuppassword', '')
+            SignUp = Client(name = name, email = Email, password = password)
+            allusers = Client.objects.values('email')
+            print(allusers)
+            truth = 'ok'
+            for i in allusers:
+                if i['email'] == Email:
+                    truth = 'exist'
+                    break
+            if(truth != 'exist'):    
+                SignUp.save()
+                truth = 'ok'
+            
+            params = {'truth': truth}
+                
+        elif 'login' in request.POST:
+            email = request.POST.get('loginemail', '')
+            password = request.POST.get('loginpassword', '')
+            allusers = Client.objects.values('email', 'password')
+            truth = 'F'
+            for i in allusers:
+                if i['email'] == email:
+                    if i['password'] == password:
+                        truth = 'T'
+                    else:
+                         truth = 'F'
+                    break;     
+            params = {'truth': truth}
+        return render(request, 'Algomination/Login.html', params)  
+    else:
+        return render(request, 'Algomination/Login.html')        
