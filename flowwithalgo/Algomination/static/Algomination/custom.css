@@ -76,14 +76,18 @@
 }
 
 .fill-red{
-    height: 8.3%;
-    width: 96%;
+    /* height: 8.3%; */
+    /* width: 96%; */
+	/* width: 325px; */
+	width: 7vw;
+	height: 12vh;
     margin-left:1px;
     margin-right: 1px;
     margin-top:10px;
     background-color: blue;
     color: white;
     font-size: 30px;
+    /* height: 50px; */
 }
 
 .invalid-inputs{
