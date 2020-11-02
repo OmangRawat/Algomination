@@ -131,10 +131,11 @@ nav
 		&.slide-up .form-title {
 			font-size: 1em;
 			cursor: pointer;
+			margin: auto;
 		}
 		
 		&.slide-up .form-title span {
-			margin-right: 5px;
+			//margin-right: 5px;
 			opacity: 1;
 			visibility: visible;
 			transition: all .3s ease;
@@ -332,6 +333,7 @@ nav
 		}
 		
 		&.slide-up .form-title {
+			margin: auto;
 			font-size: 1em;
 			margin: 0;
 			padding: 0;
@@ -340,7 +342,7 @@ nav
 		}
 		
 		&.slide-up .form-title span {
-			margin-right: 5px;
+			//margin-right: 5px;
 			opacity: 1;
 			visibility: visible;
 			transition: all .3s ease;
