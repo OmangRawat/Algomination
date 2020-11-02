@@ -22,14 +22,21 @@
 // }
 //console.log(window.screen.height)
 
-var unit = (77*(window.innerHeight)/100)
+if (performance.navigation.type == 1) {
+    localStorage.clear()
+} 
 
+
+var unit = (77*(window.innerHeight)/100)
+var pushunit = ((window.innerHeight)/100)
+var xunit = ((window.innerWidth)/100)
+var pixunit
 function task1(sh)
-{
+{   pixunit = 23.9*xunit
     setTimeout(function() {
         anime({
             targets: "#card0",
-            translateX: 360             //408
+            translateX: pixunit             //408
         })
         task2(sh);
     }, 1000);
@@ -80,11 +87,11 @@ function task3(sh)
 }
 
 function task4()
-{
+{   pixunit = (-1)*23*xunit
     setTimeout(function() {
         anime({
             targets: "#cardx",
-            translateX: -350                      //408
+            translateX: pixunit                      //408
         });
     }, 1000);
 }
@@ -120,7 +127,7 @@ if(operation.querySelector('#pushani') != null){
         //     targets: '#card0',
         //     translateY: 541
         // })
-        task1(520);
+        task1(61*pushunit);
         var value_card = document.getElementById('card0').innerText
         localStorage.setItem('card1', value_card)
         console.log(localStorage)
@@ -141,13 +148,14 @@ if(operation.querySelector('#pushani') != null){
             {
                 break
             }
-            str += "<span id ='cardtest' class = 'fill-blue card dbcard' style = 'transform: TranslateY("+ 0 +"vh)'>" + "<p id='answer' style='margin: auto;'>"+ local +"</p>" + " </span>" 
+            str += "<span id ='cardtest' class = 'fill-blue card dbcard' style = 'transform: TranslateY("+ 0 +"px) ; margin-top: 3px;'>" + "<p id='answer' style='margin: auto;'>"+ local +"</p>" + " </span>" 
         }
 
         document.getElementById('pushani').innerHTML = str
         //shift = (520 - ((localStorage.length + 1) * 52))
         //shift = ((70 - (7 * localStorage.length))*(unit/100))
-        shift = (75 - (7 * localStorage.length))*(unit/100)
+        // shift = (75 - (7 * localStorage.length))*(unit/100)
+        shift = (61 - (6 * localStorage.length))*(pushunit)
         console.log("shift2")
         console.log(shift)
         // anime({
@@ -218,7 +226,7 @@ else if(operation.querySelector('#peekani') != null)
     for (let index = localStorage.length; index > 0; index--) {
         var local = localStorage.getItem('card' + index)
         
-        str += "<span id ='cardtest' class = 'fill-blue card dbcard' style = 'transform: TranslateY("+ 0 +"vh)'>" + "<p id='answer' style='margin: auto;'>"+ local +"</p>" + " </span>" 
+        str += "<span id ='cardtest' class = 'fill-blue card dbcard' style = 'transform: TranslateY("+ 0 +"px)'>" + "<p id='answer' style='margin: auto;'>"+ local +"</p>" + " </span>" 
     }
     if(localStorage.length != 0)
     {

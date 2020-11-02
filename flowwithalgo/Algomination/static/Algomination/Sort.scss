@@ -11,8 +11,10 @@
 
 body 
 {
-    background: #162c3b;
+    //background: #162c3b;
     overflow-x: hidden;
+    background: url(sortbody1.jpg);
+    background-size: cover;
 }
 
 nav
@@ -65,7 +67,7 @@ nav
 
 .content
 {
-    background: #162c3b;
+    //background: #162c3b;
     position: relative;
     display: flex;
 }
@@ -89,8 +91,8 @@ nav
 
 .submit-button 
 {
-    margin-left: 28px !important;
-    width: 140%;
+   // margin-left: 28px !important;
+    width: 8vw;
 }
 
 .left_info
@@ -165,13 +167,14 @@ nav
 
 .infobox
 {
+    //font-weight: bold;
     padding: 10px;
     padding-left: 5px;
     padding-right: 5px;
     border: white solid;
     color: white;
-    height: 98%;
-    max-height: 225px;
+    height: 32vh;
+    //max-height: 225px;
 }
 
 .array_input

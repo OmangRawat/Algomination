@@ -11,8 +11,10 @@
 
 body 
 {
-    background: #162c3b;
+    //background: #162c3b;
     overflow-x: hidden;
+    background: url(searchbody6.jpg);
+    background-size: cover;
 }
 
 nav
@@ -65,7 +67,7 @@ nav
 
 .content
 {
-    background: #162c3b;
+    //background: #162c3b;
     position: relative;
     display: flex;
 }
@@ -92,6 +94,11 @@ nav
 .selection_box .op
 {
     width: 80%;
+}
+
+.submit-button{
+    width: 7vw;
+    margin-left: 3vw;
 }
 
 .info

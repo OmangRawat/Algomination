@@ -9,8 +9,8 @@
 }
 
 body {
-  background: #162c3b;
   overflow-x: hidden;
+  background: url(stackbody3.jpg);
 }
 
 nav {
@@ -62,7 +62,6 @@ nav {
 }
 
 .content {
-  background: #162c3b;
   width: 50vw;
   margin-left: 20px;
   height: 79vh;
@@ -196,7 +195,7 @@ nav {
 }
 
 .animation_box {
-  background: lightgrey;
+  background: #90e8ee;
   padding: 10px;
   height: 100%;
   min-height: 280px;
