@@ -57,13 +57,26 @@
         <section class="content">
             <div class="info">
                 <div class="infobox">
-                    <h4 class="heading">BUBBLE SORT</h4>
-                    <p style="text-align: left">Linear search is the simplest search algorithm and often called sequential search. In this type of searching, we simply traverse the list completely and match each element of the list with the item whose location is to be found. </p>
-                    <p ><h6 style="text-align: left">Algorithm</h6></p>
-                    <p style="text-align: left">
-                        <li style="text-align: left; font-size: small">Start from the leftmost element of arr[] and one by one compare x with each element of arr[]</li>
-                        <li style="text-align: left; font-size: small">If x matches with an element, return the index.</li>
-                    </p>
+                    <h4 class="heading">STACK</h4>
+                    <p style="text-align: left">Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out). LIFO stands for Last-in-first-out. Here, the element which is placed (inserted or added) last, is accessed first. In stack terminology, insertion operation is called PUSH operation and removal operation is called POP operation. </p>
+                
+                    <h6 style="text-align: left">Push</h6>
+                    <!-- <p style="text-align: left"> -->
+                        <li style="text-align: left; font-size: small">Check if the stack is full.If the stack is full, produce an error and exit.</li>
+                        <li style="text-align: left; font-size: small">If the stack is not full, increment top to point next empty space.</li>
+                        <li style="text-align: left; font-size: small">Add data element to the stack location, where top is pointing and return success</li>
+                    <!-- </p> -->
+
+                    <h6 style="text-align: left">Pop</h6>
+                    <!-- <p style="text-align: left"> -->
+                        <li style="text-align: left; font-size: small">Check if the stack is empty. If the stack is empty, produce an error and exit.</li>
+                        <li style="text-align: left; font-size: small">Else access the data element at which top is pointing, decrease the value of top by 1 and return success.</li>
+                    <!-- </p> -->
+
+                    <h6 style="text-align: left">Peak</h6>
+                    <!-- <p style="text-align: left"> -->
+                        <li style="text-align: left; font-size: small">Return the data element at which top is pointing </li>
+                    <!-- </p> -->
                 </div>
             </div>
 
@@ -75,7 +88,7 @@
                                 Worst Case Time Complexity
                             </div>
                             <div class="info_ele_data">
-                                O(n^2)
+                                O(1) {for all operations}
                             </div>
                         </div>
                         <div class="info_ele">
@@ -83,15 +96,15 @@
                                 Space Complexity
                             </div>
                             <div class="info_ele_data">
-                                O(1)
+                                O(n)
                             </div>
                         </div>
                         <div class="info_ele">
                             <div class="info_ele_title">
-                                Stability
+                                Principle
                             </div>
                             <div class="info_ele_data">
-                                Stable
+                                LIFO/FILO
                             </div>
                         </div>
                     </div>
@@ -186,14 +199,14 @@
                 </div>
             </div>
             <div class="directions">
-                <p id = "directions" style="font-weight: bold; margin: auto;">Something</p>
+                <p id = "directions" style="font-weight: bold; margin: auto;"><-- Push in some elements --></p>
             </div>
         </section>
     </section>
 
     <!-- External Link -->
 
-    <div class="external_link"><a href="https://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></div>
+    <div class="external_link"><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a></div>
 
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
     <script src="{% static 'Algomination/stack_animationbox.js' %}"></script>
