@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #162c3b;
+  overflow-x: hidden;
+}
+
+nav {
+  background: black;
+}
+
+.navbar {
+  height: 70px;
+}
+
+.tags {
+  right: 30%;
+}
+
+.tags a {
+  padding: 10px;
+  padding-right: 40px;
+  text-decoration: none;
+  color: white;
+}
+
+.collapse {
+  padding-top: 0px;
+  border-top: lightslategrey solid 2px;
+}
+
+.collapsed_content {
+  padding-top: 0px;
+  background-color: black;
+  color: white;
+}
+
+.nav-item {
+  padding: 10px;
+}
+
+.navbar-nav .nav-link {
+  border-radius: 0.35rem;
+  padding-left: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  top: 0;
+  position: fixed;
+  margin-top: 37vh;
+}
+
+.container #menu1, .container #menu2, .container #menu3 {
+  position: fixed;
+  color: #818181;
+  left: 5vw;
+  font-size: xx-large;
+}
+
+.container #main1:hover, .container #menu2:hover, .container #menu3:hover {
+  color: #f1f1f1;
+}
+
+.mainsidenav {
+  height: 75vh;
+  width: 50vw;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 35vw;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 5vh;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-top: 15vh;
+  border-radius: 0.35rem;
+}
+
+.sidenav {
+  height: 75vh;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 35vw;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 5vh;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-top: 15vh;
+  border-radius: 0.35rem;
+}
+
+/* The navigation menu links */
+#main {
+  -webkit-transition: margin-left .5s;
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+.formtitle {
+  margin-left: 5vw;
+  color: white;
+  font-size: large;
+}
+
+.form-control {
+  margin-left: 5vw;
+  width: 75%;
+  margin-bottom: 4vh;
+}
+
+#mySidenav3 .desc, #mySidenav1 .desc {
+  height: 24vh;
+}
+
+.send {
+  margin-left: 5vw;
+  width: 20%;
+  height: 5vh;
+  border-radius: 0.35rem;
+  background-color: blue;
+  color: wheat;
+  font-size: bold;
+}
+/*# sourceMappingURL=Contact.css.map */
