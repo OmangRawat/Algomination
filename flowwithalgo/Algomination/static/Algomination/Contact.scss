@@ -11,8 +11,10 @@
 
 body 
 {
-    background: #162c3b;
+    //background: #162c3b;
     overflow-x: hidden;
+    background: url(contact_body7.jpg);
+    background-size: cover;
 }
 
 nav
@@ -87,9 +89,11 @@ nav
     #menu1, #menu2, #menu3
     {
         position: fixed;
-        color: #818181;
+        // color: #818181;
+        color: #000000;
         left: 5vw;
         font-size: xx-large;
+        cursor: pointer;
     }
 
     #main1:hover, #menu2:hover, #menu3:hover

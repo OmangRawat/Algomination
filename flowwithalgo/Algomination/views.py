@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Client
+from .models import Client, Opinion, Project, Cont
 
 # Create your views here.
 def index(request):
@@ -233,3 +233,36 @@ def SignUp(request):
         return render(request, 'Algomination/Login.html', params)  
     else:
         return render(request, 'Algomination/Login.html')        
+
+def Contact(request):
+    if request.method == "POST":
+        truth = 'F'
+        if 'opinion' in request.POST:
+            name = request.POST.get('opname', '')
+            email = request.POST.get('opemail', '')
+            desc = request.POST.get('opdesc', '')
+            Contact = Opinion(name = name, email = email, desc = desc)
+            Contact.save()
+            truth = 'T'
+        
+        elif 'project' in request.POST:
+            name = request.POST.get('prname', '')
+            algo = request.POST.get('pralgo', '')
+            git = request.POST.get('prgit', '')
+            email = request.POST.get('premail', '')
+            Contact = Project(name = name, algo = algo, git_link = git, email = email)
+            Contact.save() 
+            truth = 'T'   
+
+        elif 'cont' in request.POST:
+            name = request.POST.get('coname', '')
+            email = request.POST.get('coemail', '')
+            desc = request.POST.get('codesc', '')
+            Contact = Cont(name = name, email = email, desc = desc)
+            Contact.save()
+            truth = 'T'
+        
+        params = {'truth': truth}
+        return render(request, 'Algomination/Contact.html', params)
+    else:
+        return render(request, 'Algomination/Contact.html')        
