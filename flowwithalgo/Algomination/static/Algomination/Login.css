@@ -10,8 +10,9 @@
 }
 
 body {
-  background: #162c3b;
   overflow-x: hidden;
+  background: url(contact_body8.jpg);
+  background-size: cover;
 }
 
 nav {
