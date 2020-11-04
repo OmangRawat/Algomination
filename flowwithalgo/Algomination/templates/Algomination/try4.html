@@ -14,38 +14,13 @@
 </head>
 <body>
 
-    <!--<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Algomination</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-    </nav>-->
-
     <!-- Navbar -->
 
   <nav class="sticky-top navbar navbar-dark">
     <a href="#" class="brand-name" style="color: white; font-size: large; text-decoration: none; font-family: 'Sedgwick Ave Display', cursive;"><strong><h4>Algomination</h4></strong></a>
     <div class="tags">
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
+        <a href="../About">About Us</a>
+        <a href="../Contact">Contact Us</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -63,7 +38,7 @@
                   <a class="nav-link" href="../search/">Search</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#" >Sorting</a>
+                  <a class="nav-link" href="../SortHome" >Sorting</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="#" >Data Structures</a>
@@ -113,24 +88,31 @@
 
     <section class="algo">
         <h2 class="heading">Algorithms</h2>
-        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod nisi porta lorem mollis aliquam ut porttitor leo a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend. Morbi quis commodo odio aenean sed adipiscing diam. Viverra mauris in aliquam sem. In aliquam sem fringilla ut morbi. Morbi tristique senectus et netus et malesuada fames ac. Vel eros donec ac odio tempor orci dapibus ultrices. Sit amet mauris commodo quis. Arcu non sodales neque sodales ut etiam sit amet. Proin sagittis nisl rhoncus mattis rhoncus. Pretium fusce id velit ut tortor. Bibendum est ultricies integer quis auctor elit sed vulputate mi. Netus et malesuada fames ac turpis egestas. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Suspendisse interdum consectetur libero id faucibus. Purus non enim praesent elementum facilisis. Vitae semper quis lectus nulla.</p>
+        <p class="text">An algorithm is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of values, as output. An algorithm is thus a sequence of computational steps that transform the input into the output. An algorithm can be specified as a computer program, or even as a hardware design. The only requirement is that the specification must provide a precise description of the computational procedure to be followed.An algorithm is an explicit, precise, unambiguous, mechanically-executable sequence of elementary instructions, usually intended to accomplish a specific purpose.
+        </p>
         <div class="container">
             <div class="algobox">
                 <div>
-                    <img src="{% static 'Algomination/Search.jpg' %}" alt="">
-                    <h2 style="bottom: -25px">Search</h2>
+                    <a href="../search">
+                      <img src="{% static 'Algomination/Search.jpg' %}" alt="">
+                      <h2 style="bottom: -25px">Search</h2>
+                    </a>
                 </div>
             </div>
             <div class="algobox">
                 <div>
+                    <a href="../SortHome">
                     <img src="{% static 'Algomination/Sort.jpg' %}" alt="">
                     <h2 style="bottom: -75px">Sorting</h2>
+                    </a>
                 </div>
             </div>
             <div class="algobox">
                 <div>
+                    <a href="#">
                     <img src="{% static 'Algomination/DataStructures.jpg' %}" alt="">
                     <h2>Data Structures</h2>
+                    </a>
                 </div>            
             </div>
         </div>
@@ -147,7 +129,7 @@
                   <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                   <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                 </ol>
-                <div class="carousel-inner">
+                <div class="carousel-inner car-width">
                   <div class="carousel-item active">
                     <img src="{% static 'Algomination/testbg.jpg' %}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">

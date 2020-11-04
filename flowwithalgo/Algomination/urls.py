@@ -11,4 +11,6 @@ urlpatterns = [
     path("Stack/", views.Stack, name="Stack"),
     path("Login/", views.SignUp, name="Login"),
     path("Contact/", views.Contact, name="Contact"),
+    path("About/", views.About, name="About"),
+    path("SortHome/", views.SortHome, name="SortHome"),
 ]
