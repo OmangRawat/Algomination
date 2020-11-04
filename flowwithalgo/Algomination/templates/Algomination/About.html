@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="About.css">
+    <!--<link rel="stylesheet" href="{% static 'Algomination/Sort.css' %}">
+    <link rel="stylesheet" href="{% static 'Algomination/custom.css' %}">-->
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="sticky-top navbar navbar-dark">
+        <a href="../" class="brand-name" style="color: white; font-size: large; text-decoration: none; font-family: 'Sedgwick Ave Display', cursive;"><strong><h4>Algomination</h4></strong></a>
+        <div class="tags">
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="pos-f-t">
+        <div class="sticky-top collapse" id="navbarToggleExternalContent">
+          <div class="p-4 collapsed_content">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="../" >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" >Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" >Sorting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" >Traversals</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" style="background: brown;">SignUp/Login<span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+          </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div id="lineDrawing" onclick="hide()">
+            <svg viewBox="0 0 792 512">
+            <g class="lines">
+            <path class="my-path" d="M296.7,240.8l-11.4,92.1h-20.7l4.9-39.2h-33.2l-4.9,39.2h-20.7l11.4-92.1h20.7l-4.8,38.9h33.2l4.8-38.9H296.7z"
+                />
+            <path class="my-path" d="M332.2,256.6l-2.7,22.2h26l-2,15.3h-25.9l-2.8,22.8h34.3l-2,15.9h-55l11.4-92.1h54.8l-2,15.9H332.2z"/>
+            <path class="my-path" d="M423.3,316.4l-2,16.4h-51.6l11.4-92.1h20.6l-9.4,75.6H423.3z"/>
+            <path class="my-path" d="M485.2,316.4l-2,16.4h-51.6l11.4-92.1h20.6l-9.4,75.6H485.2z"/>
+            <path class="my-path" d="M580.2,280.9c0,19.5-10,38.7-27.8,47.6c-16.6,8.3-38.7,7.5-51.7-6.9c-13-14.5-12.6-37.5-4.3-54.2
+                c8.7-17.5,26.9-28.2,46.4-27.6c10.2,0.3,20.1,4.3,27,11.9C577,259.6,580.2,270.3,580.2,280.9z M559.1,281.4c0-11.3-5-23.5-17.6-25
+                c-11.6-1.4-21.5,5.5-26.1,15.9c-4.5,10.2-5.8,24.5-0.8,34.7c5.3,10.6,18.5,13.1,28.6,7.9C555.3,308.6,559.1,293.9,559.1,281.4z"/>
+            </g>
+            </svg>      
+        </div>
+    </div>
+    <div class="content">
+        <div id="imgcontainer" class="imgcontainer">
+            <img src="..." class="img-fluid" alt="Responsive image">
+        </div>
+    </div>
+    <div  id="info" class="info">
+        <div class="blockcontainer1">
+            <div class="block block1"></div>
+            <div class="block block2"></div>
+        </div>
+        <div class="blockcontainer2">
+            <div class="block block1"></div>
+            <div class="block block2"></div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+    <!-- <script src="{% static 'Algomination/search_animationbox.js' %}"></script> -->
+    <script src="About.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
