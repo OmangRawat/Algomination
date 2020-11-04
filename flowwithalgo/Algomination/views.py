@@ -265,4 +265,10 @@ def Contact(request):
         params = {'truth': truth}
         return render(request, 'Algomination/Contact.html', params)
     else:
-        return render(request, 'Algomination/Contact.html')        
+        return render(request, 'Algomination/Contact.html')  
+
+def About(request):
+        return render(request, 'Algomination/About.html')  
+
+def SortHome(request):
+        return render(request, 'Algomination/SortHome.html')                           
