@@ -21,26 +21,26 @@ def search(request):
         
 
         elements = elements.split(" ")
-
-        elements = [float(x) for x in elements]
+        if elements != ['']:
+            elements = [float(x) for x in elements]
 
         if opt == '2':
             # elements = [int(x) for x in elements.split()]
             elements = sorted(elements)
             # print('Sorted')
+        if elements != ['']:
+            tempele = []
+            for x in elements:
+                if int(x) == x:
+                    tempele.append(f"{int(x)}")
+                else:
+                    tempele.append(f"{x}")
 
-        tempele = []
-        for x in elements:
-            if int(x) == x:
-                tempele.append(f"{int(x)}")
-            else:
-                tempele.append(f"{x}")
-
-        elements = tempele
+            elements = tempele
 
         # print(num)
         print(elements)
-        if int(num) == len(elements) and ele != '' and 1 <= (num and len(elements)) <= 20:
+        if int(num) == len(elements) and ele != '' and 1 <= (num and len(elements)) <= 20 and elements != ['']:
             truth = 'T'
             flag = 0
             for i in elements:
@@ -68,7 +68,7 @@ def BubbleSort(request):
         elements = elements.split(" ")
         length = len(elements)
 
-        if length > 10:
+        if length > 10 or elements == ['']:
             truth = 'F'
             params = {'truth': truth}
 
@@ -96,7 +96,7 @@ def SelectionSort(request):
         elements = elements.split(" ")
         length = len(elements)
 
-        if length > 10:
+        if length > 10 or elements == ['']:
             truth = 'F'
             params = {'truth': truth}
 
@@ -123,7 +123,7 @@ def InsertionSort(request):
         elements = elements.split(" ")
         length = len(elements)
 
-        if length > 10:
+        if length > 10 or elements == ['']:
             truth = 'F'
             params = {'truth': truth}
 

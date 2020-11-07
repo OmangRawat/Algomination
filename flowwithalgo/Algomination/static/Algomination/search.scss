@@ -27,13 +27,28 @@ nav
     height: 70px;
 }
 
+// .tags
+// {
+//     right: 30%;
+//     a 
+//     {
+//         padding: 10px;
+//         padding-right: 40px;
+//         text-decoration: none;
+//         color: white;
+//     }
+// }
+
 .tags
 {
-    right: 30%;
+    // right: 30%;
+    right: 30vw;
+    // text-align: center;
     a 
     {
+        // padding: 10px;
+        // padding-right: 40px;
         padding: 10px;
-        padding-right: 40px;
         text-decoration: none;
         color: white;
     }

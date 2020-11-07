@@ -22,12 +22,16 @@ nav {
 }
 
 .tags {
-  right: 30%;
+  /* right: 30%; */
+  right: 30vw;
 }
 
 .tags a {
-  padding: 10px;
+  /* padding: 10px;
   padding-right: 40px;
+  text-decoration: none;
+  color: white; */
+  padding: 10px;
   text-decoration: none;
   color: white;
 }

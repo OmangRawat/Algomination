@@ -1,6 +1,8 @@
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+var xunit = ((window.innerWidth)/100)
 var jelement, keyelement, sectempelement, tempelement;
 var i, j, key, counter;
 let elems = document.getElementsByClassName('card');
@@ -8,7 +10,8 @@ var length = elems.length;
 var done = 'F';
 var temp = '', temptext = '';
 //var change = (0.1 * document.getElementById('animation_box_main').style.width);
-var change = (0.0973 * window.screen.width);
+// var change = (0.0973 * window.screen.width);
+var change = (7.1 * xunit)
 console.log(window.screen.width);
 for(i = 1; i < length;  i++){    
     task1(i);     

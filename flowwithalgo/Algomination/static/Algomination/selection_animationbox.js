@@ -2,6 +2,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+var xunit = ((window.innerWidth)/100)
 var shift;
 var min_ind = 0;
 var i, j;
@@ -9,7 +10,8 @@ let elems = document.getElementsByClassName('card');
 var length = elems.length;
 var done = 'F';
 var temp = '', temptext = '';
-var change = (0.0973 * window.screen.width);
+// var change = (0.0973 * window.screen.width);
+var change = (7.1 * xunit)
 console.log(window.screen.width);
 
 for(j = 0; j < length-1;  j++){    
@@ -32,7 +34,8 @@ function task1(j) {
         console.log("required min index: " + min_ind);
         element1 = document.querySelector("#card" + (min_ind + 1));
         element2 = document.querySelector("#card" + (j + 1));
-        shift = 166.5*(min_ind - j);
+        //shift = 166.5*(min_ind - j);
+        shift = (7.1 * xunit)*(min_ind - j);
         console.log("shift: " + shift);
         element1.style.translateX -= shift;
         element2.style.translateX += shift;

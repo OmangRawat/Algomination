@@ -28,11 +28,14 @@ nav
 
 .tags
 {
-    right: 30%;
+    // right: 30%;
+    right: 30vw;
+    // text-align: center;
     a 
     {
+        // padding: 10px;
+        // padding-right: 40px;
         padding: 10px;
-        padding-right: 40px;
         text-decoration: none;
         color: white;
     }
@@ -69,6 +72,7 @@ nav
     width: 90%;
     text-align: center;
     height: 100%;
+    margin: auto;
 }
 
 .my-path {
