@@ -24,7 +24,7 @@
     <nav class="sticky-top navbar navbar-dark">
         <a href="../" class="brand-name" style="color: white; margin-top: 2vh; text-decoration: none; width: 10vw;"><strong><h4 style="font-family: 'Sedgwick Ave Display', cursive; font-size: xx-large;">Algomination</h4></strong></a>
         <div class="tags">
-            <a href="../About" style="font-weight: bolder;">About Us</a>
+            <a href="../About" style="font-weight: bolder;">About</a>
             <a href="../Contact" style="font-weight: bolder;">Contact Us</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@
                         <a class="nav-link" href="../SortHome" style="background: brown;">Sorting<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" >Data Structures</a>
+                        <a class="nav-link" href="../DsHome" >Data Structures</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../Login/" >SignUp/Login</a>
@@ -177,12 +177,20 @@ For sorting, either a weak order, "should not come after", can be specified, or 
                 </div>
             </div>
         </section>
-
-        <!-- <footer>
-            <p>Author: Hege Refsnes</p>
-            <p><a href="mailto:hege@example.com">hege@example.com</a></p>
-        </footer> --> 
     </section>  
+
+    <!-- Side Navbar -->
+
+    <!-- <div id="ender" class = "sticky">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a style="background-color: blue;" href="../SortHome">Sorting</a>
+            <a href="../BubbleSort">Bubble Sort</a>
+            <a href="../SelectionSort">Selection Sort</a>
+            <a href="../InsertionSort">Insertion Sort</a>
+          </div>
+        <span id="others" onclick="openNav()">Others</span>
+    </div> -->
         
      <!-- Footer -->
     <footer class="page-footer font-small indigo">
@@ -298,7 +306,7 @@ For sorting, either a weak order, "should not come after", can be specified, or 
 
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
     <!-- <script src="{% static 'Algomination/stack_animationbox.js' %}"></script> -->
-    <!-- <script src="{% static 'Algomination/SortHome.js' %}"></script> -->
+    <script src="{% static 'Algomination/SortHome.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

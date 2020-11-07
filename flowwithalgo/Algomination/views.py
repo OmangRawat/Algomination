@@ -271,4 +271,10 @@ def About(request):
         return render(request, 'Algomination/About.html')  
 
 def SortHome(request):
-        return render(request, 'Algomination/SortHome.html')                           
+        return render(request, 'Algomination/SortHome.html')   
+
+def SearchHome(request):
+        return render(request, 'Algomination/SearchHome.html')                                 
+
+def DsHome(request):
+        return render(request, 'Algomination/DsHome.html') 

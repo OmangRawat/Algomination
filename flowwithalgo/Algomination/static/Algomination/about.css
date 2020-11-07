@@ -97,11 +97,23 @@ nav {
   width: 32vw;
   height: 30vh;
   margin: auto;
-  border: white 2px solid;
   margin-left: 2vw;
   margin-right: 2vw;
   margin-bottom: 5vh;
   border-radius: 0.35rem;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(red), to(lightslategrey));
+  background-image: linear-gradient(to bottom right, red, lightslategrey);
+  padding: 1.5vh;
+}
+
+.block h3 {
+  text-align: center;
+  color: gold;
+}
+
+.block p {
+  color: white;
+  text-align: center;
 }
 
 .blockcontainer1 {
