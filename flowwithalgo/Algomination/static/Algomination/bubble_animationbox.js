@@ -351,16 +351,22 @@ function sleep(ms) {
 
 // Rahul Pro's Really Working Code Super HardWork
 
+var xunit = ((window.innerWidth)/100)
+console.log(xunit)
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 let elems = document.getElementsByClassName('card');
 var length = elems.length;
 var done = 'F';
 var temp = '', temptext = '';
 //var change = (0.1 * document.getElementById('animation_box_main').style.width);
-var change = (0.0973 * window.screen.width);
-console.log(window.screen.width);
+// var change = (0.0973 * window.screen.width);
+var change = (7.1 * xunit)
+// console.log(window.screen.width);
+console.log(change)
 for(var j = 0; j < length;  j++){    
     //console.log("j: "+ j);
     
@@ -444,3 +450,14 @@ function task(i) {
 } 
 
 //document.getElementById('directions').innerText = "<-- Final Sorted Array -->";
+
+
+function openNav() 
+{
+    document.getElementById("mySidenav").style.width = "20vw";
+}
+
+function closeNav() 
+{
+    document.getElementById("mySidenav").style.width = "0";
+}

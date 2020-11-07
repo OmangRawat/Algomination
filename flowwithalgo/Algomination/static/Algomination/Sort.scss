@@ -27,13 +27,28 @@ nav
     height: 70px;
 }
 
+// .tags
+// {
+//     right: 30%;
+//     a 
+//     {
+//         padding: 10px;
+//         padding-right: 40px;
+//         text-decoration: none;
+//         color: white;
+//     }
+// }
+
 .tags
 {
-    right: 30%;
+    // right: 30%;
+    right: 30vw;
+    // text-align: center;
     a 
     {
+        // padding: 10px;
+        // padding-right: 40px;
         padding: 10px;
-        padding-right: 40px;
         text-decoration: none;
         color: white;
     }
@@ -173,7 +188,8 @@ nav
     padding-right: 5px;
     border: white solid;
     color: white;
-    height: 32vh;
+    //min-height: fit-content;
+    //height: 32vh;
     //max-height: 225px;
 }
 
@@ -225,8 +241,27 @@ nav
     margin-top: 10px;
 }
 
+#ender
+{
+    position: relative;
+    display: flex;
+}
+
+#others
+{
+    color: white; 
+    background-color: black;
+    height: 4vh;
+    width: 6vw;
+    font-weight: bolder;
+    border-top-right-radius: 0.35rem;
+    border-bottom-right-radius: 0.35rem;
+
+}
+
 .external_link
 {
+    position: absolute;
     margin-left: 10%;
     padding-top: .375rem;
     background: #e9ecef;
@@ -236,5 +271,50 @@ nav
     height: 40px;
     text-align: center;
     border-radius: .35rem;
-    left: 73.5%;
+    //left: 73.5%;
+    right: 1.5vw;
+}
+
+.sidenav 
+{
+    height: 50vh;
+    width: 0;
+    position: fixed;
+    z-index: 1;]
+    bottom: 1vh; 
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+.sidenav a 
+{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+  
+.sidenav a:hover 
+{
+    color: #f1f1f1;
+}
+  
+.sidenav .closebtn 
+{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main 
+{
+    transition: margin-left .5s;
+    padding: 20px;
 }
