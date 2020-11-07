@@ -119,17 +119,26 @@ nav
 }
 
 .block
-{
+{   h3{ 
+        text-align: center;
+        color: gold;
+    }
+    p{
+        color: white;
+        text-align: center;
+    }
     width: 32vw;
     height: 30vh;
     // width: 40%;
     // height: 50%;
     margin: auto;
-    border: white 2px solid;
+    //border: white 2px solid;
     margin-left: 2vw;
     margin-right: 2vw;
     margin-bottom: 5vh;
     border-radius: 0.35rem;
+    background-image: linear-gradient(to bottom right, red, lightslategrey);
+    padding: 1.5vh;
 }
 
 .blockcontainer1

@@ -13,4 +13,6 @@ urlpatterns = [
     path("Contact/", views.Contact, name="Contact"),
     path("About/", views.About, name="About"),
     path("SortHome/", views.SortHome, name="SortHome"),
+    path("SearchHome/", views.SearchHome, name="SearchHome"),
+    path("DsHome/", views.DsHome, name="DsHome"),
 ]

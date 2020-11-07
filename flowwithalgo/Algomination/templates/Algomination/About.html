@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'Algomination/About.css' %}">
     <!--<link rel="stylesheet" href="{% static 'Algomination/Sort.css' %}">
@@ -19,7 +19,7 @@
     <nav class="sticky-top navbar navbar-dark">
         <a href="../" class="brand-name" style="color: white; margin-top: 2vh; text-decoration: none; width: 10vw;"><strong><h4 style="font-family: 'Sedgwick Ave Display', cursive; font-size: xx-large;">Algomination</h4></strong></a>
         <div class="tags">
-            <a href="../About" style="font-weight: bolder; background-color: brown;">About Us</a>
+            <a href="../About" style="font-weight: bolder; background-color: brown;">About</a>
             <a href="../Contact" style="font-weight: bolder;">Contact Us</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@
                     <a class="nav-link" href="../SortHome" >Sorting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" >Data Structures</a>
+                    <a class="nav-link" href="../DsHome" >Data Structures</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="../Login">SignUp/Login</a>
@@ -68,17 +68,41 @@
     </div>
     <div class="content">
         <div id="imgcontainer" class="imgcontainer">
-            <img src="..." class="img-fluid" alt="Responsive image">
+            <img src="{% static 'Algomination/about6.jpg' %}" style =" max-height: 100%; width: 75vw" class="img-fluid" alt="Responsive image">
         </div>
     </div>
     <div  id="info" class="info">
         <div class="blockcontainer1">
-            <div class="block block1"></div>
-            <div class="block block2"></div>
+            <div class="block block1">
+                <h3>ABOUT ALGOMINATION</h3>
+                <p>
+                    Algomination is a collection of various small projects for learning and sharing various algorithms. All the algorithm animations are designed so as to make one learn by visualization. Algomination is an open source where anyone with basic knowledge of frontend web development can conrtribute.
+                </p>
+            </div>
+            <div class="block block2">
+                <h3>PURPOSE</h3>
+                <p>
+                    We would love to have people contributing their creations to this project to help make a wonderful database of Algorithms and a great community of developers and learners. We hope it acts as a platform for developers to showcase their projects and also learn from other project.
+                </p>
+            </div>
         </div>
         <div class="blockcontainer2">
-            <div class="block block1"></div>
-            <div class="block block2"></div>
+            <div class="block block1">
+                <h3>TECHNOLOGY</h3>
+                <p>
+                    Algomination.com is built Django framework. This site is hosted on Heroku as it provides an user-interactive platform for hosting django projects with direct support for github. As of frontend, various libraries of javascript like jquery, anime.js are used to create the complex animations of diffrent algorithms.
+                </p>
+            </div>
+            <div class="block block2">
+                <h3>RESOURCES</h3>
+                <p>
+                   Anime.js <br>
+                   Bootstrap <br>
+                   W3 Schools <br>
+                   Algomation <br>
+                   and many informative sites like GeekForGeeks, Wikipidea, Tutorialspoint, etc 
+                 </p>
+            </div>
         </div>
     </div>
 
