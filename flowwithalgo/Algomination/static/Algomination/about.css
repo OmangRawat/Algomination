@@ -23,13 +23,19 @@ nav {
 }
 
 .tags {
-  right: 30vw;
+  position: absolute;
+  left: 20vw;
 }
 
 .tags a {
   padding: 10px;
   text-decoration: none;
   color: white;
+}
+
+.navbar-toggler {
+  position: absolute;
+  right: 2vw;
 }
 
 .collapse {
@@ -47,6 +53,12 @@ nav {
   padding: 10px;
 }
 
+#hiddennav {
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
+}
+
 .navbar-nav .nav-link {
   border-radius: 0.35rem;
   padding-left: 10px;
@@ -57,7 +69,7 @@ nav {
 #lineDrawing {
   width: 90%;
   text-align: center;
-  height: 100%;
+  height: 100vh;
   margin: auto;
 }
 
@@ -67,10 +79,16 @@ nav {
   stroke-width: 4;
 }
 
+.content {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 1vh;
+}
+
 .imgcontainer {
   width: 0vw;
   height: 0vh;
-  border: white 2px solid;
   margin: auto;
   margin-top: 2vh;
   margin-bottom: 5vh;
@@ -91,11 +109,12 @@ nav {
       -ms-flex-align: center;
           align-items: center;
   padding-top: 0;
+  margin-bottom: 10px;
 }
 
 .block {
   width: 32vw;
-  height: 30vh;
+  min-height: 30vh;
   margin: auto;
   margin-left: 2vw;
   margin-right: 2vw;
@@ -118,10 +137,45 @@ nav {
 
 .blockcontainer1 {
   width: 100%;
+  margin: auto;
 }
 
 .blockcontainer2 {
   width: 100%;
   top: 15vh;
+  margin: auto;
+}
+
+@media screen and (max-width: 1034px) {
+  .tags {
+    position: absolute;
+    left: 25%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .tags {
+    position: absolute;
+    left: 35%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .tags {
+    visibility: hidden;
+  }
+  #hiddennav {
+    visibility: visible;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 10px;
+  }
+  .block {
+    width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }
 /*# sourceMappingURL=About.css.map */

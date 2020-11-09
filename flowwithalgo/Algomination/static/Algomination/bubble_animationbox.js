@@ -455,6 +455,10 @@ function task(i) {
 function openNav() 
 {
     document.getElementById("mySidenav").style.width = "20vw";
+    if (window.innerWidth <= 800)
+    {
+        document.getElementById("mySidenav").style.width = "40vw";
+    }
 }
 
 function closeNav() 

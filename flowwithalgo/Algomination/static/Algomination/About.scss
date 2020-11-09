@@ -29,7 +29,8 @@ nav
 .tags
 {
     // right: 30%;
-    right: 30vw;
+    position: absolute;
+    left: 20vw;
     // text-align: center;
     a 
     {
@@ -39,6 +40,12 @@ nav
         text-decoration: none;
         color: white;
     }
+}
+
+.navbar-toggler
+{
+    position: absolute;
+    right: 2vw;
 }
 
 .collapse 
@@ -59,6 +66,13 @@ nav
     padding: 10px;
 }
 
+#hiddennav
+{
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
+}
+
 .navbar-nav .nav-link
 {
     border-radius: 0.35rem;
@@ -71,7 +85,8 @@ nav
 {
     width: 90%;
     text-align: center;
-    height: 100%;
+    //height: 100%;
+    height: 100vh;
     margin: auto;
 }
 
@@ -88,13 +103,20 @@ nav
 //     // visibility: hidden;
 // }
 
+.content 
+{
+    height: fit-content;
+    margin-bottom: 1vh;
+}
+
 .imgcontainer
 {
     // width: 75vw;
     // height: 45vh;
     width: 0vw;
     height: 0vh;
-    border: white 2px solid;
+    //max-height: 30vh;
+    //border: white 2px solid;
     margin: auto;
     margin-top: 2vh;
     margin-bottom: 5vh;
@@ -116,6 +138,7 @@ nav
     //margin-top: 10vh;
     align-items: center;
     padding-top: 0;
+    margin-bottom: 10px;
 }
 
 .block
@@ -128,7 +151,7 @@ nav
         text-align: center;
     }
     width: 32vw;
-    height: 30vh;
+    min-height: 30vh;
     // width: 40%;
     // height: 50%;
     margin: auto;
@@ -146,6 +169,7 @@ nav
     //position: relative;
     // border: white 2px solid;
     width: 100%;
+    margin: auto;
 }
 
 .blockcontainer2
@@ -153,4 +177,42 @@ nav
     width: 100%;
     // border: white 2px solid;
     top: 15vh;
+    margin: auto;
+}
+
+@media screen and (max-width: 1034px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 25%;
+    }
+}
+
+@media screen and (max-width: 800px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 35%;
+    }
+}
+
+@media screen and (max-width: 540px) 
+{
+    .tags
+    {
+        visibility: hidden;
+    }
+    #hiddennav
+    {
+      visibility: visible;
+      height: fit-content;
+      padding: 10px;
+    }
+    .block
+    {
+        width: 100%;
+        height: fit-content;
+    }
 }

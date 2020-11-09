@@ -23,13 +23,19 @@ nav {
 }
 
 .tags {
-  right: 30vw;
+  position: absolute;
+  left: 20vw;
 }
 
 .tags a {
   padding: 10px;
   text-decoration: none;
   color: white;
+}
+
+.navbar-toggler {
+  position: absolute;
+  right: 2vw;
 }
 
 .collapse {
@@ -47,6 +53,12 @@ nav {
   padding: 10px;
 }
 
+#hiddennav {
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
+}
+
 .navbar-nav .nav-link {
   border-radius: 0.35rem;
   padding-left: 10px;
@@ -62,7 +74,7 @@ nav {
 }
 
 .inputs {
-  width: 55%;
+  width: 55vw;
   padding-top: 20px;
   padding-left: 20px;
 }
@@ -186,5 +198,62 @@ nav {
   height: 40px;
   text-align: center;
   border-radius: .35rem;
+}
+
+@media screen and (max-width: 1034px) {
+  .tags {
+    position: absolute;
+    left: 25%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .tags {
+    position: absolute;
+    left: 35%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .tags {
+    visibility: hidden;
+  }
+  #hiddennav {
+    visibility: visible;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 10px;
+  }
+  .content {
+    display: block;
+  }
+  .content .inputs {
+    width: 98vw;
+  }
+  .content .inputs .submit-button {
+    width: 15vw;
+  }
+  .content .info {
+    width: 98vw;
+  }
+  .directions {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .resultbox .text {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .external_link {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }
 /*# sourceMappingURL=search.css.map */

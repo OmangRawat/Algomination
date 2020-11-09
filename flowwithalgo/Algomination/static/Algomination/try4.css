@@ -22,13 +22,19 @@ nav {
 }
 
 .tags {
-  right: 30vw;
+  position: absolute;
+  left: 20vw;
 }
 
 .tags a {
   padding: 10px;
   text-decoration: none;
   color: white;
+}
+
+.navbar-toggler {
+  position: absolute;
+  right: 2vw;
 }
 
 .collapse {
@@ -44,6 +50,12 @@ nav {
 
 .nav-item {
   padding: 10px;
+}
+
+#hiddennav {
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
 }
 
 .navbar-nav .nav-link {
@@ -130,6 +142,7 @@ nav {
   letter-spacing: 1px;
   margin-bottom: 10px;
   text-align: center;
+  margin: auto;
 }
 
 .purpose .img1 {
@@ -199,13 +212,15 @@ nav {
 
 .testimonials {
   position: relative;
-  padding: 150px;
   background: #162c3b;
   text-align: center;
   margin: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .testimonials .container {
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -218,20 +233,17 @@ nav {
   margin-top: 40px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-}
-
-.testimonials .container .car-width {
-  width: 80vw !important;
+  width: 80vw;
 }
 
 .carousel-inner {
-  height: 20vw;
-  width: 100%;
-}
-
-.carousel-caption {
-  margin-bottom: 40%;
+  background: url(testbg.jpg);
+  padding: 5.5vh;
+  width: 80vw;
+  text-align: center;
+  color: white;
   font-size: 15px;
+  min-height: 160px;
 }
 
 .developers {
@@ -255,7 +267,6 @@ nav {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-top: 60px;
-  align-items: center;
   background: #12222d;
 }
 
@@ -264,11 +275,8 @@ nav {
   width: 100%;
   text-align: center;
   padding: 20px;
-  margin-left: 5%;
-  margin-right: 5%;
   border: dashed white;
   margin-bottom: 10px;
-  left: 4%;
 }
 
 .developers .devbx img {
@@ -291,7 +299,7 @@ nav {
 }
 
 .footer p {
-  margin-left: 40%;
+  margin: auto;
   text-align: center;
 }
 
@@ -321,5 +329,84 @@ nav {
   -webkit-filter: invert(1);
           filter: invert(1);
   max-width: 20px;
+}
+
+@media screen and (max-width: 1034px) {
+  .tags {
+    position: absolute;
+    left: 25%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .tags {
+    position: absolute;
+    left: 50%;
+  }
+  .purpose {
+    display: contents;
+  }
+  .purpose .content1 {
+    width: 100%;
+  }
+  .purpose .img1 {
+    visibility: hidden;
+    margin-top: 0px;
+    height: 0px;
+    width: 0px;
+  }
+  .algo {
+    padding: 10vw;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .algo .container {
+    display: contents;
+  }
+  .algo .container .algobox {
+    width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    min-height: 60vh;
+    margin: auto;
+    margin-top: 1vh;
+  }
+  .developers {
+    padding: 10vw;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .tags {
+    visibility: hidden;
+  }
+  #hiddennav {
+    visibility: visible;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 10px;
+  }
+  .purpose .content1 {
+    padding: 10vw;
+    margin: auto;
+  }
+  .developers .devbx {
+    font-size: small;
+  }
+  .developers .devbx img {
+    width: 100%;
+    height: 30vh;
+  }
+}
+
+@media screen and (max-width: 290px) {
+  .developers .devbx {
+    font-size: x-small;
+  }
 }
 /*# sourceMappingURL=try4.css.map */

@@ -29,7 +29,15 @@ if (performance.navigation.type == 1) {
 
 var unit = (77*(window.innerHeight)/100)
 var pushunit = ((window.innerHeight)/100)
-var xunit = ((window.innerWidth)/100)
+if (window.innerWidth <= 1034)
+{
+    var xunit = ((window.innerWidth)/48)
+}
+else
+{
+    var xunit = ((window.innerWidth)/100)
+}
+// var xunit = ((window.innerWidth)/100)
 var pixunit
 function task1(sh)
 {   pixunit = 23.9*xunit

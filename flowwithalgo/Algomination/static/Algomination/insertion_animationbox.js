@@ -123,3 +123,17 @@ function task(j) {
         // }   
     //}, 2000 * j); 
 }
+
+function openNav() 
+{
+    document.getElementById("mySidenav").style.width = "20vw";
+    if (window.innerWidth <= 800)
+    {
+        document.getElementById("mySidenav").style.width = "40vw";
+    }
+}
+
+function closeNav() 
+{
+    document.getElementById("mySidenav").style.width = "0";
+}
