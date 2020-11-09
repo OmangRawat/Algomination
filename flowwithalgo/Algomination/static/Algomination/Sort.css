@@ -53,12 +53,6 @@ nav {
   padding: 10px;
 }
 
-#hiddennav {
-  visibility: hidden;
-  height: 0vh;
-  padding: 0px;
-}
-
 .navbar-nav .nav-link {
   border-radius: 0.35rem;
   padding-left: 10px;
@@ -127,13 +121,18 @@ nav {
   background-color: #162c3b;
   margin: auto;
   min-height: 100px;
-  background-color: black;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .info_ele_title {
   border-bottom: white dashed 2px;
   margin: auto;
   min-height: 50%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   padding-top: 10px;
   font-size: 15px;
   background-color: black;
@@ -226,7 +225,7 @@ nav {
   color: white;
   background-color: black;
   height: 4vh;
-  min-width: 6vw;
+  width: 6vw;
   font-weight: bolder;
   border-top-right-radius: 0.35rem;
   border-bottom-right-radius: 0.35rem;
@@ -333,13 +332,6 @@ nav {
 @media screen and (max-width: 540px) {
   .tags {
     visibility: hidden;
-  }
-  #hiddennav {
-    visibility: visible;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
-    padding: 10px;
   }
   .left_info {
     margin-bottom: 2vh;
