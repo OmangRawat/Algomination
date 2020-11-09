@@ -42,7 +42,8 @@ nav
 .tags
 {
     // right: 30%;
-    right: 30vw;
+    position: absolute;
+    left: 20vw;
     // text-align: center;
     a 
     {
@@ -52,6 +53,12 @@ nav
         text-decoration: none;
         color: white;
     }
+}
+
+.navbar-toggler
+{
+    position: absolute;
+    right: 2vw;
 }
 
 .collapse 
@@ -72,6 +79,13 @@ nav
     padding: 10px;
 }
 
+#hiddennav
+{
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
+}
+
 .navbar-nav .nav-link
 {
     border-radius: 0.35rem;
@@ -89,7 +103,8 @@ nav
 
 .inputs
 {
-    width: 55%;
+    //width: 55%;
+    width: 55vw;
     padding-top:20px;
     padding-left: 20px;
 }
@@ -223,4 +238,65 @@ nav
     border-radius: .35rem;
 }
 
+@media screen and (max-width: 1034px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 25%;
+    }
+}
 
+@media screen and (max-width: 800px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 35%;
+    }
+}
+
+@media screen and (max-width: 540px) 
+{
+    .tags
+    {
+        visibility: hidden;
+    }
+    #hiddennav
+    {
+      visibility: visible;
+      height: fit-content;
+      padding: 10px;
+    }
+    .content
+    {
+        display: block;
+        .inputs
+        {
+            width: 98vw;
+            .submit-button
+            {
+                width: 15vw;
+            }
+        }
+        .info
+        {
+            width: 98vw;
+        }
+    }
+    .directions
+    {
+        height: fit-content;
+    }
+
+    .resultbox .text
+    {
+        //width: 15vw;
+        width: fit-content;
+    }
+    .external_link
+    {
+        width: fit-content;
+        height: fit-content;
+    }
+}

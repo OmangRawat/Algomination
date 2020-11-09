@@ -42,7 +42,8 @@ nav
 .tags
 {
     // right: 30%;
-    right: 30vw;
+    position: absolute;
+    left: 20vw;
     // text-align: center;
     a 
     {
@@ -52,6 +53,12 @@ nav
         text-decoration: none;
         color: white;
     }
+}
+
+.navbar-toggler
+{
+    position: absolute;
+    right: 2vw;
 }
 
 .collapse 
@@ -70,6 +77,13 @@ nav
 .nav-item
 {
     padding: 10px;
+}
+
+#hiddennav
+{
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
 }
 
 .navbar-nav .nav-link
@@ -136,6 +150,11 @@ nav
     transition: 0.5s; 
     margin-top: 15vh;
     border-radius: 0.35rem;
+}
+
+#sidenavshifter
+{
+    visibility: hidden;
 }
 
 .sidenav 
@@ -220,8 +239,82 @@ nav
     font-size: bold;
 }
 
-@media screen and (max-height: 450px) 
+@media screen and (max-width: 1034px) 
 {
-    // .sidenav {padding-top: 15px;}
-    // .sidenav a {font-size: 18px;}
+    .tags
+    {
+        position: absolute;
+        left: 25%;
+    }
+    .container
+    {
+        .mainsidenav, .sidenav
+        {
+            left: 50vw;
+        }
+    }
 }
+
+@media screen and (max-width: 900px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 35%;
+    }
+
+    #sidenavshifter
+    {
+        visibility: visible;
+        color: black;
+        left: 5vw;
+        font-size: xx-large;
+        cursor: pointer;
+        font-weight: bolder;
+        //position: absolute;
+        //margin: auto;
+        //margin-bottom: 5vh;
+        //margin-top: 5vh;
+    }
+
+    .container #menu1, .container #menu2, .container #menu3
+    {
+        visibility: hidden;
+    }
+
+    .container
+    {
+        position: relative;
+        margin-top: 5vh;
+        display: block;
+        .mainsidenav
+        {
+            width: 100%;
+            //padding: 10vw;
+            //margin: auto;
+        }
+        .mainsidenav, .sidenav
+        {
+            position: absolute;
+            //top: 80vh;
+            //width: 100%;
+            left: 0vw;
+            //margin: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 540px) 
+{
+    .tags
+    {
+        visibility: hidden;
+    }
+    #hiddennav
+    {
+      visibility: visible;
+      height: fit-content;
+      padding: 10px;
+    }
+}
+

@@ -98,3 +98,20 @@
     text-align: center;
 }
 /* End Search page css */
+
+@media screen and (max-width: 1034px) 
+{
+    .animation-wrapper
+    {
+        padding-bottom: 30%;
+    }
+}
+
+@media screen and (max-width: 520px) 
+{
+    .animation-wrapper
+    {
+        padding-bottom: 0px;
+        height: 26vh;
+    }
+}

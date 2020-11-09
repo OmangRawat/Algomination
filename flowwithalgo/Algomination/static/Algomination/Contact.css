@@ -23,13 +23,19 @@ nav {
 }
 
 .tags {
-  right: 30vw;
+  position: absolute;
+  left: 20vw;
 }
 
 .tags a {
   padding: 10px;
   text-decoration: none;
   color: white;
+}
+
+.navbar-toggler {
+  position: absolute;
+  right: 2vw;
 }
 
 .collapse {
@@ -45,6 +51,12 @@ nav {
 
 .nav-item {
   padding: 10px;
+}
+
+#hiddennav {
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
 }
 
 .navbar-nav .nav-link {
@@ -86,6 +98,10 @@ nav {
   transition: 0.5s;
   margin-top: 15vh;
   border-radius: 0.35rem;
+}
+
+#sidenavshifter {
+  visibility: hidden;
 }
 
 .sidenav {
@@ -135,5 +151,58 @@ nav {
   background-color: blue;
   color: wheat;
   font-size: bold;
+}
+
+@media screen and (max-width: 1034px) {
+  .tags {
+    position: absolute;
+    left: 25%;
+  }
+  .container .mainsidenav, .container .sidenav {
+    left: 50vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .tags {
+    position: absolute;
+    left: 35%;
+  }
+  #sidenavshifter {
+    visibility: visible;
+    color: black;
+    left: 5vw;
+    font-size: xx-large;
+    cursor: pointer;
+    font-weight: bolder;
+  }
+  .container #menu1, .container #menu2, .container #menu3 {
+    visibility: hidden;
+  }
+  .container {
+    position: relative;
+    margin-top: 5vh;
+    display: block;
+  }
+  .container .mainsidenav {
+    width: 100%;
+  }
+  .container .mainsidenav, .container .sidenav {
+    position: absolute;
+    left: 0vw;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .tags {
+    visibility: hidden;
+  }
+  #hiddennav {
+    visibility: visible;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 10px;
+  }
 }
 /*# sourceMappingURL=Contact.css.map */

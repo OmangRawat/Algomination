@@ -41,7 +41,8 @@ nav
 .tags
 {
     // right: 30%;
-    right: 30vw;
+    position: absolute;
+    left: 20vw;
     // text-align: center;
     a 
     {
@@ -51,6 +52,12 @@ nav
         text-decoration: none;
         color: white;
     }
+}
+
+.navbar-toggler
+{
+    position: absolute;
+    right: 2vw;
 }
 
 .collapse 
@@ -69,6 +76,13 @@ nav
 .nav-item
 {
     padding: 10px;
+}
+
+#hiddennav
+{
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
 }
 
 .navbar-nav .nav-link
@@ -286,7 +300,7 @@ nav
     padding: 20px;
     .infor
     {
-        height: 50px;
+        min-height: 50px;
         //border: 2px whitesmoke dashed;
         //margin: 20px;
         margin-bottom: 20px;
@@ -372,5 +386,102 @@ nav
     border-radius: .35rem;
     left: 73.5%;
     bottom: -40px;
+}
+
+@media screen and (max-width: 1034px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 25%;
+    }
+    .foralignment
+    {
+        display: contents;
+        .content
+        {
+            width: 98vw;
+            height: fit-content;
+            .info
+            {
+                height: fit-content;
+            }
+            .info_ele_title, .info_ele_data
+            {
+                font-size: 20px;
+            }
+            .eleinp
+            {
+                max-width: 90vw;
+            }
+            .run_button
+            {
+                width: 50vw;
+            }
+        }
+        .animation
+        {
+            width: 100vw;
+            .bottom_info
+            {
+                height: fit-content;
+            }
+            .fill-blue
+            {
+                width: 42vw;
+            }
+        }
+        .directions
+        {
+            height: fit-content;
+        }
+        .external_link
+        {
+            min-width: 15%;
+            width: fit-content;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 35%;
+    }
+}
+
+@media screen and (max-width: 540px) 
+{
+    .tags
+    {
+        visibility: hidden;
+    }
+    #hiddennav
+    {
+      visibility: visible;
+      height: fit-content;
+      padding: 10px;
+    }
+}
+
+@media screen and (max-width: 440px) 
+{
+    .tags
+    {
+        visibility: hidden;
+    }
+    .foralignment .content
+    {
+        .info_ele_title, .info_ele_data
+        {
+            font-size: 13px;
+        }
+    }
+    .foralignment .animation .fill-blue
+    {
+        width:33vw;
+    }
 }
 
