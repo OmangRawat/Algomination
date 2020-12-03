@@ -1,0 +1,214 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'Algomination/Contact.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'Algomination/Sort.css' %}">
+    <link rel="stylesheet" href="{% static 'Algomination/custom.css' %}">-->
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="sticky-top navbar navbar-dark">
+        <a href=../ class="brand-name" style="color: white; margin-top: 2vh; text-decoration: none; width: 10vw;"><strong><h4 style="font-family: 'Sedgwick Ave Display', cursive; font-size: xx-large;">Algomination</h4></strong></a>
+        <div class="tags">
+            <a href="../About" style="font-weight: bolder;">About Us</a>
+            <a href="../Contact" style="font-weight: bolder; background-color: brown;">Contact Us</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="pos-f-t">
+        <div class="sticky-top collapse" id="navbarToggleExternalContent">
+          <div class="p-4 collapsed_content">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="../Algomination/" >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../search" >Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../SortHome" >Sorting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../DsHome" >Data Structures</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../Login">SignUp/Login</a>
+                </li>
+                <li class="nav-item" id="hiddennav">
+                    <a class="nav-link" href="../About/" >About</a>
+                </li>
+                <li class="nav-item" id="hiddennav">
+                    <a class="nav-link" style="background-color: brown;" href="../Contact/" >Contact Us</a>
+                </li>
+              </ul>
+          </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="sidenavshifter">
+        <span id="menu1"  onclick="openNav1()">Give Your Opinions ></span>
+        <br>
+        <br>
+        <br>
+        <span id="menu2"  onclick="openNav2()">Send Us Your Projects ></span>
+        <br>
+        <br>
+        <br>
+        <span id="menu3"  onclick="openNav3()">Contact Us ></span>
+    </div>
+    <div class="container">
+        <div id="mySidenav1" class="mainsidenav">
+            <form action="/Algomination/Contact/" method="post">  {% csrf_token %}
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput">Full Name</label>
+                  <input name = "opname" type="text" class="form-control" id="formGroupExampleInput" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label class="formtitle" for="formGroupExampleInput2">Contact Mail ID</label>
+                    <input name = "opemail" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput2">What would u like to tell Us</label>
+                  <input name = "opdesc" type="text" class="desc form-control" id="formGroupExampleInput2" placeholder="What are your views about the project">
+                </div>
+                <button name="opinion" class="send submit-btn">Send</button>
+            </form>
+        </div>
+
+        <div id="mySidenav2" class="sidenav">
+            <form action="/Algomination/Contact/" method="post">  {% csrf_token %}
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput">Full Name</label>
+                  <input name = "prname" type="text" class="form-control" id="formGroupExampleInput" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput2">Algorithm Name</label>
+                  <input name = "pralgo" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Algorithm">
+                </div>
+                <div class="form-group">
+                    <label class="formtitle" for="formGroupExampleInput2">GitHub Pages Link</label>
+                    <input name = "prgit" type="text" class="form-control" id="formGroupExampleInput2" placeholder="GitHub Pages Link">
+                </div>
+                <div class="form-group">
+                    <label class="formtitle" for="formGroupExampleInput2">Contact Mail ID</label>
+                    <input name = "premail" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                </div>
+                <button name ="project" class="send submit-btn">Send</button>
+            </form>
+        </div>
+
+        <div id="mySidenav3" class="sidenav">
+            <form action="/Algomination/Contact/" method="post">  {% csrf_token %}
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput">Full Name</label>
+                  <input name = "coname" type="text" class="form-control" id="formGroupExampleInput" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label class="formtitle" for="formGroupExampleInput2">Contact Mail ID</label>
+                    <input name = "coemail" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput2">What can we help u with</label>
+                  <input name = "codesc" type="text" class="desc form-control" id="formGroupExampleInput2" placeholder="Describe your Issue">
+                </div>
+                <button name="cont" class="send submit-btn">Send</button>
+            </form>
+        </div> -->
+
+        <span id="menu1"  onclick="openNav1()">Give Your Opinions ></span>
+        <br>
+        <br>
+        <br>
+        <span id="menu2"  onclick="openNav2()">Send Us Your Projects ></span>
+        <br>
+        <br>
+        <br>
+        <span id="menu3"  onclick="openNav3()">Contact Us ></span>
+
+        <!-- <div id="mySidenav1" class="mainsidenav">
+            <form action="/Algomination/Contact/" method="post">  {% csrf_token %}
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput">Full Name</label>
+                  <input name = "opname" type="text" class="form-control" id="formGroupExampleInput" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label class="formtitle" for="formGroupExampleInput2">Contact Mail ID</label>
+                    <input name = "opemail" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput2">What would u like to tell Us</label>
+                  <input name = "opdesc" type="text" class="desc form-control" id="formGroupExampleInput2" placeholder="What are your views about the project">
+                </div>
+                <button name="opinion" class="send submit-btn">Send</button>
+            </form>
+        </div>
+
+        <div id="mySidenav2" class="sidenav">
+            <form action="/Algomination/Contact/" method="post">  {% csrf_token %}
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput">Full Name</label>
+                  <input name = "prname" type="text" class="form-control" id="formGroupExampleInput" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput2">Algorithm Name</label>
+                  <input name = "pralgo" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Algorithm">
+                </div>
+                <div class="form-group">
+                    <label class="formtitle" for="formGroupExampleInput2">GitHub Pages Link</label>
+                    <input name = "prgit" type="text" class="form-control" id="formGroupExampleInput2" placeholder="GitHub Pages Link">
+                </div>
+                <div class="form-group">
+                    <label class="formtitle" for="formGroupExampleInput2">Contact Mail ID</label>
+                    <input name = "premail" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                </div>
+                <button name ="project" class="send submit-btn">Send</button>
+            </form>
+        </div>
+
+        <div id="mySidenav3" class="sidenav">
+            <form action="/Algomination/Contact/" method="post">  {% csrf_token %}
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput">Full Name</label>
+                  <input name = "coname" type="text" class="form-control" id="formGroupExampleInput" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label class="formtitle" for="formGroupExampleInput2">Contact Mail ID</label>
+                    <input name = "coemail" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label class="formtitle" for="formGroupExampleInput2">What can we help u with</label>
+                  <input name = "codesc" type="text" class="desc form-control" id="formGroupExampleInput2" placeholder="Describe your Issue">
+                </div>
+                <button name="cont" class="send submit-btn">Send</button>
+            </form>
+        </div> -->
+    </div>
+    <div>
+        {% if truth == 'T' %}
+        <div id = "alertMessage" class="alert alert-success" role="alert" style="text-align: center; margin: auto; margin-top:83vh;">
+            Details received successfully! Thank You!
+        </div>
+        {% endif %}
+    </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="{% static 'Algomination/Contact.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
