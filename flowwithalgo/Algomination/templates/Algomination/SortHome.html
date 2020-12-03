@@ -1,0 +1,322 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'Algomination/SortHome.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'Algomination/Stack.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'Algomination/custom.css' %}"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style type="text/css">
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="sticky-top navbar navbar-dark">
+        <a href="../" class="brand-name" style="color: white; margin-top: 2vh; text-decoration: none; width: 10vw;"><strong><h4 style="font-family: 'Sedgwick Ave Display', cursive; font-size: xx-large;">Algomination</h4></strong></a>
+        <div class="tags">
+            <a href="../About" style="font-weight: bolder;">About</a>
+            <a href="../Contact" style="font-weight: bolder;">Contact Us</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="pos-f-t">
+        <div class="sticky-top collapse" id="navbarToggleExternalContent">
+            <div class="p-4 collapsed_content">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../" >Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../search" >Search</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../SortHome" style="background: brown;">Sorting<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../DsHome" >Data Structures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Login/" >SignUp/Login</a>
+                    </li>
+                    <li class="nav-item" id="hiddennav">
+                        <a class="nav-link" href="../About/" >About</a>
+                    </li>
+                    <li class="nav-item" id="hiddennav">
+                        <a class="nav-link" href="../Contact/" >Contact Us</a>
+                    </li>
+                </ul>
+            </div>    
+        </div>
+    </div>
+
+    <section class = "home">
+        <!-- <section class = "home_carousel">
+            <div class="owl-carousel owl-theme outer" style=" background-color:#fff; ">
+                <div class="item">
+                    <img class = "car_img" src="{% static 'Algomination/bubble1.png' %}">
+                </div>
+                <div class="item">
+                    <img class = "car_img" src="{% static 'Algomination/select.png' %}">
+                </div>
+                <div class="item">
+                    <img class = "car_img" src="{% static 'Algomination/bubble1.png' %}">
+                </div>
+            </div>
+        </section> -->
+
+        <section class = "sorting_head" id ="sort_main">
+            <div class="card card_style" style="width: 6rem;">
+                <div class="card-body text_car">
+                    <h5 class="card-title">SORTING</h5>
+                    <p class="card-text" style="font-style: italic;">In computer science, arranging in an ordered sequence is called "sorting". Sorting is a common operation in many applications, and efficient algorithms to perform it have been developed.<br>
+                    <h6>The most common uses of sorted sequences are:</h6>
+                    <li>making lookup or search efficient</li>
+                    <li>making merging of sequences efficient</li>
+                    <li>enable processing of data in a defined order</li>
+                    <br>
+                    <h7>The opposite of sorting, rearranging a sequence of items in a random or meaningless order, is called shuffling.
+For sorting, either a weak order, "should not come after", can be specified, or a strict weak order, "should come before" (specifying one defines also the other, the two are the complement of the inverse of each other, see operations on binary relations). For the sorting to be unique, these two are restricted to a total order and a strict total order, respectively.</h7>
+                    <br>
+                    <br>
+                    <h7>Sorting n-tuples (depending on context also called e.g. records consisting of fields) can be done based on one or more of its components. More generally objects can be sorted based on a property. Such a component or property is called a sort key.</h7>  
+                    <br>
+                    <br>
+                    <h7>A new sort key can be created from two or more sort keys by lexicographical order. The first is then called the primary sort key, the second the secondary sort key, etc. For example, addresses could be sorted using the city as primary sort key, and the street as secondary sort key.</h7>  
+                    <br>
+                    <br>
+                    <h4>Common sorting algorithms</h4>
+                    <br>
+                    <li>Bubble/Shell sort: Exchange two adjacent elements if they are out of order. Repeat until array is sorted.</li>    
+                    <li>Insertion sort: Scan successive elements for an out-of-order item, then insert the item in the proper place.</li> 
+                    <li>Selection sort: Find the smallest (or biggest) element in the array, and put it in the proper place. Swap it with the value in the first position. Repeat until array is sorted.</li> 
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class = "sorting_head" id = "bubble_sorting_head">
+            <div class="card card_style" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">BUBBLE SORT</h5>
+                    <p class="card-text">Bubble Sort is a simple-minded algorithm based on the idea that we look at the list, and wherever we find two consecutive elements out of order, we swap them. We do this as follows: We repeatedly traverse the unsorted part of the array, comparing consecutive elements, and we interchange them when they are out of order. The name of the algorithm refers to the fact that the largest element "sinks" to the bottom and the smaller elements "float" to the top.
+                        <br>
+                        <h6>PSEUDO CODE</h6>
+                        <h8 style= "margin-left: 1vw;">For I = 0 to N - 2</h8><br>
+                        <h8 style= "margin-left: 2vw;">For J = 0 to N - 2</h8><br>
+                        <h8 style= "margin-left: 3vw;">If (A(J) > A(J + 1)</h8><br>
+                        <h8 style= "margin-left: 4vw;">Temp = A(J)</h8><br>
+                        <h8 style= "margin-left: 4vw;">A(J) = A(J + 1)</h8><br>
+                        <h8 style= "margin-left: 4vw;">A(J + 1) = Temp</h8><br>
+                        <h8 style= "margin-left: 3vw;">End-If</h8><br>
+                        <h8 style= "margin-left: 2vw;">End-For</h8><br>
+                        <h8 style= "margin-left: 1vw;">End-For</h8>
+                        <br>
+                        <br>
+                        <h6>Bubble Sort does roughly N^2 / 2 comparisons and does up to N^2 / 2 swaps.</h6>
+                    </p>
+                    <a href="../BubbleSort" class="btn btn-primary go-button">Animation</a>
+                </div>
+            </div>
+        </section>
+
+        <section class = "sorting_head" id = "selection_sorting_head">
+            <div class="card card_style" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">SELECTION SORT</h5>
+                    <p class="card-text">The idea of Selection Sort is that we repeatedly find the smallest element in the unsorted part of the array and swap it with the first element in the unsorted part of the array.
+                        <br>
+                        <h6>PSEUDO CODE</h6>
+                        <h8 style= "margin-left: 1vw;">For I = 0 to N-1 do:</h8><br>
+                        <h8 style= "margin-left: 2vw;">Smallsub = I</h8><br>
+                        <h8 style= "margin-left: 2vw;">For J = I + 1 to N-1 do:</h8><br>
+                        <h8 style= "margin-left: 3vw;">If A(J) < A(Smallsub)</h8><br>
+                        <h8 style= "margin-left: 4vw;">Smallsub = J</h8><br>
+                        <h8 style= "margin-left: 3vw;">End-If</h8><br>
+                        <h8 style= "margin-left: 2vw;">End-For</h8><br>
+                        <h8 style= "margin-left: 2vw;">Temp = A(I)</h8><br>
+                        <h8 style= "margin-left: 2vw;">A(I) = A(Smallsub)</h8>
+                        <h8 style= "margin-left: 2vw;">A(Smallsub) = Temp</h8>
+                        <h8 style= "margin-left: 1vw;">End-For</h8>
+                        <br>
+                        <br>
+                        <h6>Selection Sort does roughly N^2 / 2 comparisons and does N swaps.</h6>
+                    </p>
+                    <a href="../SelectionSort" class="btn btn-primary go-button">Animation</a>
+                </div>
+            </div>
+        </section>
+
+        <section class = "sorting_head" id ="insertion_sorting_head">
+            <div class="card card_style" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">INSERTION SORT</h5>
+                    <p class="card-text">Insertion Sort is an algorithm to do this as follows: We traverse the array and insert each element into the sorted part of the list where it belongs. This usually involves pushing down the larger elements in the sorted part.
+                        <br>
+                        <h6>PSEUDO CODE</h6>
+                        <h8 style= "margin-left: 1vw;">For I = 1 to N-1</h8><br>
+                        <h8 style= "margin-left: 2vw;">J = I</h8><br>
+                        <h8 style= "margin-left: 2vw;">Do while (J > 0) and (A(J) < A(J - 1)</h8><br>
+                        <h8 style= "margin-left: 3vw;">Temp = A(J)</h8><br>
+                        <h8 style= "margin-left: 3vw;">A(J) = A(J - 1)</h8><br>
+                        <h8 style= "margin-left: 3vw;">A(J - 1) = Temp</h8><br>
+                        <h8 style= "margin-left: 3vw;">J = J - 1 </h8><br>
+                        <h8 style= "margin-left: 2vw;">End-Do</h8><br>
+                        <h8 style= "margin-left: 1vw;">End-For</h8>
+                        <br>
+                        <br>
+                        <h6>Insertion Sort does roughly N^2 / 2 comparisons and does up to N - 1 swaps.</h6>
+                    </p>
+                    <a href="../InsertionSort" class="btn btn-primary go-button">Animation</a>
+                </div>
+            </div>
+        </section>
+    </section>  
+
+    <!-- Side Navbar -->
+
+    <!-- <div id="ender" class = "sticky">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a style="background-color: blue;" href="../SortHome">Sorting</a>
+            <a href="../BubbleSort">Bubble Sort</a>
+            <a href="../SelectionSort">Selection Sort</a>
+            <a href="../InsertionSort">Insertion Sort</a>
+          </div>
+        <span id="others" onclick="openNav()">Others</span>
+    </div> -->
+        
+     <!-- Footer -->
+    <footer class="page-footer font-small indigo">
+
+      <!-- Footer Links -->
+        <div class="container">
+
+            <!-- Grid row-->
+            <div class="row text-center d-flex justify-content-center pt-5 mb-3 ">
+
+              <!-- Grid column -->
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      Quick Move -->
+                    </h6>
+                </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#bubble_sorting_head">Bubble Sort</a>
+                    </h6>
+                </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#selection_sorting_head">Selection Sort</a>
+                    </h6>
+                </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#bubble_sorting_head">Insertion Sort</a>
+                    </h6>
+                </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#sort_main">Sorting</a>
+                    </h6>
+                </div>
+                  <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+            <hr class="rgba-white-light" style="margin: -28px 15%;">
+
+            <!-- Grid row-->
+            <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+              <!-- Grid column -->
+                <div class="col-md-8 col-12 mt-5">
+                    <p style="line-height: 1.7rem">“Sorting something that you will never search is a complete waste; searching something you never sorted is merely inefficient.”
+                    </p>
+                </div>
+              <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+            <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+            <!-- Grid row-->
+            <div class="row pb-3">
+
+              <!-- Grid column -->
+                <div class="col-md-12">
+
+                    <div class="mb-5 social-icons">
+
+                        <!-- Facebook -->
+                        <a class="fb-ic">
+                            <i class="fa fa-facebook-f fa-lg mr-4"> </i>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="tw-ic">
+                            <i class="fa fa-twitter fa-lg mr-4"> </i>
+                        </a>
+                        <!-- Google +-->
+                        <a class="gplus-ic">
+                            <i class="fa fa-google-plus fa-lg mr-4"> </i>
+                        </a>
+                        <!--Linkedin -->
+                        <a class="li-ic">
+                            <i class="fa fa-linkedin fa-lg mr-4"> </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="ins-ic">
+                            <i class="fa fa-instagram fa-lg mr-4"> </i>
+                        </a>
+
+                    </div>
+
+                </div>
+              <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+
+        </div>
+      <!-- Footer Links -->
+    </footer>
+    <!-- Footer -->
+    <!-- External Link -->
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+    <!-- <script src="{% static 'Algomination/stack_animationbox.js' %}"></script> -->
+    <script src="{% static 'Algomination/SortHome.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

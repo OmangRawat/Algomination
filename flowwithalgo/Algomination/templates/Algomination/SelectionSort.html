@@ -1,0 +1,171 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'Algomination/Sort.css' %}">
+    <link rel="stylesheet" href="{% static 'Algomination/custom.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navbar -->
+
+    <nav class="sticky-top navbar navbar-dark">
+        <a href="../" class="brand-name" style="color: white; margin-top: 2vh; text-decoration: none; width: 10vw;"><strong><h4 style="font-family: 'Sedgwick Ave Display', cursive; font-size: xx-large;">Algomination</h4></strong></a>
+        <div class="tags">
+            <a href="../About" style="font-weight: bolder;">About</a>
+            <a href="../Contact" style="font-weight: bolder;">Contact Us</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="pos-f-t">
+        <div class="sticky-top collapse" id="navbarToggleExternalContent">
+          <div class="p-4 collapsed_content">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="../" >Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../search/">Search</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../SortHome" style="background: brown;">Sorting<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../DsHome" >Data Structures</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Login/" >SignUp/Login</a>
+                </li>
+                <li class="nav-item" id="hiddennav">
+                    <a class="nav-link" href="../About/" >About</a>
+                </li>
+                <li class="nav-item" id="hiddennav">
+                    <a class="nav-link" href="../Contact/" >Contact Us</a>
+                </li>
+              </ul>
+          </div>
+    </div>
+
+    <!-- Content Box -->
+
+    <section class="content">
+        <div class="inputs">
+            <div class="left_info">
+                <div class="left_infobox">
+                    <div class="info_ele">
+                        <div class="info_ele_title">
+                            Worst Case Time Complexity
+                        </div>
+                        <div class="info_ele_data">
+                            O(n^2)
+                        </div>
+                    </div>
+                    <div class="info_ele">
+                        <div class="info_ele_title">
+                            Space Complexity
+                        </div>
+                        <div class="info_ele_data">
+                            O(1)
+                        </div>
+                    </div>
+                    <div class="info_ele">
+                        <div class="info_ele_title">
+                            Stability
+                        </div>
+                        <div class="info_ele_data">
+                            Not Stable
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="/Algomination/SelectionSort/" method="post">  {% csrf_token %}
+                <div class="block">
+                    <div class="array_input input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-default">Enter elements of the array(space seperated)</span>
+                        </div>
+                        <input type="text" name = 'elements' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default" style="border-top-right-radius: 0.35rem; border-bottom-right-radius: 0.35rem;">< 10 elements</span>
+                        </div>
+                    </div>
+                    <div class="run_button">
+                        <button type="submit" class="submit-button btn btn-success">Sort</button>
+                    </div>
+                </div>
+            </form>
+
+            {% if truth == 'F'%}
+                <div class="invalid-inputs alert alert-danger">
+                    <strong>Invalid Inputs!</strong>Enter Valid inputs...
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="info">
+                <div class="infobox">
+                    <h4 class="heading">SELECTION SORT</h4>
+                    <p style="text-align: left"> This sorting algorithm is an in-place comparison-based algorithm in which the list is divided into two parts, the sorted part at the left end and the unsorted part at the right end. </p>
+                    <p ><h6 style="text-align: left">Algorithm</h6></p>
+                    <p style="text-align: left">
+                        <li style="text-align: left; font-size: small">Set MIN to location 0</li>
+                        <li style="text-align: left; font-size: small">Search the minimum element in the array and Swap with value at location MIN</li>
+                        <li style="text-align: left; font-size: small">Increment MIN to point to next element</li>
+                        <li style="text-align: left; font-size: small">Repeat until the array is sorted</li>
+                    </p>
+                </div>
+        </div>
+    </section>
+
+    <!-- Animation Box -->
+
+    <section id="animation_box_main" class="animation">
+        <div id="SelectionSort" class="animation_box">
+            {% if truth == 'T'%}
+                {% for i in elements %}
+                    {% if forloop.counter == 10 %}
+                        <br>
+                    {% endif %}
+                    <span id ="card{{forloop.counter}}" class="fill-red card">
+                        <p style="margin: auto;">{{i}}</p>
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="directions">
+            <p id = "directions" style="font-weight: bold; margin: auto;">Something</p>
+        </div>
+    </section>
+
+    <!-- Side Navbar -->
+
+    <div id="ender">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="../SortHome">Sorting</a>
+            <a href="../BubbleSort">Bubble Sort</a>
+            <a style="background-color: blue;"  href="#">Selection Sort</a>
+            <a href="../InsertionSort">Insertion Sort</a>
+          </div>
+          
+        <span id="others" onclick="openNav()">Others --></span>
+    
+        <div class="external_link"><a href="https://en.wikipedia.org/wiki/Selection_sort">Selection Sort</a></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+    <script src="{% static 'Algomination/selection_animationbox.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
