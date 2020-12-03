@@ -1,0 +1,1 @@
+web: gunicorn flowwithalgo.wsgi --log-file -
