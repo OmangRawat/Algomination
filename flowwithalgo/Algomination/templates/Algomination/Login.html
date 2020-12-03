@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp/Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'Algomination/Login.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="sticky-top navbar navbar-dark">
+        <a href="../" class="brand-name" style="color: white; margin-top: 2vh; text-decoration: none; width: 10vw;"><strong><h4 style="font-family: 'Sedgwick Ave Display', cursive; font-size: xx-large;">Algomination</h4></strong></a>
+        <div class="tags">
+            <a href="../About" style="font-weight: bolder;">About</a>
+            <a href="../Contact" style="font-weight: bolder;">Contact Us</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="pos-f-t">
+        <div class="sticky-top collapse" id="navbarToggleExternalContent">
+          <div class="p-4 collapsed_content">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="../" >Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../search/">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../SortHome" >Sorting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../DsHome" >Data Structures</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../Login/" style="background: brown;">SignUp/Login<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" id="hiddennav">
+                    <a class="nav-link" href="../About/" >About</a>
+                </li>
+                <li class="nav-item" id="hiddennav">
+                    <a class="nav-link" href="../Contact/" >Contact Us</a>
+                </li>
+              </ul>
+          </div>
+    </div>
+
+    <!-- Main Content -->
+
+    <form action="/Algomination/Login/" method="post">  {% csrf_token %}
+        <div class="form-structor">
+            <div class="signup">
+                <h2 class="form-title" id="signup">SIGN UP</h2>
+                <div class="form-holder">
+                    <input name = "name" type="text" class="input" placeholder="Name" />
+                    <input name = "signupemail" type="email" class="input" placeholder="Email" />
+                    <input name = "signuppassword" type="password" class="input" placeholder="Password" />
+                </div>
+                <button name = "signup" class="submit-btn">Sign up</button>
+            </div>
+            <div class="login slide-up">
+                <div class="center">
+                    <h2 class="form-title" id="login">LOG IN</h2>
+                    <div class="form-holder">
+                        <input name = "loginemail" type="email" class="input" placeholder="Email" />
+                        <input name = "loginpassword" type="password" class="input" placeholder="Password" />
+                    </div>
+                    <button name = "login" class="submit-btn">Log in</button>
+                </div>
+            </div>   
+        </div>
+    </form> 
+    {% if truth == 'F'%}
+        <div class="invalid-inputs alert alert-danger">
+            <strong>WRONG EMAIL OR PASSWORD!</strong>
+        </div>
+    {% elif truth == 'T' %}
+        <div class="invalid-inputs alert alert-danger">
+            <strong>LOG IN SUCCESSFUL</strong>
+        </div> 
+    {% elif truth == 'exist' %}
+        <div class="invalid-inputs alert alert-danger">
+            <strong>USER ALREADY EXIST!</strong>
+        </div>  
+    {% elif truth == 'ok' %}
+        <div class="invalid-inputs alert alert-danger">
+            <strong>ACCOUNT CREATED</strong>
+        </div>         
+    {% endif %}
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+    <!-- <script src="{% static 'Algomination/search_animationbox.js' %}"></script> -->
+    <script src="{% static 'Algomination/Login.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

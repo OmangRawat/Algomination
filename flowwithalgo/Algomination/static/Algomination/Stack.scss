@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+body 
+{
+    //background: #162c3b;
+    overflow-x: hidden;
+    background: url(stackbody3.jpg);
+}
+
+nav
+{
+    background: black;
+}
+
+.navbar 
+{
+    height: 70px;
+}
+
+// .tags
+// {
+//     right: 30%;
+//     a 
+//     {
+//         padding: 10px;
+//         padding-right: 40px;
+//         text-decoration: none;
+//         color: white;
+//     }
+// }
+
+.tags
+{
+    // right: 30%;
+    position: absolute;
+    left: 20vw;
+    // text-align: center;
+    a 
+    {
+        // padding: 10px;
+        // padding-right: 40px;
+        padding: 10px;
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.navbar-toggler
+{
+    position: absolute;
+    right: 2vw;
+}
+
+.collapse 
+{
+    padding-top: 0px;
+    border-top: lightslategrey solid 2px;
+}
+
+.collapsed_content
+{
+    padding-top: 0px;
+    background-color: black;
+    color: white;
+}
+
+.nav-item
+{
+    padding: 10px;
+}
+
+#hiddennav
+{
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
+}
+
+.navbar-nav .nav-link
+{
+    border-radius: 0.35rem;
+    padding-left: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.foralignment
+{
+    position: relative;
+    display: flex;
+}
+
+.content
+{
+    //background: #162c3b;
+    //position: relative;
+    //display: flex;
+    width: 50vw;
+    margin-left: 20px;
+    height: 79vh;
+}
+
+.info
+{
+    //width: 55%;
+    height: 50vh;
+    padding: 20px;
+    padding-left: 0px;
+    text-align: center;
+}
+
+.infobox
+{
+    padding: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: white solid;
+    color: white;
+    height: 98%;
+    min-height: 300px;
+    overflow: hidden;
+    //max-height: 225px;
+}
+
+.infobox p
+{
+    font-size: 14px;
+}
+
+.left_info
+{
+    //width: 100%;
+    padding: 20px;
+    padding-top: 2px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    text-align: center;
+}
+
+.left_infobox
+{
+    padding: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: white solid;
+    color: white;
+    //height: 91%;
+    height: 17vh;
+    //min-height: 140px;
+    display: flex;
+    position: relative;
+    background-color:#696969;
+}
+
+.info_ele 
+{
+    //width: 30%;
+    width: 25vw;
+    border: white solid 2px;
+    border-radius: 0.35rem;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #162c3b;
+    margin: auto;
+    //height: 100px;
+    height: 14vh;
+}
+
+.info_ele_title
+{
+    border-bottom: white dashed 2px;
+    margin: auto;
+    height: 50%;
+    padding-top: 10px;
+    font-size: 13px;
+    //background-color:#696969;
+    background-color: black;
+}
+
+.info_ele_data
+{
+    margin: auto;
+    padding-top: 10px;
+    text-align: center;
+    height: 50%;
+    //background-color:#696969;
+    background-color: black;
+}
+
+.blockforalign
+{
+    position: relative;
+    display: flex;
+}
+
+.eleinp
+{
+    max-width: 46%;
+}
+
+.block1
+{   margin-top: 10px;
+    .run_button
+    {
+        margin-left: 20px;
+        margin-right: 0px;
+        //width: 55%;
+        width: 26vw;
+        .submit-button
+        {
+            width: 95%;
+        }
+    }
+}
+
+.block2
+{   
+     //margin-bottom: 15px;
+    .run_button
+    {
+        //margin-left: 20px;
+        margin-right: 0px;
+        //width: 52%;
+        width: 24vw;
+        .submit-button
+        {
+            width: 96%;
+        }
+    }
+    .littleshift
+    {
+        //width: 46%;
+        width: 25vw;
+        margin-left: 8px !important;
+    }
+}
+
+.invalid-inputs
+{
+    height: 30px;
+    padding: 2px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: 97%;
+    margin-top: 15px;
+}
+
+.animation
+{
+    padding: 20px;
+    //width: 50%;
+    width: 50vw;
+    height: 77vh;
+}
+
+.animation_box
+{
+    background: rgb(144, 232, 238);
+    //border: white solid;
+    padding: 10px;
+    height: 100%;
+    min-height: 280px;
+    box-shadow: 2px black;
+    position: relative;
+    display: flex;
+    border-radius: 0.35rem;
+    overflow: hidden;
+    //max-height: 560px;
+}
+
+.left_ani
+{
+    width: 50%;
+    margin-right: 10px;
+    //max-height: 490px;
+    height: 100%;
+    position: relative;
+}
+
+.bottom_info
+{
+    //top: 48%;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 0;
+    //width: 50%;
+    //border: solid 5px black;
+    background-color: black;
+    padding: 20px;
+    .infor
+    {
+        min-height: 50px;
+        //border: 2px whitesmoke dashed;
+        //margin: 20px;
+        margin-bottom: 20px;
+        color: white;
+        //padding-top: 15px;
+        position: relative;
+        display: flex;
+        .infor_title
+        {
+            padding-top: 10px;
+            width: 60%;
+            border: 2px whitesmoke dashed;
+            text-align: center;
+        }
+        .infor_ele
+        {
+            padding-top: 10px;
+            width: 40%;
+            margin-left: 10px;
+            border: 2px whitesmoke dashed;
+            text-align: center;
+        }
+    }
+}
+
+.stack_ani
+{
+    //left: 50%;
+    width: 50%;
+    border: 5px black solid;
+    padding: 5px;
+    margin-left: 10px;
+    //overflow: hidden;
+    height: 100%;
+    //max-height: 490px;
+    position: relative;
+}
+
+#pushani, #popani, #peekani
+{
+    position: absolute;
+    bottom: 1vh;
+}
+
+.fill-blue{
+	width: 20vw;
+	height: 5.5vh;
+    margin-left:1px;
+    margin-right: 1px;
+    margin-top:1vh;
+    background-color: blue;
+    color: white;
+    font-size: 30px;
+}
+
+.directions
+{
+    margin-top: 10px;
+}
+
+.directions p
+{
+    background-color: black;
+    color: white;
+    border-radius: 0.35rem;
+    border: black solid;
+    text-align: center;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.external_link
+{
+    margin-left: 10%;
+    padding-top: .375rem;
+    background: #e9ecef;
+    color: black;
+    border: white solid;
+    width: 15%;
+    height: 40px;
+    text-align: center;
+    border-radius: .35rem;
+    left: 73.5%;
+    bottom: -40px;
+}
+
+@media screen and (max-width: 1034px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 25%;
+    }
+    .foralignment
+    {
+        display: contents;
+        .content
+        {
+            width: 98vw;
+            height: fit-content;
+            .info
+            {
+                height: fit-content;
+            }
+            .info_ele_title, .info_ele_data
+            {
+                font-size: 20px;
+            }
+            .eleinp
+            {
+                max-width: 90vw;
+            }
+            .run_button
+            {
+                width: 50vw;
+            }
+        }
+        .animation
+        {
+            width: 100vw;
+            .bottom_info
+            {
+                height: fit-content;
+            }
+            .fill-blue
+            {
+                width: 42vw;
+            }
+        }
+        .directions
+        {
+            height: fit-content;
+        }
+        .external_link
+        {
+            min-width: 15%;
+            width: fit-content;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) 
+{
+    .tags
+    {
+        position: absolute;
+        left: 35%;
+    }
+}
+
+@media screen and (max-width: 540px) 
+{
+    .tags
+    {
+        visibility: hidden;
+    }
+    #hiddennav
+    {
+      visibility: visible;
+      height: fit-content;
+      padding: 10px;
+    }
+}
+
+@media screen and (max-width: 440px) 
+{
+    .tags
+    {
+        visibility: hidden;
+    }
+    .foralignment .content
+    {
+        .info_ele_title, .info_ele_data
+        {
+            font-size: 13px;
+        }
+    }
+    .foralignment .animation .fill-blue
+    {
+        width:33vw;
+    }
+}
+
