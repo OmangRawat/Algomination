@@ -1,1 +1,1 @@
-web: gunicorn flowwithalgo.wsgi 
+web: gunicorn flowwithalgo.wsgi
