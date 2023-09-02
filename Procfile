@@ -1,1 +1,1 @@
-web: gunicorn flowwithalgo.wsgi --log-file -
+web: gunicorn flowwithalgo.wsgi 
