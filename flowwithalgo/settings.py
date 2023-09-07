@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vx8m$wvc6$fzbqq7xvo92g)cgq^fb*_xfgy!gomu&o$g9kijk#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['algomination.up.railway.app', '127.0.0.1']
 
@@ -127,6 +127,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+CSRF_TRUSTED_ORIGINS = ['https://algomination.up.railway.app','https://*.127.0.0.1']
 
 # Managing media
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
