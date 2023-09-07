@@ -1,10 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Client, Opinion, Project, Cont
+from django.contrib.auth import get_user_model
+
 
 # Create your views here.
 def index(request):
+    # User = get_user_model()
+    # users = User.objects.all()
+    # us = User.objects.get(username='algoanim')
+    # print(us)
+    # us.set_password('algoanim#')
+    # us.save()
     return render(request, 'Algomination/try4.html')
+    
 
 def search(request):
 #   return render(request, 'Algomination/search.html')
