@@ -2,10 +2,9 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -26,7 +25,6 @@ nav {
   position: absolute;
   left: 20vw;
 }
-
 .tags a {
   padding: 10px;
   text-decoration: none;
@@ -79,7 +77,6 @@ nav {
   font-size: xx-large;
   cursor: pointer;
 }
-
 .container #main1:hover, .container #menu2:hover, .container #menu3:hover {
   color: #f1f1f1;
 }
@@ -94,7 +91,6 @@ nav {
   background-color: black;
   overflow-x: hidden;
   padding-top: 5vh;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   margin-top: 15vh;
   border-radius: 0.35rem;
@@ -114,7 +110,6 @@ nav {
   background-color: black;
   overflow-x: hidden;
   padding-top: 5vh;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   margin-top: 15vh;
   border-radius: 0.35rem;
@@ -122,8 +117,7 @@ nav {
 
 /* The navigation menu links */
 #main {
-  -webkit-transition: margin-left .5s;
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 20px;
 }
 
@@ -162,7 +156,6 @@ nav {
     left: 50vw;
   }
 }
-
 @media screen and (max-width: 900px) {
   .tags {
     position: absolute;
@@ -192,17 +185,14 @@ nav {
     left: 0vw;
   }
 }
-
 @media screen and (max-width: 540px) {
   .tags {
     visibility: hidden;
   }
   #hiddennav {
     visibility: visible;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
     padding: 10px;
   }
-}
-/*# sourceMappingURL=Contact.css.map */
+}/*# sourceMappingURL=Contact.css.map */

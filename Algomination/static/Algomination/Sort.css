@@ -2,10 +2,9 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -26,7 +25,6 @@ nav {
   position: absolute;
   left: 30vw;
 }
-
 .tags a {
   padding: 10px;
   text-decoration: none;
@@ -68,8 +66,6 @@ nav {
 
 .content {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -84,8 +80,6 @@ nav {
   padding-bottom: 20px;
   width: 95%;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 60px;
 }
@@ -111,8 +105,6 @@ nav {
   color: white;
   height: 91%;
   min-height: 140px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
   background-color: #696969;
@@ -144,7 +136,6 @@ nav {
   padding-top: 10px;
   text-align: center;
   min-height: 50%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   background-color: black;
@@ -152,7 +143,6 @@ nav {
 
 .invalid-inputs {
   min-width: 98%;
-  height: -webkit-fit-content !important;
   height: -moz-fit-content !important;
   height: fit-content !important;
   color: red;
@@ -190,11 +180,8 @@ nav {
   padding: 10px;
   height: 60%;
   min-height: 280px;
-  -webkit-box-shadow: 2px black;
-          box-shadow: 2px black;
+  box-shadow: 2px black;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   border-radius: 0.35rem;
   overflow: hidden;
@@ -217,8 +204,6 @@ nav {
 
 #ender {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -235,14 +220,14 @@ nav {
 .external_link {
   position: absolute;
   margin-left: 10%;
-  padding-top: .375rem;
+  padding-top: 0.375rem;
   background: #e9ecef;
   color: black;
   border: white solid;
   width: 15%;
   height: 40px;
   text-align: center;
-  border-radius: .35rem;
+  border-radius: 0.35rem;
   right: 1.5vw;
 }
 
@@ -256,7 +241,6 @@ nav {
   background-color: black;
   overflow-x: hidden;
   padding-top: 60px;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -266,7 +250,6 @@ nav {
   font-size: 25px;
   color: #818181;
   display: block;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -283,8 +266,7 @@ nav {
 }
 
 #main {
-  -webkit-transition: margin-left .5s;
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 20px;
 }
 
@@ -294,7 +276,6 @@ nav {
     left: 25%;
   }
 }
-
 @media screen and (max-width: 800px) {
   .tags {
     position: absolute;
@@ -313,30 +294,25 @@ nav {
     width: 98vw;
   }
   .directions {
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
   #others {
-    width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
     padding-top: 0.5vh;
   }
   .external_link {
-    width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
   }
 }
-
 @media screen and (max-width: 540px) {
   .tags {
     visibility: hidden;
   }
   #hiddennav {
     visibility: visible;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
     padding: 10px;
@@ -354,5 +330,4 @@ nav {
     width: 90vw;
     margin-bottom: 2vh;
   }
-}
-/*# sourceMappingURL=Sort.css.map */
+}/*# sourceMappingURL=Sort.css.map */

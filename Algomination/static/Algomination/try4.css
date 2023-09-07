@@ -3,10 +3,9 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -25,7 +24,6 @@ nav {
   position: absolute;
   left: 20vw;
 }
-
 .tags a {
   padding: 10px;
   text-decoration: none;
@@ -77,15 +75,9 @@ nav {
   width: 100%;
   height: 100vh;
   background-color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner img {
@@ -106,14 +98,14 @@ nav {
 
 .banner-content h1 {
   top: -20px;
-  font-family: 'Sedgwick Ave Display', cursive;
+  font-family: "Sedgwick Ave Display", cursive;
   color: black;
   font-size: 150px;
 }
 
 .banner-content p {
   top: -80px;
-  font-family: 'Lovers Quarrel', cursive;
+  font-family: "Lovers Quarrel", cursive;
   text-align: center;
   color: black;
   font-size: 50px;
@@ -123,8 +115,6 @@ nav {
   color: #ffffff;
   position: relative;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background: #162c3b;
 }
@@ -165,17 +155,10 @@ nav {
 .algo .container {
   margin: 4%;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   margin-top: 60px;
 }
 
@@ -185,15 +168,9 @@ nav {
   background: #ffffff;
   width: 30%;
   height: 400px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
   border-radius: 0.35rem;
 }
@@ -221,18 +198,11 @@ nav {
 
 .testimonials .container {
   margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 40px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   width: 80vw;
 }
 
@@ -255,17 +225,10 @@ nav {
 
 .developers .container {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   margin-top: 60px;
   background: #12222d;
 }
@@ -278,7 +241,6 @@ nav {
   border: dashed white;
   margin-bottom: 10px;
 }
-
 .developers .devbx img {
   width: 30%;
 }
@@ -286,15 +248,9 @@ nav {
 .footer {
   background: #162c3b;
   padding: 20px 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   color: white;
 }
 
@@ -304,15 +260,9 @@ nav {
 }
 
 .footer ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer ul li {
@@ -326,8 +276,7 @@ nav {
 }
 
 .footer ul li a img {
-  -webkit-filter: invert(1);
-          filter: invert(1);
+  filter: invert(1);
   max-width: 20px;
 }
 
@@ -337,7 +286,6 @@ nav {
     left: 25%;
   }
 }
-
 @media screen and (max-width: 800px) {
   .tags {
     position: absolute;
@@ -360,14 +308,12 @@ nav {
     margin: auto;
   }
 }
-
 @media screen and (max-width: 550px) {
   .algo .container {
     display: contents;
   }
   .algo .container .algobox {
     width: 100%;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
     min-height: 60vh;
@@ -379,14 +325,12 @@ nav {
     margin: auto;
   }
 }
-
 @media screen and (max-width: 510px) {
   .tags {
     visibility: hidden;
   }
   #hiddennav {
     visibility: visible;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
     padding: 10px;
@@ -403,10 +347,8 @@ nav {
     height: 30vh;
   }
 }
-
 @media screen and (max-width: 290px) {
   .developers .devbx {
     font-size: x-small;
   }
-}
-/*# sourceMappingURL=try4.css.map */
+}/*# sourceMappingURL=try4.css.map */

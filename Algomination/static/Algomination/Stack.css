@@ -2,10 +2,9 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -25,7 +24,6 @@ nav {
   position: absolute;
   left: 20vw;
 }
-
 .tags a {
   padding: 10px;
   text-decoration: none;
@@ -67,8 +65,6 @@ nav {
 
 .foralignment {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -115,8 +111,6 @@ nav {
   border: white solid;
   color: white;
   height: 17vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
   background-color: #696969;
@@ -152,8 +146,6 @@ nav {
 
 .blockforalign {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -164,13 +156,11 @@ nav {
 .block1 {
   margin-top: 10px;
 }
-
 .block1 .run_button {
   margin-left: 20px;
   margin-right: 0px;
   width: 26vw;
 }
-
 .block1 .run_button .submit-button {
   width: 95%;
 }
@@ -179,11 +169,9 @@ nav {
   margin-right: 0px;
   width: 24vw;
 }
-
 .block2 .run_button .submit-button {
   width: 96%;
 }
-
 .block2 .littleshift {
   width: 25vw;
   margin-left: 8px !important;
@@ -206,15 +194,12 @@ nav {
 }
 
 .animation_box {
-  background: #90e8ee;
+  background: rgb(144, 232, 238);
   padding: 10px;
   height: 100%;
   min-height: 280px;
-  -webkit-box-shadow: 2px black;
-          box-shadow: 2px black;
+  box-shadow: 2px black;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   border-radius: 0.35rem;
   overflow: hidden;
@@ -235,24 +220,19 @@ nav {
   background-color: black;
   padding: 20px;
 }
-
 .bottom_info .infor {
   min-height: 50px;
   margin-bottom: 20px;
   color: white;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .bottom_info .infor .infor_title {
   padding-top: 10px;
   width: 60%;
   border: 2px whitesmoke dashed;
   text-align: center;
 }
-
 .bottom_info .infor .infor_ele {
   padding-top: 10px;
   width: 40%;
@@ -303,14 +283,14 @@ nav {
 
 .external_link {
   margin-left: 10%;
-  padding-top: .375rem;
+  padding-top: 0.375rem;
   background: #e9ecef;
   color: black;
   border: white solid;
   width: 15%;
   height: 40px;
   text-align: center;
-  border-radius: .35rem;
+  border-radius: 0.35rem;
   left: 73.5%;
   bottom: -40px;
 }
@@ -325,12 +305,10 @@ nav {
   }
   .foralignment .content {
     width: 98vw;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
   .foralignment .content .info {
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
@@ -347,7 +325,6 @@ nav {
     width: 100vw;
   }
   .foralignment .animation .bottom_info {
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
@@ -355,38 +332,32 @@ nav {
     width: 42vw;
   }
   .foralignment .directions {
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
   .foralignment .external_link {
     min-width: 15%;
-    width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
   }
 }
-
 @media screen and (max-width: 800px) {
   .tags {
     position: absolute;
     left: 35%;
   }
 }
-
 @media screen and (max-width: 540px) {
   .tags {
     visibility: hidden;
   }
   #hiddennav {
     visibility: visible;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
     padding: 10px;
   }
 }
-
 @media screen and (max-width: 440px) {
   .tags {
     visibility: hidden;
@@ -397,5 +368,4 @@ nav {
   .foralignment .animation .fill-blue {
     width: 33vw;
   }
-}
-/*# sourceMappingURL=Stack.css.map */
+}/*# sourceMappingURL=Stack.css.map */

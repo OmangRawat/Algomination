@@ -2,15 +2,14 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   background: #162c3b;
-  background: #141414;
+  background: rgb(20, 20, 20);
   overflow-x: hidden;
 }
 
@@ -26,7 +25,6 @@ nav {
   position: absolute;
   left: 20vw;
 }
-
 .tags a {
   padding: 10px;
   text-decoration: none;
@@ -80,7 +78,6 @@ nav {
 }
 
 .content {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   margin-bottom: 1vh;
@@ -102,12 +99,8 @@ nav {
   margin: auto;
   overflow: hidden;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding-top: 0;
   margin-bottom: 10px;
 }
@@ -120,16 +113,13 @@ nav {
   margin-right: 2vw;
   margin-bottom: 5vh;
   border-radius: 0.35rem;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(red), to(lightslategrey));
   background-image: linear-gradient(to bottom right, red, lightslategrey);
   padding: 1.5vh;
 }
-
 .block h3 {
   text-align: center;
   color: gold;
 }
-
 .block p {
   color: white;
   text-align: center;
@@ -152,30 +142,25 @@ nav {
     left: 25%;
   }
 }
-
 @media screen and (max-width: 800px) {
   .tags {
     position: absolute;
     left: 35%;
   }
 }
-
 @media screen and (max-width: 540px) {
   .tags {
     visibility: hidden;
   }
   #hiddennav {
     visibility: visible;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
     padding: 10px;
   }
   .block {
     width: 100%;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
-}
-/*# sourceMappingURL=About.css.map */
+}/*# sourceMappingURL=About.css.map */
