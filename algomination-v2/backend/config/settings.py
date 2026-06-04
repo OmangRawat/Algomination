@@ -135,6 +135,26 @@ STORAGES = {
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+# --- Logging ----------------------------------------------------------------
+# Print request errors (500 tracebacks) to the console so they show up in the
+# host's logs even when DEBUG is off.
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+    },
+    "root": {"handlers": ["console"], "level": "INFO"},
+    "loggers": {
+        "django.request": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
+}
+
+
 # --- Production hardening ----------------------------------------------------
 # Enabled automatically when DEBUG is off (i.e. in production).
 if not DEBUG:
