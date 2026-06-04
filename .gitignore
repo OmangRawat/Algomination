@@ -1,0 +1,28 @@
+# ---- Legacy project (in legacy/) ----
+legacy/**/venv/
+legacy/**/__pycache__/
+legacy/**/*.py[cod]
+legacy/**/db.sqlite3
+legacy/**/staticfiles/
+legacy/**/node_modules/
+legacy/**/.env
+legacy/**/.next/
+
+# ---- algomination-v2 ----
+algomination-v2/**/venv/
+algomination-v2/**/__pycache__/
+algomination-v2/**/*.py[cod]
+algomination-v2/**/db.sqlite3
+algomination-v2/**/staticfiles/
+algomination-v2/**/node_modules/
+algomination-v2/**/.next/
+algomination-v2/**/.env
+algomination-v2/**/.env.local
+algomination-v2/**/.env.*.local
+
+# ---- OS / editor ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log

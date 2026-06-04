@@ -1,0 +1,371 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  background: url(stackbody.jpg);
+}
+
+nav {
+  background: black;
+}
+
+.navbar {
+  height: 70px;
+}
+
+.tags {
+  position: absolute;
+  left: 20vw;
+}
+.tags a {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-toggler {
+  position: absolute;
+  right: 2vw;
+}
+
+.collapse {
+  padding-top: 0px;
+  border-top: lightslategrey solid 2px;
+}
+
+.collapsed_content {
+  padding-top: 0px;
+  background-color: black;
+  color: white;
+}
+
+.nav-item {
+  padding: 10px;
+}
+
+#hiddennav {
+  visibility: hidden;
+  height: 0vh;
+  padding: 0px;
+}
+
+.navbar-nav .nav-link {
+  border-radius: 0.35rem;
+  padding-left: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.foralignment {
+  position: relative;
+  display: flex;
+}
+
+.content {
+  width: 50vw;
+  margin-left: 20px;
+  height: 79vh;
+}
+
+.info {
+  height: 50vh;
+  padding: 20px;
+  padding-left: 0px;
+  text-align: center;
+}
+
+.infobox {
+  padding: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: white solid;
+  color: white;
+  height: 98%;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.infobox p {
+  font-size: 14px;
+}
+
+.left_info {
+  padding: 20px;
+  padding-top: 2px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  text-align: center;
+}
+
+.left_infobox {
+  padding: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: white solid;
+  color: white;
+  height: 17vh;
+  display: flex;
+  position: relative;
+  background-color: #696969;
+}
+
+.info_ele {
+  width: 25vw;
+  border: white solid 2px;
+  border-radius: 0.35rem;
+  text-align: center;
+  color: whitesmoke;
+  background-color: #162c3b;
+  margin: auto;
+  height: 14vh;
+}
+
+.info_ele_title {
+  border-bottom: white dashed 2px;
+  margin: auto;
+  height: 50%;
+  padding-top: 10px;
+  font-size: 13px;
+  background-color: black;
+}
+
+.info_ele_data {
+  margin: auto;
+  padding-top: 10px;
+  text-align: center;
+  height: 50%;
+  background-color: black;
+}
+
+.blockforalign {
+  position: relative;
+  display: flex;
+}
+
+.eleinp {
+  max-width: 46%;
+}
+
+.block1 {
+  margin-top: 10px;
+}
+.block1 .run_button {
+  margin-left: 20px;
+  margin-right: 0px;
+  width: 26vw;
+}
+.block1 .run_button .submit-button {
+  width: 95%;
+}
+
+.block2 .run_button {
+  margin-right: 0px;
+  width: 24vw;
+}
+.block2 .run_button .submit-button {
+  width: 96%;
+}
+.block2 .littleshift {
+  width: 25vw;
+  margin-left: 8px !important;
+}
+
+.invalid-inputs {
+  height: 30px;
+  padding: 2px;
+  background-color: red;
+  color: white;
+  text-align: center;
+  width: 97%;
+  margin-top: 15px;
+}
+
+.animation {
+  padding: 20px;
+  width: 50vw;
+  height: 77vh;
+}
+
+.animation_box {
+  background: rgb(144, 232, 238);
+  padding: 10px;
+  height: 100%;
+  min-height: 280px;
+  box-shadow: 2px black;
+  position: relative;
+  display: flex;
+  border-radius: 0.35rem;
+  overflow: hidden;
+}
+
+.left_ani {
+  width: 50%;
+  margin-right: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.bottom_info {
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+  background-color: black;
+  padding: 20px;
+}
+.bottom_info .infor {
+  min-height: 50px;
+  margin-bottom: 20px;
+  color: white;
+  position: relative;
+  display: flex;
+}
+.bottom_info .infor .infor_title {
+  padding-top: 10px;
+  width: 60%;
+  border: 2px whitesmoke dashed;
+  text-align: center;
+}
+.bottom_info .infor .infor_ele {
+  padding-top: 10px;
+  width: 40%;
+  margin-left: 10px;
+  border: 2px whitesmoke dashed;
+  text-align: center;
+}
+
+.stack_ani {
+  width: 50%;
+  border: 5px black solid;
+  padding: 5px;
+  margin-left: 10px;
+  height: 100%;
+  position: relative;
+}
+
+#pushani, #popani, #peekani {
+  position: absolute;
+  bottom: 1vh;
+}
+
+.fill-blue {
+  width: 20vw;
+  height: 5.5vh;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-top: 1vh;
+  background-color: blue;
+  color: white;
+  font-size: 30px;
+}
+
+.directions {
+  margin-top: 10px;
+}
+
+.directions p {
+  background-color: black;
+  color: white;
+  border-radius: 0.35rem;
+  border: black solid;
+  text-align: center;
+  height: 40px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.external_link {
+  margin-left: 10%;
+  padding-top: 0.375rem;
+  background: #e9ecef;
+  color: black;
+  border: white solid;
+  width: 15%;
+  height: 40px;
+  text-align: center;
+  border-radius: 0.35rem;
+  left: 73.5%;
+  bottom: -40px;
+}
+
+@media screen and (max-width: 1034px) {
+  .tags {
+    position: absolute;
+    left: 25%;
+  }
+  .foralignment {
+    display: contents;
+  }
+  .foralignment .content {
+    width: 98vw;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .foralignment .content .info {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .foralignment .content .info_ele_title, .foralignment .content .info_ele_data {
+    font-size: 20px;
+  }
+  .foralignment .content .eleinp {
+    max-width: 90vw;
+  }
+  .foralignment .content .run_button {
+    width: 50vw;
+  }
+  .foralignment .animation {
+    width: 100vw;
+  }
+  .foralignment .animation .bottom_info {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .foralignment .animation .fill-blue {
+    width: 42vw;
+  }
+  .foralignment .directions {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .foralignment .external_link {
+    min-width: 15%;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+@media screen and (max-width: 800px) {
+  .tags {
+    position: absolute;
+    left: 35%;
+  }
+}
+@media screen and (max-width: 540px) {
+  .tags {
+    visibility: hidden;
+  }
+  #hiddennav {
+    visibility: visible;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .tags {
+    visibility: hidden;
+  }
+  .foralignment .content .info_ele_title, .foralignment .content .info_ele_data {
+    font-size: 13px;
+  }
+  .foralignment .animation .fill-blue {
+    width: 33vw;
+  }
+}/*# sourceMappingURL=Stack.css.map */

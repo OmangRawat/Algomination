@@ -1,0 +1,28 @@
+# Render Blueprint for the Algomination backend + free Postgres.
+# Place/keep this at the repository root when deploying, or set rootDir to point
+# at this backend folder. See ../DEPLOYMENT.md.
+services:
+  - type: web
+    name: algomination-api
+    runtime: python
+    plan: free
+    rootDir: algomination-v2/backend
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false # set to your Vercel URL, e.g. https://algomination.vercel.app
+      - key: DATABASE_URL
+        fromDatabase:
+          name: algomination-db
+          property: connectionString
+
+databases:
+  - name: algomination-db
+    plan: free

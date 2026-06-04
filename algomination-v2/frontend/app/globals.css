@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/*
+  Algomination v2 theme tokens.
+  A dark, modern palette: deep slate background, indigo→violet brand,
+  cyan accent for "active/compare" states in visualizations.
+*/
+:root {
+  --background: #0b1020;
+  --surface: #121933;
+  --surface-2: #1a2347;
+  --foreground: #e8ecf8;
+  --muted: #9aa6c8;
+  --border: #243056;
+
+  --brand: #6366f1; /* indigo-500  */
+  --brand-2: #8b5cf6; /* violet-500  */
+  --accent: #22d3ee; /* cyan-400    */
+  --success: #34d399; /* emerald-400 */
+  --warning: #fbbf24; /* amber-400   */
+  --danger: #f87171; /* red-400     */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Subtle radial brand glow used by hero/section backgrounds. */
+.bg-grid-glow {
+  background-image: radial-gradient(
+    600px circle at 50% 0%,
+    color-mix(in srgb, var(--brand) 18%, transparent),
+    transparent 70%
+  );
+}
+
+/* --- Stagger-visualizer hero (ported from the original custom.css) ------- */
+.animation-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 38%;
+}
+
+.stagger-visualizer {
+  position: relative;
+  width: 1100px;
+  height: 100%;
+  transform-origin: center top;
+}
+
+.stagger-visualizer .dots-wrapper {
+  transform: translateZ(0);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.stagger-visualizer .dot {
+  position: relative;
+  z-index: 1;
+  width: 23px;
+  height: 23px;
+  margin: 16px;
+  border-radius: 50%;
+  /* Themed: soft indigo→violet dots instead of the old grey gradient. */
+  background-image: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--brand) 70%, white) 8%,
+    var(--brand-2) 100%
+  );
+  opacity: 0.85;
+}
+
+.stagger-visualizer .cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 37px;
+  height: 37px;
+  margin: 9px;
+  border-radius: 50%;
+  /* Themed: cyan accent cursor instead of the old red. */
+  background-color: var(--accent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+@media screen and (max-width: 1034px) {
+  .animation-wrapper {
+    padding-bottom: 30%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .animation-wrapper {
+    padding-bottom: 0;
+    height: 40vh;
+  }
+}

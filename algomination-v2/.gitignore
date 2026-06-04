@@ -1,0 +1,26 @@
+# Repo-wide safety net (each of backend/ and frontend/ also has its own .gitignore).
+
+# Python / Django
+**/venv/
+**/__pycache__/
+*.py[cod]
+**/db.sqlite3
+**/staticfiles/
+
+# Node / Next.js
+**/node_modules/
+**/.next/
+**/out/
+*.tsbuildinfo
+
+# Secrets & local env (templates like .env.example are kept)
+**/.env
+**/.env.local
+**/.env.*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

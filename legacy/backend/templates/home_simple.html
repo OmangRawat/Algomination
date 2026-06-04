@@ -1,0 +1,703 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Algomination - Interactive Algorithm Visualizations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        .algorithm-card {
+            transition: all 0.3s ease;
+        }
+        .algorithm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .code-block {
+            background: #1a1a1a;
+            color: #e6e6e6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .input-highlight {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div x-data="{ selectedAlgorithm: null, customInput: '', inputType: 'numbers' }" class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in">
+            <h1 class="text-5xl font-bold text-gray-800 mb-4">
+                🚀 Algomination
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+                Interactive Algorithm Visualizations
+            </p>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Algorithm Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for algorithm in algorithms %}
+            <div class="algorithm-card bg-white rounded-xl shadow-lg p-6 border border-gray-100 animate-fade-in" 
+                 style="animation-delay: {{ forloop.counter0|add:1 }}00ms">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">{{ algorithm.name }}</h3>
+                    <span class="px-3 py-1 text-xs font-medium rounded-full 
+                                {% if algorithm.difficulty == 'beginner' %}bg-green-100 text-green-800
+                                {% elif algorithm.difficulty == 'intermediate' %}bg-yellow-100 text-yellow-800
+                                {% else %}bg-red-100 text-red-800{% endif %}">
+                        {{ algorithm.difficulty }}
+                    </span>
+                </div>
+                
+                <p class="text-gray-600 mb-4">{{ algorithm.description }}</p>
+                
+                <div class="flex items-center space-x-4 mb-4 text-sm text-gray-500">
+                    <span>⏱️ {{ algorithm.time_complexity }}</span>
+                    <span>💾 {{ algorithm.space_complexity }}</span>
+                </div>
+
+                <!-- Animation Preview -->
+                <div class="mb-4">
+                    <div class="bg-gray-100 rounded-lg p-3 h-20 flex items-center justify-center">
+                        <div class="flex space-x-1">
+                            {% if algorithm.algorithm_type == 'sorting' %}
+                                <div class="w-4 h-4 bg-blue-500 rounded animate-pulse"></div>
+                                <div class="w-4 h-4 bg-green-500 rounded animate-pulse" style="animation-delay: 0.2s"></div>
+                                <div class="w-4 h-4 bg-red-500 rounded animate-pulse" style="animation-delay: 0.4s"></div>
+                                <div class="w-4 h-4 bg-yellow-500 rounded animate-pulse" style="animation-delay: 0.6s"></div>
+                            {% elif algorithm.algorithm_type == 'searching' %}
+                                <div class="w-6 h-6 bg-blue-500 rounded-full animate-bounce"></div>
+                            {% else %}
+                                <div class="w-3 h-3 bg-purple-500 rounded-full animate-ping"></div>
+                                <div class="w-3 h-3 bg-purple-500 rounded-full animate-ping" style="animation-delay: 0.3s"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <button @click="selectedAlgorithm = {{ algorithm.id }}" 
+                        class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105">
+                    🎯 Visualize Algorithm
+                </button>
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center py-12">
+                <div class="text-6xl mb-4">🤔</div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">No algorithms available yet</h3>
+                <p class="text-gray-500">Run the sample data script to add algorithms!</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Algorithm Visualization Modal -->
+        <div x-show="selectedAlgorithm" 
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div x-show="selectedAlgorithm"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform scale-95"
+                 x-transition:enter-end="opacity-100 transform scale-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 transform scale-100"
+                 x-transition:leave-end="opacity-0 transform scale-95"
+                 class="bg-white rounded-xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+                
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800" id="algorithmName"></h2>
+                        <button @click="selectedAlgorithm = null" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                    </div>
+                    
+                    <!-- Input Controls -->
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-semibold mb-3">📝 Input Your Data</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Input Type</label>
+                                <select x-model="inputType" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="numbers">Numbers (e.g., 5,2,8,1,9)</option>
+                                    <option value="letters">Letters (e.g., A,C,B,D)</option>
+                                    <option value="words">Words (e.g., cat,dog,bird)</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Your Data</label>
+                                <div class="flex space-x-2">
+                                    <input type="text" x-model="customInput" 
+                                           placeholder="Enter your data separated by commas..."
+                                           class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <button @click="generateRandomData()" 
+                                            class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-colors">
+                                        🎲 Random
+                                    </button>
+                                    <button @click="loadSampleData()" 
+                                            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
+                                        📋 Sample
+                                    </button>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">
+                                    <span x-show="inputType === 'numbers'">Enter numbers like: 64,34,25,12,22,11,90</span>
+                                    <span x-show="inputType === 'letters'">Enter letters like: Z,A,B,C,D,E,F</span>
+                                    <span x-show="inputType === 'words'">Enter words like: apple,banana,cherry,date</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Animation Canvas -->
+                    <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                        <canvas id="animationCanvas" width="800" height="300" class="w-full h-48 bg-gray-800 rounded"></canvas>
+                        <div class="flex justify-center mt-4 space-x-4">
+                            <button id="playBtn" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">▶️ Play</button>
+                            <button id="pauseBtn" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">⏸️ Pause</button>
+                            <button id="resetBtn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">🔄 Reset</button>
+                            <button id="stepBtn" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">⏭️ Step</button>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span id="stepCounter" class="text-white text-sm">Step: 0</span>
+                        </div>
+                    </div>
+
+                    <!-- Algorithm Info -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Pseudocode</h3>
+                            <div class="code-block text-sm">
+                                <pre id="pseudocode"></pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Implementation</h3>
+                            <div class="code-block text-sm">
+                                <pre id="implementation"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Algorithm data
+        const algorithms = {
+            {% for algorithm in algorithms %}
+            {{ algorithm.id }}: {
+                name: "{{ algorithm.name|escapejs }}",
+                type: "{{ algorithm.algorithm_type|escapejs }}",
+                pseudocode: `{{ algorithm.pseudocode|escapejs }}`,
+                implementation: `{{ algorithm.implementation|escapejs }}`
+            }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        };
+
+        // Global animation state
+        let currentAnimation = null;
+        let stepCounter = 0;
+
+        // Enhanced animation functions
+        function initSortingAnimation(ctx) {
+            const input = document.querySelector('[x-model="customInput"]').value || '64,34,25,12,22,11,90,88';
+            const data = input.split(',').map(x => x.trim()).filter(x => x);
+            const bars = data.map(x => {
+                const num = parseInt(x);
+                return isNaN(num) ? x.charCodeAt(0) : num;
+            });
+            
+            let currentStep = 0;
+            let isRunning = false;
+            let currentI = 0;
+            let currentJ = 0;
+            stepCounter = 0;
+            
+            function drawBars() {
+                ctx.clearRect(0, 0, 800, 300);
+                const barWidth = Math.min(60, 700 / bars.length);
+                const spacing = (800 - bars.length * barWidth) / (bars.length + 1);
+                
+                bars.forEach((height, i) => {
+                    const x = spacing + i * (barWidth + spacing);
+                    const normalizedHeight = (height / Math.max(...bars)) * 200 + 50;
+                    
+                    // Color coding
+                    if (i === currentJ) {
+                        ctx.fillStyle = '#ef4444'; // Red for current comparison
+                    } else if (i === currentJ + 1) {
+                        ctx.fillStyle = '#f59e0b'; // Orange for comparison partner
+                    } else if (i >= bars.length - currentI) {
+                        ctx.fillStyle = '#10b981'; // Green for sorted
+                    } else {
+                        ctx.fillStyle = '#3b82f6'; // Blue for unsorted
+                    }
+                    
+                    ctx.fillRect(x, 300 - normalizedHeight, barWidth, normalizedHeight);
+                    
+                    // Draw value
+                    ctx.fillStyle = 'white';
+                    ctx.font = '12px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(data[i] || height, x + barWidth/2, 295);
+                });
+                
+                document.getElementById('stepCounter').textContent = `Step: ${stepCounter}`;
+            }
+            
+            function bubbleSort() {
+                if (!isRunning) return;
+                
+                if (currentJ < bars.length - currentI - 1) {
+                    if (bars[currentJ] > bars[currentJ + 1]) {
+                        [bars[currentJ], bars[currentJ + 1]] = [bars[currentJ + 1], bars[currentJ]];
+                        [data[currentJ], data[currentJ + 1]] = [data[currentJ + 1], data[currentJ]];
+                    }
+                    currentJ++;
+                    stepCounter++;
+                    drawBars();
+                    setTimeout(bubbleSort, 800);
+                } else {
+                    currentI++;
+                    currentJ = 0;
+                    if (currentI < bars.length - 1) {
+                        setTimeout(bubbleSort, 800);
+                    } else {
+                        isRunning = false;
+                    }
+                }
+            }
+            
+            function stepSort() {
+                if (currentJ < bars.length - currentI - 1) {
+                    if (bars[currentJ] > bars[currentJ + 1]) {
+                        [bars[currentJ], bars[currentJ + 1]] = [bars[currentJ + 1], bars[currentJ]];
+                        [data[currentJ], data[currentJ + 1]] = [data[currentJ + 1], data[currentJ]];
+                    }
+                    currentJ++;
+                    stepCounter++;
+                    drawBars();
+                } else {
+                    currentI++;
+                    currentJ = 0;
+                    if (currentI >= bars.length - 1) {
+                        isRunning = false;
+                    }
+                }
+            }
+            
+            drawBars();
+            
+            document.getElementById('playBtn').onclick = () => {
+                isRunning = true;
+                bubbleSort();
+            };
+            
+            document.getElementById('pauseBtn').onclick = () => {
+                isRunning = false;
+            };
+            
+            document.getElementById('resetBtn').onclick = () => {
+                isRunning = false;
+                currentI = 0;
+                currentJ = 0;
+                stepCounter = 0;
+                const input = document.querySelector('[x-model="customInput"]').value || '64,34,25,12,22,11,90,88';
+                const newData = input.split(',').map(x => x.trim()).filter(x => x);
+                bars.splice(0, bars.length, ...newData.map(x => {
+                    const num = parseInt(x);
+                    return isNaN(num) ? x.charCodeAt(0) : num;
+                }));
+                data.splice(0, data.length, ...newData);
+                drawBars();
+            };
+            
+            document.getElementById('stepBtn').onclick = () => {
+                if (!isRunning) {
+                    stepSort();
+                }
+            };
+        }
+
+        function initSearchingAnimation(ctx) {
+            const input = document.querySelector('[x-model="customInput"]').value || '1,3,5,7,9,11,13,15,17,19';
+            const numbers = input.split(',').map(x => parseInt(x.trim())).filter(x => !isNaN(x));
+            const target = numbers[Math.floor(numbers.length / 2)]; // Search for middle element
+            let currentIndex = 0;
+            let isRunning = false;
+            let left = 0;
+            let right = numbers.length - 1;
+            let mid = 0;
+            stepCounter = 0;
+            
+            function drawSearch() {
+                ctx.clearRect(0, 0, 800, 300);
+                const barWidth = Math.min(50, 700 / numbers.length);
+                const spacing = (800 - numbers.length * barWidth) / (numbers.length + 1);
+                
+                numbers.forEach((num, i) => {
+                    const x = spacing + i * (barWidth + spacing);
+                    let color = '#3b82f6'; // Default blue
+                    
+                    if (i === mid) {
+                        color = '#ef4444'; // Red for current mid
+                    } else if (i >= left && i <= right) {
+                        color = '#f59e0b'; // Orange for search range
+                    } else {
+                        color = '#9ca3af'; // Gray for excluded
+                    }
+                    
+                    ctx.fillStyle = color;
+                    ctx.fillRect(x, 150, barWidth, 50);
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = '16px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(num, x + barWidth/2, 180);
+                });
+                
+                // Draw target
+                ctx.fillStyle = '#10b981';
+                ctx.font = '18px Arial';
+                ctx.textAlign = 'left';
+                ctx.fillText(`Target: ${target}`, 20, 50);
+                ctx.fillText(`Step: ${stepCounter}`, 20, 80);
+            }
+            
+            function binarySearch() {
+                if (!isRunning) return;
+                
+                if (left <= right) {
+                    mid = Math.floor((left + right) / 2);
+                    stepCounter++;
+                    
+                    if (numbers[mid] === target) {
+                        isRunning = false;
+                    } else if (numbers[mid] < target) {
+                        left = mid + 1;
+                    } else {
+                        right = mid - 1;
+                    }
+                    
+                    drawSearch();
+                    setTimeout(binarySearch, 1000);
+                } else {
+                    isRunning = false;
+                }
+            }
+            
+            function stepSearch() {
+                if (left <= right) {
+                    mid = Math.floor((left + right) / 2);
+                    stepCounter++;
+                    
+                    if (numbers[mid] === target) {
+                        isRunning = false;
+                    } else if (numbers[mid] < target) {
+                        left = mid + 1;
+                    } else {
+                        right = mid - 1;
+                    }
+                    
+                    drawSearch();
+                }
+            }
+            
+            drawSearch();
+            
+            document.getElementById('playBtn').onclick = () => {
+                isRunning = true;
+                binarySearch();
+            };
+            
+            document.getElementById('pauseBtn').onclick = () => {
+                isRunning = false;
+            };
+            
+            document.getElementById('resetBtn').onclick = () => {
+                isRunning = false;
+                left = 0;
+                right = numbers.length - 1;
+                stepCounter = 0;
+                drawSearch();
+            };
+            
+            document.getElementById('stepBtn').onclick = () => {
+                if (!isRunning) {
+                    stepSearch();
+                }
+            };
+        }
+
+        function initGraphAnimation(ctx) {
+            const input = document.querySelector('[x-model="customInput"]').value || 'A,B,C,D,E,F';
+            const nodes = input.split(',').map(x => x.trim()).filter(x => x);
+            const nodePositions = [];
+            
+            // Generate positions for nodes
+            nodes.forEach((node, i) => {
+                const angle = (i / nodes.length) * 2 * Math.PI;
+                const radius = 100;
+                nodePositions.push({
+                    x: 400 + radius * Math.cos(angle),
+                    y: 150 + radius * Math.sin(angle),
+                    id: node
+                });
+            });
+            
+            let visited = new Set();
+            let currentIndex = 0;
+            let isRunning = false;
+            stepCounter = 0;
+            
+            function drawGraph() {
+                ctx.clearRect(0, 0, 800, 300);
+                
+                // Draw edges (connect all nodes in a circle)
+                ctx.strokeStyle = '#9ca3af';
+                ctx.lineWidth = 2;
+                for (let i = 0; i < nodePositions.length; i++) {
+                    const next = (i + 1) % nodePositions.length;
+                    ctx.beginPath();
+                    ctx.moveTo(nodePositions[i].x, nodePositions[i].y);
+                    ctx.lineTo(nodePositions[next].x, nodePositions[next].y);
+                    ctx.stroke();
+                }
+                
+                // Draw nodes
+                nodePositions.forEach((node, i) => {
+                    ctx.fillStyle = visited.has(i) ? '#ef4444' : '#3b82f6';
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, 25, 0, 2 * Math.PI);
+                    ctx.fill();
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = '16px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(node.id, node.x, node.y + 5);
+                });
+                
+                ctx.fillStyle = '#10b981';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'left';
+                ctx.fillText(`Step: ${stepCounter}`, 20, 50);
+            }
+            
+            function dfs() {
+                if (!isRunning) return;
+                if (currentIndex < nodePositions.length) {
+                    visited.add(currentIndex);
+                    stepCounter++;
+                    drawGraph();
+                    currentIndex++;
+                    setTimeout(dfs, 1000);
+                } else {
+                    isRunning = false;
+                }
+            }
+            
+            function stepDfs() {
+                if (currentIndex < nodePositions.length) {
+                    visited.add(currentIndex);
+                    stepCounter++;
+                    drawGraph();
+                    currentIndex++;
+                }
+            }
+            
+            drawGraph();
+            
+            document.getElementById('playBtn').onclick = () => {
+                isRunning = true;
+                dfs();
+            };
+            
+            document.getElementById('pauseBtn').onclick = () => {
+                isRunning = false;
+            };
+            
+            document.getElementById('resetBtn').onclick = () => {
+                isRunning = false;
+                visited.clear();
+                currentIndex = 0;
+                stepCounter = 0;
+                drawGraph();
+            };
+            
+            document.getElementById('stepBtn').onclick = () => {
+                if (!isRunning) {
+                    stepDfs();
+                }
+            };
+        }
+
+        // Initialize animations when modal opens
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('algorithmModal', () => ({
+                selectedAlgorithm: null,
+                customInput: '',
+                inputType: 'numbers',
+                init() {
+                    this.$watch('selectedAlgorithm', (value) => {
+                        if (value) {
+                            const algorithm = algorithms[value];
+                            if (algorithm) {
+                                document.getElementById('algorithmName').textContent = algorithm.name;
+                                document.getElementById('pseudocode').textContent = algorithm.pseudocode;
+                                document.getElementById('implementation').textContent = algorithm.implementation;
+                                
+                                // Set default input based on algorithm type
+                                if (algorithm.type === 'sorting') {
+                                    this.customInput = '64,34,25,12,22,11,90,88';
+                                    this.inputType = 'numbers';
+                                } else if (algorithm.type === 'searching') {
+                                    this.customInput = '1,3,5,7,9,11,13,15,17,19';
+                                    this.inputType = 'numbers';
+                                } else {
+                                    this.customInput = 'A,B,C,D,E,F';
+                                    this.inputType = 'letters';
+                                }
+                                
+                                setTimeout(() => {
+                                    const canvas = document.getElementById('animationCanvas');
+                                    if (canvas) {
+                                        const ctx = canvas.getContext('2d');
+                                        if (algorithm.type === 'sorting') {
+                                            initSortingAnimation(ctx);
+                                        } else if (algorithm.type === 'searching') {
+                                            initSearchingAnimation(ctx);
+                                        } else {
+                                            initGraphAnimation(ctx);
+                                        }
+                                    }
+                                }, 100);
+                            }
+                        }
+                    });
+                }
+            }));
+        });
+
+        // Add global functions for input generation
+        window.generateRandomData = function() {
+            const inputType = document.querySelector('[x-model="inputType"]').value;
+            let data = [];
+            
+            if (inputType === 'numbers') {
+                data = Array.from({length: 8}, () => Math.floor(Math.random() * 100) + 1);
+            } else if (inputType === 'letters') {
+                data = Array.from({length: 6}, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)));
+            } else if (inputType === 'words') {
+                const words = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape', 'honeydew'];
+                data = words.sort(() => Math.random() - 0.5).slice(0, 5);
+            }
+            
+            const inputField = document.querySelector('[x-model="customInput"]');
+            inputField.value = data.join(',');
+            
+            // Trigger Alpine.js update
+            inputField.dispatchEvent(new Event('input'));
+            
+            // Reinitialize animation
+            setTimeout(() => {
+                const canvas = document.getElementById('animationCanvas');
+                if (canvas) {
+                    const ctx = canvas.getContext('2d');
+                    const selectedAlgorithm = document.querySelector('[x-data]').__x.$data.selectedAlgorithm;
+                    const algorithmType = algorithms[selectedAlgorithm]?.type;
+                    
+                    if (algorithmType === 'sorting') {
+                        initSortingAnimation(ctx);
+                    } else if (algorithmType === 'searching') {
+                        initSearchingAnimation(ctx);
+                    } else {
+                        initGraphAnimation(ctx);
+                    }
+                }
+            }, 100);
+        };
+
+        window.loadSampleData = function() {
+            const inputType = document.querySelector('[x-model="inputType"]').value;
+            let sampleData = '';
+            
+            if (inputType === 'numbers') {
+                sampleData = '64,34,25,12,22,11,90,88';
+            } else if (inputType === 'letters') {
+                sampleData = 'Z,A,B,C,D,E,F';
+            } else if (inputType === 'words') {
+                sampleData = 'cat,dog,bird,fish,elephant';
+            }
+            
+            const inputField = document.querySelector('[x-model="customInput"]');
+            inputField.value = sampleData;
+            
+            // Trigger Alpine.js update
+            inputField.dispatchEvent(new Event('input'));
+            
+            // Reinitialize animation
+            setTimeout(() => {
+                const canvas = document.getElementById('animationCanvas');
+                if (canvas) {
+                    const ctx = canvas.getContext('2d');
+                    const selectedAlgorithm = document.querySelector('[x-data]').__x.$data.selectedAlgorithm;
+                    const algorithmType = algorithms[selectedAlgorithm]?.type;
+                    
+                    if (algorithmType === 'sorting') {
+                        initSortingAnimation(ctx);
+                    } else if (algorithmType === 'searching') {
+                        initSearchingAnimation(ctx);
+                    } else {
+                        initGraphAnimation(ctx);
+                    }
+                }
+            }, 100);
+        };
+
+        // Add input change listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputField = document.querySelector('[x-model="customInput"]');
+            if (inputField) {
+                inputField.addEventListener('input', function() {
+                    setTimeout(() => {
+                        const canvas = document.getElementById('animationCanvas');
+                        if (canvas) {
+                            const ctx = canvas.getContext('2d');
+                            const selectedAlgorithm = document.querySelector('[x-data]').__x.$data.selectedAlgorithm;
+                            const algorithmType = algorithms[selectedAlgorithm]?.type;
+                            
+                            if (algorithmType === 'sorting') {
+                                initSortingAnimation(ctx);
+                            } else if (algorithmType === 'searching') {
+                                initSearchingAnimation(ctx);
+                            } else {
+                                initGraphAnimation(ctx);
+                            }
+                        }
+                    }, 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
