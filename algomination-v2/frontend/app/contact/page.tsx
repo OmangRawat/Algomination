@@ -4,7 +4,11 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { ContactForms } from "@/components/contact/ContactForms";
 
-export const metadata = { title: "Contact" };
+export const metadata = {
+  title: "Contact",
+  description:
+    "Send feedback, submit your own animated algorithm project, or get in touch with the Algomination team.",
+};
 
 export default function ContactPage() {
   return (

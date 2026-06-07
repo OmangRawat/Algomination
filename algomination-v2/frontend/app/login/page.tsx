@@ -3,7 +3,11 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { AuthForms } from "@/components/auth/AuthForms";
 
-export const metadata = { title: "Login" };
+export const metadata = {
+  title: "Login",
+  // Auth pages add no search value — keep them out of the index.
+  robots: { index: false, follow: false },
+};
 
 export default function LoginPage() {
   return (
