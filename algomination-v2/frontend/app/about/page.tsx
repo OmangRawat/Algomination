@@ -6,7 +6,11 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Button";
 
-export const metadata = { title: "About" };
+export const metadata = {
+  title: "About",
+  description:
+    "What Algomination is, how its algorithm visualizations work, and how to contribute your own animated algorithm to the collection.",
+};
 
 const STEPS = [
   "Check the algorithm you want to build hasn't already been added.",

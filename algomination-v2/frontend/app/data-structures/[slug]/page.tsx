@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { algosByCategory, getAlgo } from "@/lib/algorithms/registry";
 import { DataStructureVisualizer } from "@/components/viz/DataStructureVisualizer";
+import { AlgoSeoText } from "@/components/viz/AlgoSeoText";
 import { Container } from "@/components/ui/Container";
 
 const CATEGORY = "data-structures" as const;
@@ -20,7 +21,13 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const meta = getAlgo(CATEGORY, slug);
-  return { title: meta ? meta.title : "Data Structures" };
+  if (!meta) return { title: "Data Structures" };
+  const description = `${meta.blurb} Interactive, animated visualization.`;
+  return {
+    title: meta.title,
+    description,
+    openGraph: { title: `${meta.title} · Algomination`, description },
+  };
 }
 
 export default async function DataStructurePage({
@@ -43,6 +50,7 @@ export default async function DataStructurePage({
           <ChevronLeft size={16} /> All data structures
         </Link>
         <DataStructureVisualizer slug={slug} />
+        <AlgoSeoText category={CATEGORY} slug={slug} />
       </Container>
     </main>
   );

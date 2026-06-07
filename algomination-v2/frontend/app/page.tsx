@@ -53,9 +53,28 @@ const FEATURES = [
   },
 ];
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Algomination",
+  url: SITE_URL,
+  applicationCategory: "EducationalApplication",
+  operatingSystem: "Web",
+  description:
+    "Learn algorithms and data structures through smooth, interactive visualizations — sorting, searching, and data structures, animated step by step.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: [{ "@type": "Person", name: "Omang Rawat" }, { "@type": "Person", name: "Rahul Soni" }],
+};
+
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="bg-grid-glow px-6 pt-10">
         <StaggerHero />
