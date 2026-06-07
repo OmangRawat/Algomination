@@ -8,6 +8,7 @@ export const metadata = {
   title: "Contact",
   description:
     "Send feedback, submit your own animated algorithm project, or get in touch with the Algomination team.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

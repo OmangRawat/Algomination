@@ -4,6 +4,7 @@ export const metadata = {
   title: "Searching Algorithm Visualizers",
   description:
     "Interactive, animated visualizations of Linear Search and Binary Search. Follow the pointers and watch the search range shrink toward the target.",
+  alternates: { canonical: "/searching" },
 };
 
 export default function SearchingPage() {

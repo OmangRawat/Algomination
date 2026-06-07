@@ -4,6 +4,7 @@ export const metadata = {
   title: "Data Structure Visualizers",
   description:
     "Interactive Stack and Queue visualizations. Run push, pop, peek, enqueue, and dequeue operations and watch the structure respond in real time.",
+  alternates: { canonical: "/data-structures" },
 };
 
 export default function DataStructuresPage() {

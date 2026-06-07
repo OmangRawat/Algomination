@@ -55,6 +55,12 @@ const FEATURES = [
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
+export const metadata = {
+  description:
+    "Algomination is a free, interactive platform for learning algorithms and data structures through smooth, animated visualizations — sorting, searching, stacks, and queues, all step by step.",
+  alternates: { canonical: "/" },
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -154,6 +160,62 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
+      </Container>
+
+      {/* What is Algomination — descriptive copy for readers & search engines */}
+      <Container className="py-12">
+        <Reveal className="mx-auto flex max-w-3xl flex-col gap-4">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground">
+            What is Algomination?
+          </h2>
+          <p className="text-muted">
+            Algomination is a free, interactive learning platform that turns
+            abstract computer-science concepts into something you can{" "}
+            <em>watch</em>. Instead of tracing pseudocode by hand, you give an
+            algorithm your own input and see exactly how it works — every
+            comparison, swap, and pointer move animated, step by step.
+          </p>
+          <h3 className="text-xl font-semibold text-foreground">Who it&apos;s for</h3>
+          <p className="text-muted">
+            It&apos;s built for students preparing for exams or coding
+            interviews, self-taught developers filling in the fundamentals, and
+            educators who want a clear visual aid. No setup, no account required
+            — just open a visualizer and start experimenting.
+          </p>
+          <h3 className="text-xl font-semibold text-foreground">How it works</h3>
+          <p className="text-muted">
+            Each algorithm runs entirely in your browser and emits a sequence of
+            frames. A player then animates those frames with smooth spring
+            physics, so you can play, pause, scrub the timeline, or step through
+            one operation at a time at your own pace. A running commentary
+            explains what&apos;s happening on every frame, and a complexity
+            summary shows the time and space cost.
+          </p>
+          <h3 className="text-xl font-semibold text-foreground">
+            What you can explore
+          </h3>
+          <p className="text-muted">
+            Today you can visualize five sorting algorithms (Bubble, Selection,
+            Insertion, Merge, and Quick sort), two search algorithms (Linear and
+            Binary search), and two data structures (Stack and Queue). New
+            visualizers are added over time — and the project is open to
+            community contributions.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Link
+              href="/sorting"
+              className={buttonVariants({ variant: "outline" })}
+            >
+              Explore sorting <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/about"
+              className={buttonVariants({ variant: "outline" })}
+            >
+              Read more about the project
+            </Link>
+          </div>
+        </Reveal>
       </Container>
 
       {/* Contribute CTA */}

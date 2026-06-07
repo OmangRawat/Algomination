@@ -27,6 +27,7 @@ export async function generateMetadata({
   return {
     title: algo.title,
     description,
+    alternates: { canonical: `/sorting/${slug}` },
     openGraph: { title: `${algo.title} · Algomination`, description },
   };
 }

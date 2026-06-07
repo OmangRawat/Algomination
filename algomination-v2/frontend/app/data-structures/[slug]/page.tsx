@@ -26,6 +26,7 @@ export async function generateMetadata({
   return {
     title: meta.title,
     description,
+    alternates: { canonical: `/data-structures/${slug}` },
     openGraph: { title: `${meta.title} · Algomination`, description },
   };
 }

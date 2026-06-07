@@ -4,6 +4,7 @@ export const metadata = {
   title: "Sorting Algorithm Visualizers",
   description:
     "Interactive, animated visualizations of sorting algorithms — Bubble, Selection, Insertion, Merge, and Quick sort. Step through each comparison and swap at your own pace.",
+  alternates: { canonical: "/sorting" },
 };
 
 export default function SortingPage() {

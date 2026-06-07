@@ -10,6 +10,7 @@ export const metadata = {
   title: "About",
   description:
     "What Algomination is, how its algorithm visualizations work, and how to contribute your own animated algorithm to the collection.",
+  alternates: { canonical: "/about" },
 };
 
 const STEPS = [
