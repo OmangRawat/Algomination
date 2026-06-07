@@ -1,6 +1,10 @@
 import { CategoryHub } from "@/components/CategoryHub";
 
-export const metadata = { title: "Searching" };
+export const metadata = {
+  title: "Searching Algorithm Visualizers",
+  description:
+    "Interactive, animated visualizations of Linear Search and Binary Search. Follow the pointers and watch the search range shrink toward the target.",
+};
 
 export default function SearchingPage() {
   return (

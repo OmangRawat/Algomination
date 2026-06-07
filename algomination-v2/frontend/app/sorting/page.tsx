@@ -1,6 +1,10 @@
 import { CategoryHub } from "@/components/CategoryHub";
 
-export const metadata = { title: "Sorting" };
+export const metadata = {
+  title: "Sorting Algorithm Visualizers",
+  description:
+    "Interactive, animated visualizations of sorting algorithms — Bubble, Selection, Insertion, Merge, and Quick sort. Step through each comparison and swap at your own pace.",
+};
 
 export default function SortingPage() {
   return (
