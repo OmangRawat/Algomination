@@ -3,6 +3,10 @@
 import { getAlgo } from "@/lib/algorithms/registry";
 import { StackVisualizer } from "./StackVisualizer";
 import { QueueVisualizer } from "./QueueVisualizer";
+import { LinkedListVisualizer } from "./LinkedListVisualizer";
+import { TreeVisualizer } from "./TreeVisualizer";
+import { HashTableVisualizer } from "./HashTableVisualizer";
+import { GraphVisualizer } from "./GraphVisualizer";
 
 /**
  * Client bridge for data-structure visualizers. Data structures are interactive
@@ -27,6 +31,47 @@ export function DataStructureVisualizer({ slug }: { slug: string }) {
     case "queue":
       return (
         <QueueVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+        />
+      );
+    case "linked-list":
+      return (
+        <LinkedListVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+        />
+      );
+    case "doubly-linked-list":
+      return (
+        <LinkedListVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+          doubly
+        />
+      );
+    case "binary-search-tree":
+      return (
+        <TreeVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+        />
+      );
+    case "hash-table":
+      return (
+        <HashTableVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+        />
+      );
+    case "graph-traversal":
+      return (
+        <GraphVisualizer
           title={meta.title}
           description={meta.blurb}
           complexity={meta.complexity}

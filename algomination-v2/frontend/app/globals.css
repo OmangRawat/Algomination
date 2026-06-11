@@ -45,6 +45,46 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* Slim, themed scrollbars (replaces the bright default OS scrollbar). */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--border) 90%, transparent) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--border) 90%, transparent);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--muted) 55%, transparent);
+  background-clip: padding-box;
+}
+
+/* Opt-in: fully hidden scrollbar while keeping scroll. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Subtle radial brand glow used by hero/section backgrounds. */
 .bg-grid-glow {
   background-image: radial-gradient(

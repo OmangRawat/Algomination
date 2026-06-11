@@ -4,6 +4,7 @@ import { selectionSort } from "./selection";
 import { insertionSort } from "./insertion";
 import { mergeSort } from "./merge";
 import { quickSort } from "./quick";
+import { heapSort } from "./heap";
 import { linearSearch } from "./linear-search";
 import { binarySearch } from "./binary-search";
 
@@ -87,6 +88,17 @@ export const ALGORITHMS: AlgoMeta[] = [
     generate: quickSort,
     status: "live",
   },
+  {
+    slug: "heap",
+    title: "Heap Sort",
+    blurb:
+      "Builds a max-heap, then repeatedly swaps the largest element to the end and sifts the root down. In-place, O(n log n).",
+    category: "sorting",
+    complexity: { time: "O(n log n)", space: "O(1)" },
+    defaultInput: "4 10 3 5 1 8 2 7",
+    generate: heapSort,
+    status: "live",
+  },
 
   {
     slug: "linear",
@@ -132,6 +144,51 @@ export const ALGORITHMS: AlgoMeta[] = [
       "A FIFO structure — enqueue adds to the rear, dequeue removes from the front, peek inspects it. All O(1).",
     category: "data-structures",
     complexity: { time: "O(1)", space: "O(n)" },
+    status: "live",
+  },
+  {
+    slug: "linked-list",
+    title: "Linked List",
+    blurb:
+      "A chain of nodes where each points to the next. Insert/delete at the ends in O(1); search is O(n).",
+    category: "data-structures",
+    complexity: { time: "O(n)", space: "O(n)" },
+    status: "live",
+  },
+  {
+    slug: "doubly-linked-list",
+    title: "Doubly Linked List",
+    blurb:
+      "Like a linked list, but each node also points to the previous one — enabling traversal in both directions.",
+    category: "data-structures",
+    complexity: { time: "O(n)", space: "O(n)" },
+    status: "live",
+  },
+  {
+    slug: "binary-search-tree",
+    title: "Binary Search Tree",
+    blurb:
+      "An ordered tree where every left child is smaller and every right child larger. Insert, search, and delete in O(log n) on average, and traverse it breadth-first (level-order) or depth-first (pre-, in-, and post-order).",
+    category: "data-structures",
+    complexity: { time: "O(log n)", space: "O(n)" },
+    status: "live",
+  },
+  {
+    slug: "hash-table",
+    title: "Hash Table",
+    blurb:
+      "Maps keys to buckets with a hash function for O(1) average lookup. Collisions are handled by chaining entries within a bucket.",
+    category: "data-structures",
+    complexity: { time: "O(1)", space: "O(n)" },
+    status: "live",
+  },
+  {
+    slug: "graph-traversal",
+    title: "Graph Traversal (BFS & DFS)",
+    blurb:
+      "Explore a graph from a start node. Breadth-first search fans out level by level using a queue; depth-first search dives deep using a stack.",
+    category: "data-structures",
+    complexity: { time: "O(V + E)", space: "O(V)" },
     status: "live",
   },
 ];

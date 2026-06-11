@@ -4,6 +4,7 @@ import { algosByCategory, type Category } from "@/lib/algorithms/registry";
 import { Container } from "@/components/ui/Container";
 import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { Reveal } from "@/components/Reveal";
 
 /** Grid of algorithm cards for a category landing page (sorting/searching/…). */
 export function CategoryHub({
@@ -28,7 +29,7 @@ export function CategoryHub({
         </header>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {algos.map((algo) => {
+          {algos.map((algo, i) => {
             const live = algo.status === "live";
             const inner = (
               <Card
@@ -64,16 +65,19 @@ export function CategoryHub({
               </Card>
             );
 
-            return live ? (
-              <Link
-                key={algo.slug}
-                href={`/${category}/${algo.slug}`}
-                className="group block"
-              >
-                {inner}
-              </Link>
-            ) : (
-              <div key={algo.slug}>{inner}</div>
+            return (
+              <Reveal key={algo.slug} delay={i * 0.06} className="h-full">
+                {live ? (
+                  <Link
+                    href={`/${category}/${algo.slug}`}
+                    className="group block h-full"
+                  >
+                    {inner}
+                  </Link>
+                ) : (
+                  inner
+                )}
+              </Reveal>
             );
           })}
         </div>
