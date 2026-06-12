@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Shuffle, RotateCcw } from "lucide-react";
+import { useFramePlayer } from "@/lib/engine/useFramePlayer";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { PlayerControls } from "./PlayerControls";
 
 interface GNode {
   id: number;
@@ -196,62 +198,51 @@ export function GraphVisualizer({
 }) {
   const [graph, setGraph] = useState<Graph>(() => defaultGraph());
   const [start, setStart] = useState(0);
-  const [frame, setFrame] = useState<Frame | null>(null);
   const [mode, setMode] = useState<"bfs" | "dfs" | null>(null);
-  const [running, setRunning] = useState(false);
-  const [caption, setCaption] = useState(
+  const [frames, setFrames] = useState<Frame[]>([]);
+  const [idleCaption, setIdleCaption] = useState(
     "Pick a start node, then run BFS (queue) or DFS (stack) to watch the frontier expand.",
   );
-  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-  const clearTimers = () => {
-    timers.current.forEach(clearTimeout);
-    timers.current = [];
-  };
-  useEffect(() => () => clearTimers(), []);
+  const player = useFramePlayer(frames);
 
-  const reset = () => {
-    clearTimers();
-    setRunning(false);
-    setFrame(null);
-    setMode(null);
-    setCaption("Pick a start node, then run BFS or DFS.");
-  };
+  // Auto-play as soon as a traversal is generated.
+  useEffect(() => {
+    if (frames.length) player.play();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [frames]);
 
   const run = (which: "bfs" | "dfs") => {
-    clearTimers();
-    const frames =
-      which === "bfs" ? bfsFrames(graph, start) : dfsFrames(graph, start);
     setMode(which);
-    setRunning(true);
-    frames.forEach((f, i) => {
-      const t = setTimeout(() => {
-        setFrame(f);
-        setCaption(f.caption);
-        if (i === frames.length - 1) setRunning(false);
-      }, i * 800);
-      timers.current.push(t);
-    });
+    setFrames(
+      which === "bfs" ? bfsFrames(graph, start) : dfsFrames(graph, start),
+    );
+  };
+
+  const reset = () => {
+    setFrames([]);
+    setMode(null);
+    setIdleCaption("Pick a start node, then run BFS or DFS.");
   };
 
   const randomize = () => {
-    clearTimers();
-    setRunning(false);
-    setFrame(null);
+    setFrames([]);
     setMode(null);
     setGraph(randomGraph());
     setStart(0);
-    setCaption("New random graph — pick a start node and run a traversal.");
+    setIdleCaption("New random graph — pick a start node and run a traversal.");
   };
 
   const pickStart = (id: number) => {
-    if (running) return;
-    setStart(id);
-    setFrame(null);
+    setFrames([]);
     setMode(null);
-    setCaption(`Start node set to ${label(id)}.`);
+    setStart(id);
+    setIdleCaption(`Start node set to ${label(id)}.`);
   };
 
+  const frame = player.frame ?? null;
+  const hasRun = frames.length > 0;
+  const caption = hasRun ? (frame?.caption ?? "") : idleCaption;
   const visitedSet = new Set(frame?.visited ?? []);
   const activeId = frame?.active ?? null;
   const frontier = frame?.frontier ?? [];
@@ -299,10 +290,10 @@ export function GraphVisualizer({
 
       {/* Controls */}
       <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-        <Button onClick={() => run("bfs")} disabled={running}>
+        <Button onClick={() => run("bfs")}>
           <Play size={16} /> Run BFS
         </Button>
-        <Button variant="secondary" onClick={() => run("dfs")} disabled={running}>
+        <Button variant="secondary" onClick={() => run("dfs")}>
           <Play size={16} /> Run DFS
         </Button>
         <Button variant="ghost" onClick={reset}>
@@ -344,7 +335,7 @@ export function GraphVisualizer({
             <g
               key={n.id}
               onClick={() => pickStart(n.id)}
-              style={{ cursor: running ? "default" : "pointer" }}
+              style={{ cursor: "pointer" }}
             >
               <motion.circle
                 cx={n.x}
@@ -401,6 +392,9 @@ export function GraphVisualizer({
           {caption}
         </div>
       </div>
+
+      {/* Playback controls (only once a traversal has been generated) */}
+      {hasRun && <PlayerControls player={player} />}
 
       {/* Legend */}
       <div className="flex flex-wrap items-center gap-4 text-xs text-muted">

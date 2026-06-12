@@ -3,8 +3,10 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, Trash2, Shuffle } from "lucide-react";
+import { useFramePlayer } from "@/lib/engine/useFramePlayer";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { PlayerControls } from "./PlayerControls";
 
 interface TreeNode {
   id: number;
@@ -217,6 +219,39 @@ const TRAVERSALS: Record<
   },
 };
 
+const EMPTY_SET = new Set<number>();
+
+interface TreeFrame {
+  activeId: number | null;
+  visited: number[];
+  caption: string;
+}
+
+/** Turn a traversal order into playable frames (one node visited per frame). */
+function traversalFrames(order: Seq, label: string, family: string): TreeFrame[] {
+  const note =
+    family === "BFS"
+      ? "BFS visits the tree level by level using a queue."
+      : "DFS dives down each branch using recursion (a stack).";
+  const frames: TreeFrame[] = [
+    { activeId: null, visited: [], caption: `${label} (${family}) — ${note}` },
+  ];
+  const seen: number[] = [];
+  order.forEach((node, i) => {
+    seen.push(node.id);
+    const sofar = order
+      .slice(0, i + 1)
+      .map((n) => n.value)
+      .join(" → ");
+    frames.push({
+      activeId: node.id,
+      visited: [...seen],
+      caption: `${label} (${family}): ${sofar}`,
+    });
+  });
+  return frames;
+}
+
 export function TreeVisualizer({
   title,
   description,
@@ -235,11 +270,13 @@ export function TreeVisualizer({
   const [error, setError] = useState<string | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   const [foundId, setFoundId] = useState<number | null>(null);
-  const [visited, setVisited] = useState<Set<number>>(new Set());
   const [activeTraversal, setActiveTraversal] = useState<TraversalKey | null>(
     null,
   );
+  const [frames, setFrames] = useState<TreeFrame[]>([]);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  const player = useFramePlayer(frames);
 
   const clearTimers = () => {
     timers.current.forEach(clearTimeout);
@@ -247,11 +284,14 @@ export function TreeVisualizer({
   };
   useEffect(() => () => clearTimers(), []);
 
+  // Used by the interactive ops (insert/search/delete) — also exits any
+  // traversal playback so the two animation modes never overlap.
   const resetMarks = () => {
     clearTimers();
     setActiveId(null);
     setFoundId(null);
-    setVisited(new Set());
+    setFrames([]);
+    setActiveTraversal(null);
   };
 
   const readValue = (): number | null => {
@@ -339,37 +379,18 @@ export function TreeVisualizer({
   };
 
   const runTraversal = (key: TraversalKey) => {
-    resetMarks();
+    clearTimers();
+    setActiveId(null);
+    setFoundId(null);
     setActiveTraversal(key);
     const { label, family, fn } = TRAVERSALS[key];
     const order = fn(tree.current);
     if (order.length === 0) {
+      setFrames([]);
       setCaption("The tree is empty.");
       return;
     }
-    const note =
-      family === "BFS"
-        ? "BFS visits the tree level by level using a queue."
-        : "DFS dives down each branch using recursion (a stack).";
-    setCaption(`${label} (${family}) — ${note}`);
-    const seen = new Set<number>();
-    order.forEach((node, i) => {
-      const t = setTimeout(() => {
-        seen.add(node.id);
-        setVisited(new Set(seen));
-        setActiveId(node.id);
-        const sofar = order
-          .slice(0, i + 1)
-          .map((n) => n.value)
-          .join(" → ");
-        setCaption(`${label} (${family}): ${sofar}`);
-        if (i === order.length - 1) {
-          const last = setTimeout(() => setActiveId(null), 700);
-          timers.current.push(last);
-        }
-      }, 350 + i * 600);
-      timers.current.push(t);
-    });
+    setFrames(traversalFrames(order, label, family));
   };
 
   const clear = () => {
@@ -393,20 +414,29 @@ export function TreeVisualizer({
 
   const { nodes, edges, width, height } = layout(tree.current);
 
+  // Highlights come from the traversal player while one is loaded, otherwise
+  // from the interactive search/insert state.
+  const hasRun = frames.length > 0;
+  const tf = player.frame;
+  const dispActiveId = hasRun ? (tf?.activeId ?? null) : activeId;
+  const dispFoundId = hasRun ? null : foundId;
+  const dispVisited = hasRun ? new Set(tf?.visited ?? []) : EMPTY_SET;
+  const dispCaption = hasRun ? (tf?.caption ?? "") : caption;
+
   const fillFor = (id: number) =>
-    id === foundId
+    id === dispFoundId
       ? "color-mix(in srgb, var(--success) 28%, var(--surface-2))"
-      : id === activeId
+      : id === dispActiveId
         ? "color-mix(in srgb, var(--accent) 28%, var(--surface-2))"
-        : visited.has(id)
+        : dispVisited.has(id)
           ? "color-mix(in srgb, var(--brand) 24%, var(--surface-2))"
           : "var(--surface-2)";
   const borderFor = (id: number) =>
-    id === foundId
+    id === dispFoundId
       ? "var(--success)"
-      : id === activeId
+      : id === dispActiveId
         ? "var(--accent)"
-        : visited.has(id)
+        : dispVisited.has(id)
           ? "var(--brand)"
           : "var(--border)";
 
@@ -534,9 +564,12 @@ export function TreeVisualizer({
 
         {/* Caption */}
         <div className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-surface-2 px-4 py-2 text-center text-sm text-foreground">
-          {caption}
+          {dispCaption}
         </div>
       </div>
+
+      {/* Playback controls (only while a traversal is loaded) */}
+      {hasRun && <PlayerControls player={player} />}
 
       {/* Traversal explanation */}
       <AnimatePresence mode="wait">

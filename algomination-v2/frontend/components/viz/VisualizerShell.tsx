@@ -1,21 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  Pause,
-  Play,
-  RotateCcw,
-  ChevronLeft,
-  ChevronRight,
-  Shuffle,
-} from "lucide-react";
+import { Shuffle } from "lucide-react";
 import type { HighlightKind, Step } from "@/lib/engine/types";
 import { HIGHLIGHT_FILL, HIGHLIGHT_LABEL } from "@/lib/engine/highlight";
 import { useStepPlayer } from "@/lib/engine/useStepPlayer";
 import { ArrayBars } from "./ArrayBars";
+import { PlayerControls } from "./PlayerControls";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { cn } from "@/lib/utils";
 
 interface VisualizerShellProps {
   title: string;
@@ -31,8 +24,6 @@ interface VisualizerShellProps {
   /** Note shown to the user that input will be sorted (binary search). */
   requiresSorted?: boolean;
 }
-
-const SPEEDS = [0.5, 1, 2, 4];
 
 function parseInput(raw: string): number[] {
   return raw
@@ -117,11 +108,6 @@ export function VisualizerShell({
     setSteps(generate(values, target));
   };
 
-  const progress = useMemo(
-    () => (player.total <= 1 ? 0 : (player.index / (player.total - 1)) * 100),
-    [player.index, player.total],
-  );
-
   // Only show legend entries for highlight kinds this algorithm actually uses.
   const usedKinds = useMemo(() => {
     const kinds = new Set<HighlightKind>();
@@ -195,88 +181,7 @@ export function VisualizerShell({
       </div>
 
       {/* Controls */}
-      <div className="flex flex-col gap-4">
-        {/* Seek bar */}
-        <input
-          type="range"
-          min={0}
-          max={Math.max(player.total - 1, 0)}
-          value={player.index}
-          onChange={(e) => player.seek(Number(e.target.value))}
-          className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-surface-2 accent-[var(--brand)]"
-          style={{
-            background: `linear-gradient(to right, var(--brand) ${progress}%, var(--surface-2) ${progress}%)`,
-          }}
-        />
-
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={player.reset}
-              aria-label="Reset"
-            >
-              <RotateCcw size={18} />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={player.prev}
-              disabled={player.index === 0}
-              aria-label="Previous step"
-            >
-              <ChevronLeft size={18} />
-            </Button>
-            <Button
-              onClick={player.toggle}
-              aria-label={player.isPlaying ? "Pause" : "Play"}
-              className="w-28"
-            >
-              {player.isPlaying ? (
-                <>
-                  <Pause size={18} /> Pause
-                </>
-              ) : (
-                <>
-                  <Play size={18} /> {player.isDone ? "Replay" : "Play"}
-                </>
-              )}
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={player.next}
-              disabled={player.isDone}
-              aria-label="Next step"
-            >
-              <ChevronRight size={18} />
-            </Button>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className="text-sm tabular-nums text-muted">
-              Step {player.total === 0 ? 0 : player.index + 1} / {player.total}
-            </span>
-            <div className="flex items-center gap-1 rounded-lg bg-surface-2 p-1">
-              {SPEEDS.map((s) => (
-                <button
-                  key={s}
-                  onClick={() => player.setSpeed(s)}
-                  className={cn(
-                    "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
-                    player.speed === s
-                      ? "bg-brand text-white"
-                      : "text-muted hover:text-foreground",
-                  )}
-                >
-                  {s}×
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      <PlayerControls player={player} />
 
       <Legend kinds={usedKinds} />
     </div>
