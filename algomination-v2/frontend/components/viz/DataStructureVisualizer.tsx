@@ -7,6 +7,8 @@ import { LinkedListVisualizer } from "./LinkedListVisualizer";
 import { TreeVisualizer } from "./TreeVisualizer";
 import { HashTableVisualizer } from "./HashTableVisualizer";
 import { GraphVisualizer } from "./GraphVisualizer";
+import { HeapVisualizer } from "./HeapVisualizer";
+import { TrieVisualizer } from "./TrieVisualizer";
 
 /**
  * Client bridge for data-structure visualizers. Data structures are interactive
@@ -72,6 +74,22 @@ export function DataStructureVisualizer({ slug }: { slug: string }) {
     case "graph-traversal":
       return (
         <GraphVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+        />
+      );
+    case "priority-queue":
+      return (
+        <HeapVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+        />
+      );
+    case "trie":
+      return (
+        <TrieVisualizer
           title={meta.title}
           description={meta.blurb}
           complexity={meta.complexity}

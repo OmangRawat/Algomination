@@ -191,6 +191,24 @@ export const ALGORITHMS: AlgoMeta[] = [
     complexity: { time: "O(V + E)", space: "O(V)" },
     status: "live",
   },
+  {
+    slug: "priority-queue",
+    title: "Priority Queue (Heap)",
+    blurb:
+      "A binary heap that always serves the highest-priority element first. Insert sifts up and extract sifts down in O(log n); peek is O(1). Switch between a min-heap and a max-heap.",
+    category: "data-structures",
+    complexity: { time: "O(log n)", space: "O(n)" },
+    status: "live",
+  },
+  {
+    slug: "trie",
+    title: "Trie (Prefix Tree)",
+    blurb:
+      "Stores strings character by character so words with shared prefixes share a path. Insert, search, and prefix-match all run in O(L) for a word of length L.",
+    category: "data-structures",
+    complexity: { time: "O(L)", space: "O(n)" },
+    status: "live",
+  },
 ];
 
 export function getAlgo(category: Category, slug: string): AlgoMeta | undefined {
