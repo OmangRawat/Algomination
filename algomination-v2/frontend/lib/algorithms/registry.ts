@@ -209,6 +209,24 @@ export const ALGORITHMS: AlgoMeta[] = [
     complexity: { time: "O(L)", space: "O(n)" },
     status: "live",
   },
+  {
+    slug: "avl-tree",
+    title: "AVL Tree (Self-Balancing BST)",
+    blurb:
+      "A binary search tree that rotates after every insert and delete to keep itself balanced, guaranteeing O(log n) operations. Each node's balance factor stays within {-1, 0, 1}.",
+    category: "data-structures",
+    complexity: { time: "O(log n)", space: "O(n)" },
+    status: "live",
+  },
+  {
+    slug: "union-find",
+    title: "Union-Find (Disjoint Set)",
+    blurb:
+      "Tracks a partition of elements into disjoint sets. Union merges two sets by rank and Find locates a set's root with path compression, giving near-constant amortized time.",
+    category: "data-structures",
+    complexity: { time: "O(α(n))", space: "O(n)" },
+    status: "live",
+  },
 ];
 
 export function getAlgo(category: Category, slug: string): AlgoMeta | undefined {

@@ -9,6 +9,8 @@ import { HashTableVisualizer } from "./HashTableVisualizer";
 import { GraphVisualizer } from "./GraphVisualizer";
 import { HeapVisualizer } from "./HeapVisualizer";
 import { TrieVisualizer } from "./TrieVisualizer";
+import { AVLVisualizer } from "./AVLVisualizer";
+import { UnionFindVisualizer } from "./UnionFindVisualizer";
 
 /**
  * Client bridge for data-structure visualizers. Data structures are interactive
@@ -90,6 +92,22 @@ export function DataStructureVisualizer({ slug }: { slug: string }) {
     case "trie":
       return (
         <TrieVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+        />
+      );
+    case "avl-tree":
+      return (
+        <AVLVisualizer
+          title={meta.title}
+          description={meta.blurb}
+          complexity={meta.complexity}
+        />
+      );
+    case "union-find":
+      return (
+        <UnionFindVisualizer
           title={meta.title}
           description={meta.blurb}
           complexity={meta.complexity}
