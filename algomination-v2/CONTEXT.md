@@ -52,24 +52,33 @@ algomination-v2/
 └── frontend/
     ├── app/                      # routes (App Router)
     │   ├── page.tsx              # landing (hero + sections)
-    │   ├── sorting/[slug]/       # bubble, selection, insertion, merge, quick
+    │   ├── sorting/[slug]/       # bubble, selection, insertion, merge, quick, heap
     │   ├── searching/[slug]/     # linear, binary
-    │   ├── data-structures/[slug]/  # stack, queue
+    │   ├── data-structures/[slug]/  # stack, queue, linked-list, doubly-linked-list,
+    │   │                         #   bst, avl-tree, hash-table, priority-queue, trie,
+    │   │                         #   graph-traversal, union-find
     │   ├── about/  contact/  login/
+    │   ├── sitemap.ts  robots.ts # SEO
     │   ├── layout.tsx  template.tsx  loading.tsx  not-found.tsx
-    │   └── globals.css           # theme tokens + hero CSS
+    │   └── globals.css           # theme tokens + hero CSS + slim scrollbar + reduced-motion
     ├── components/
     │   ├── ui/                   # Button, Card, Input, Textarea, Badge, Container
-    │   ├── viz/                  # the engine UI (see §5)
+    │   ├── viz/                  # the engine UI + every visualizer (see §5)
+    │   ├── nav/                  # SideNav (slide-in drawer tree) + NavDropdown (header mega-menu)
     │   ├── auth/                 # AuthProvider, AuthForms
     │   ├── contact/ContactForms.tsx
     │   ├── Navbar  Footer  Reveal  StaggerHero  CategoryHub  PagePlaceholder
     ├── lib/
-    │   ├── engine/               # types.ts, useStepPlayer.ts, highlight.ts
-    │   ├── algorithms/           # one file per algorithm + registry.ts
+    │   ├── engine/               # types.ts, useFramePlayer.ts, useStepPlayer.ts, highlight.ts
+    │   ├── algorithms/           # one file per sort/search + registry.ts + __tests__/
+    │   ├── nav.ts                # NAV_TREE (Algorithms ▸ Sorting/Searching), built from registry
     │   └── api/                  # client.ts, auth.ts, community.ts, config.ts, types.ts
-    └── scripts/                  # throwaway tsx verification scripts
+    └── vitest.config.ts          # `npm test` → fuzz tests for the pure generators
 ```
+
+Note: interactive data-structure logic (AVL rotations, heap sift, union-find, trie,
+merge/heap-sort frames) currently lives **inside** the respective `viz/*Visualizer.tsx`
+components, not in `lib/`. Only the sort/search **Step generators** are in `lib/algorithms/`.
 
 ## 5. The step engine (the heart of it)
 
@@ -86,23 +95,41 @@ Everything visual flows from a few pieces in `lib/engine/`:
   ```
   `makeItems()` assigns each value a **stable id** so Framer Motion `layout` animates
   reordering by identity (bars slide past each other instead of snapping).
-- **`useStepPlayer.ts`** — drives playback: play/pause/next/prev/reset/seek + 0.5×–4×
-  speed; auto-resets when a new step list arrives.
+- **`useFramePlayer.ts`** — the generic playback engine: drives playback over an array of
+  frames of **any** shape (play/pause/next/prev/reset/seek + 0.25×–4× speed; auto-resets
+  when a new frame list arrives). Used by the array sorts, the graph traversal, and the
+  tree traversals so they all share identical controls.
+- **`useStepPlayer.ts`** — thin wrapper over `useFramePlayer` that exposes the frame as
+  `step` (kept for the array visualizer's call sites).
 - **`highlight.ts`** — `HIGHLIGHT_FILL` (colour per kind) + `HIGHLIGHT_LABEL` (legend text).
+  Kinds: compare/swap/sorted/active/min/pivot/found/range.
 
 UI in `components/viz/`:
-- **`ArrayBars.tsx`** — renders the current step's bars (height = value, colour =
-  highlight, pointer labels above). Keyed by `item.id` + `layout` for movement.
-- **`VisualizerShell.tsx`** — input box + validation, Random, play controls, scrub bar,
-  speed toggle, live caption, **auto-adapting legend** (shows only the highlight kinds a
-  given algorithm actually uses). Supports an optional **target field** + `requiresSorted`
-  note for search algorithms.
-- **`AlgorithmVisualizer.tsx`** — client bridge: looks up a generator from the registry
-  by `{category, slug}` and renders the shell (keeps non-serializable functions on the
-  client side; server pages only pass strings).
-- **`DataStructureVisualizer.tsx`** — DS are interactive (operations build on live
-  state), so they use dedicated components (`StackVisualizer`, `QueueVisualizer`)
-  with `AnimatePresence`, not the step player.
+- **`PlayerControls.tsx`** — the shared transport (seek bar, reset/step/play-pause, step
+  counter, **0.25×/0.5×/1×/2×/4×** speed). Takes any `useFramePlayer` and is reused
+  everywhere an animation plays.
+- **`ArrayBars.tsx`** — renders a step's bars (height = value, colour = highlight, pointer
+  labels above). Keyed by `item.id` + `layout` for movement. Used by the standard sorts.
+- **`VisualizerShell.tsx`** — input + validation, Random, `<PlayerControls>`, live caption,
+  **auto-adapting legend** (only the highlight kinds the algorithm uses). Optional **target
+  field** + `requiresSorted` note for search.
+- **`AlgorithmVisualizer.tsx`** — client bridge: looks up a generator by `{category, slug}`
+  and renders the shell. **Special-cases** `sorting/merge` and `sorting/heap` to bespoke
+  renderers (see below); everything else uses the bar shell.
+- **Structure-aware sort renderers** — bars hide the structure of a couple of algorithms,
+  so these two get custom views that still use `useFramePlayer` + `PlayerControls`:
+  - `MergeSortVisualizer.tsx` — the **recursion tree**: divide into sub-array boxes level
+    by level, then merge each parent back sorted, cell by cell (cap 8 elements).
+  - `HeapSortVisualizer.tsx` — renders the array as the **binary heap tree** (reuses the
+    `heapSort` generator's steps) with the sorted tail dropping into a row below.
+- **`DataStructureVisualizer.tsx`** — bridge for DS; each slug maps to its own interactive
+  component. DS use live state + `AnimatePresence` and run their own timed animations
+  (timers with cleanup), except the **graph + tree traversals**, which build frames and
+  use `useFramePlayer` (so they get play/pause/scrub). Components:
+  Stack, Queue, LinkedList (singly+doubly via `doubly` prop), Tree (BST, with BFS/DFS
+  traversals + explanation panel), AVL (rotations + balance factors), HashTable (chaining),
+  Heap (priority queue, min/max + array backing), Trie, Graph (BFS/DFS, clickable start),
+  UnionFind (forest, path compression).
 
 ## 6. How to add a new visualizer (the recipe)
 
@@ -110,12 +137,19 @@ UI in `components/viz/`:
 1. Write a pure generator `lib/algorithms/<name>.ts`: `(values, target?) => Step[]`.
 2. Add one entry to `lib/algorithms/registry.ts` (`status: "live"`, `generate`, blurb,
    complexity, `defaultInput`; for search add `needsTarget`/`requiresSorted`).
-3. Done — the hub card, the `/[category]/[slug]` route, SSG, and the player all pick it
-   up automatically. Add it to `scripts/verify-sorts.ts` and run the test.
+3. Done — the hub card, the `/[category]/[slug]` route, SSG, the side-nav tree, the header
+   dropdown, the sitemap, and the player all pick it up automatically. Add it to the
+   `SORTS` map in `lib/algorithms/__tests__/algorithms.test.ts` and run `npm test`.
 
-**A data structure:** build a `<Thing>Visualizer.tsx` (interactive), add a registry
-entry (`category: "data-structures"`, `status: "live"`), and one `case` in
-`DataStructureVisualizer.tsx`.
+**A data structure (or DS algorithm):** build a `<Thing>Visualizer.tsx` (interactive),
+add a registry entry (`category: "data-structures"`, `status: "live"`), and one `case` in
+`DataStructureVisualizer.tsx`. Reuse `useFramePlayer` + `PlayerControls` if you want
+play/pause/scrub; otherwise drive timed steps with a `timers` ref (clear on unmount + each
+new op). For a tree-shaped DS, copy the in-order column `layout()` from `TreeVisualizer`.
+
+Everything is **registry-driven**, so a new entry flows into the hub, nav drawer, header
+mega-menu, sitemap, and SEO text with no extra plumbing. `lib/nav.ts` builds `NAV_TREE`
+(Algorithms ▸ Sorting/Searching + Data Structures) straight from the registry.
 
 ## 7. Backend shape
 
@@ -155,18 +189,34 @@ These cost real time — worth remembering:
   the source slot occupied, so a mid-merge frame showed a duplicate value. Fixed by
   computing the merged order then realizing it via **swaps**, keeping every frame a valid
   permutation. Caught by the permutation-invariant unit test.
+- **OneDrive locks `.next` → `EPERM unlink … .segments` on build.** The repo lives under
+  OneDrive, which syncs/locks files in `.next`. A build can fail mid-write. Fix:
+  `rm -rf .next` then rebuild. Stray dev servers also hold these files (see below).
+- **Port 3010 + other apps on this machine.** The user runs a separate app (**Tapwise**)
+  with its own `next dev` processes — **do not kill those**. When freeing port 3010, match
+  on the `Algomination` path in the process command line before `Stop-Process`. Frontend
+  dev port is **3010** (`npm run dev -- -p 3010`); :3000 is usually taken.
+- **React splits `{a} ({b})` in SSR HTML.** Text like `Level-order (BFS)` renders as
+  separate text nodes with comment markers between them, so a grep for the full contiguous
+  string fails on the served HTML even though it renders. Grep for a fragment instead.
+- **Client-only content isn't in the initial HTML.** Panels rendered on interaction (e.g.
+  the traversal explanation, the transport controls that appear only after a run) live in
+  the JS bundle, not the SSR HTML — that's expected, not a bug.
 
 ## 9. Verification strategy
 
-No formal test runner yet; correctness is checked with throwaway `tsx` scripts in
-`frontend/scripts/` plus build + runtime curls:
-- `verify-sorts.ts` — 500 random arrays × 5 sorts; asserts sorted output **and** every
-  frame is a permutation of the input.
-- `verify-search.ts` — 1000 cases × 2 searches; found-at-correct-value / not-found.
-- `verify-api.ts` — drives the real API client against a running backend (submits, auth,
-  error parsing).
-Run: `npx tsx scripts/<file>.ts` (backend up for `verify-api`).
-**Possible next step:** promote these into Vitest + CI.
+**`npm test`** (Vitest, ~1.5s) runs the fuzz suite for the pure Step generators in
+`lib/algorithms/__tests__/algorithms.test.ts`:
+- all 6 sorts × 800 random arrays — asserts the final frame is sorted **and** every frame
+  is a permutation of the input, plus sorted/reverse edge cases;
+- linear + binary search × 1000 cases each — found-at-correct-value / correctly-absent.
+
+This replaces the old throwaway `tsx` scripts for the generators — run `npm test` instead
+of writing ad-hoc fuzz scripts (much cheaper). The **component-embedded** logic (AVL
+balance, heap property, union-find, merge/heap-sort frames) was each fuzz-verified once via
+inline `node -e` checks; extracting those cores into `lib/` so Vitest can cover them is a
+worthwhile follow-up. UI itself is checked with `npm run build` (typecheck + SSG) plus a
+quick dev-server `curl` smoke test (`200` + expected content + no `⨯`/`error:` in logs).
 
 ## 10. Running locally
 
@@ -185,25 +235,39 @@ Admin: `python manage.py createsuperuser`, then `/admin/`.
 
 ## 11. Current status
 
-**All 10 phases (0–9) complete + stretch visualizers.** Catalog:
+**Core rebuild complete + a large visualizer catalog.** All registry-driven:
 
 | Category | Visualizers |
 |----------|-------------|
-| Sorting | Bubble, Selection, Insertion, Merge, Quick |
+| Sorting | Bubble, Selection, Insertion, **Merge** (recursion-tree view), Quick (pivot + i/j pointers + active sub-array), **Heap** (binary-heap-tree view) |
 | Searching | Linear, Binary |
-| Data Structures | Stack, Queue |
+| Data Structures | Stack, Queue, Linked List, Doubly Linked List, BST (+ BFS/DFS traversals), AVL Tree (rotations), Hash Table (chaining), Priority Queue / Heap (min+max), Trie, Graph (BFS & DFS), Union-Find |
+
+Navigation: a **slide-in side drawer** (`components/nav/SideNav.tsx`) with a collapsible
+tree — *Algorithms ▸ Sorting / Searching*, *Data Structures* — plus icons, a section
+header, and active highlighting; and **header mega-menu dropdowns** (`NavDropdown.tsx`).
+"Algorithms" is a presentational umbrella only — URLs stay flat (`/sorting`, `/searching`,
+`/data-structures`) so the SEO/canonical/sitemap work is untouched.
+
+Polish: slim themed scrollbars + `prefers-reduced-motion` (globals.css), staggered drawer
+rows + cascading category cards, 0.25×–4× playback speeds, per-page SEO metadata +
+canonical + sitemap/robots.
 
 Plus: landing (original anime.js hero reproduced), About, Contact (3 forms → API),
-JWT auth (login/register/logout, session restore), deploy-ready (Vercel + Render).
+JWT auth (login/register/logout, session restore), deployed (Vercel + Render).
 
 Credits: **Omang Rawat** & **Rahul Soni**. Contact: `algominationalgorithms@gmail.com`.
 
+> **Working convention:** all changes are made on the `master` branch and left
+> **uncommitted** — the user commits/pushes manually ("Don't push anything. I'll do it").
+
 ## 12. Possible next steps
 
-- Linked List / Binary Tree / pathfinding (Dijkstra, A*) visualizers
-- Vitest + CI for the generator tests
-- An OG share image; per-visualizer metadata
-- Actually deploy (see `DEPLOYMENT.md`)
+- **Graph-algorithms track**: Dijkstra (shortest path), Kruskal/Prim (MST — reuses
+  Union-Find), topological sort. Reuses the graph visualizer.
+- Extract the component-embedded pure logic (AVL/heap/union-find/merge frames) into `lib/`
+  so Vitest covers them too; add CI.
+- An OG share image; per-visualizer metadata polish.
 
 ---
 

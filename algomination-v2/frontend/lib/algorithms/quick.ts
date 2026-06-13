@@ -21,10 +21,16 @@ export function quickSort(values: number[]): Step[] {
     highlights: Record<number, HighlightKind>,
     caption: string,
     pointers?: Record<string, number>,
+    range?: [number, number],
   ) => {
+    const rangeMarks: Record<number, HighlightKind> = {};
+    if (range) {
+      for (let p = range[0]; p <= range[1]; p++) rangeMarks[p] = "range";
+    }
     steps.push({
       items: items.map((it) => ({ ...it })),
-      highlights: { ...sortedMarks(), ...highlights },
+      // range (active sub-array) first, then settled, then this frame's marks.
+      highlights: { ...rangeMarks, ...sortedMarks(), ...highlights },
       pointers,
       caption,
     });
@@ -36,8 +42,9 @@ export function quickSort(values: number[]): Step[] {
     const pivot = items[hi].value;
     push(
       { [hi]: "pivot" },
-      `Partition [${lo}..${hi}] with pivot ${pivot}.`,
+      `Partition the sub-array [${lo}..${hi}] with pivot ${pivot}.`,
       { pivot: hi },
+      [lo, hi],
     );
 
     let i = lo;
@@ -46,6 +53,7 @@ export function quickSort(values: number[]): Step[] {
         { [hi]: "pivot", [j]: "compare" },
         `Is ${items[j].value} < pivot ${pivot}?`,
         { i, j, pivot: hi },
+        [lo, hi],
       );
       if (items[j].value < pivot) {
         if (i !== j) {
@@ -56,6 +64,7 @@ export function quickSort(values: number[]): Step[] {
             { [hi]: "pivot", [i]: "swap", [j]: "swap" },
             `Yes → swap ${b} left (past ${a}).`,
             { i, j, pivot: hi },
+            [lo, hi],
           );
         }
         i++;
@@ -68,6 +77,7 @@ export function quickSort(values: number[]): Step[] {
         { [i]: "swap", [hi]: "swap" },
         `Move pivot ${pivot} into position ${i}.`,
         { pivot: i },
+        [lo, hi],
       );
     }
     return i;
@@ -81,7 +91,10 @@ export function quickSort(values: number[]): Step[] {
     }
     const p = partition(lo, hi);
     sorted.add(p);
-    push({}, `${items[p].value} is in its final position.`);
+    push(
+      {},
+      `Pivot ${items[p].value} is now in its final position — everything left is smaller, everything right is larger.`,
+    );
     qs(lo, p - 1);
     qs(p + 1, hi);
   }

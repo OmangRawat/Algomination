@@ -4,7 +4,7 @@ import { Pause, Play, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
-const SPEEDS = [0.5, 1, 2, 4];
+const SPEEDS = [0.25, 0.5, 1, 2, 4];
 
 /** The playback surface of a frame player (everything except the frame data). */
 export interface PlayerControlSurface {

@@ -25,6 +25,8 @@ export interface AlgoMeta {
   defaultTarget?: number;
   /** Binary search: input is sorted automatically. */
   requiresSorted?: boolean;
+  /** Plain-English explanation of the core mechanic and the per-pass invariant. */
+  insight?: { idea: string; eachPass: string };
 }
 
 /**
@@ -42,6 +44,11 @@ export const ALGORITHMS: AlgoMeta[] = [
     complexity: { time: "O(n²)", space: "O(1)" },
     defaultInput: "5 3 8 1 9 2 7",
     generate: bubbleSort,
+    insight: {
+      idea: "Repeatedly walk the array swapping any adjacent pair that's out of order.",
+      eachPass:
+        "After each full pass the largest value still unsorted has 'bubbled' all the way to its final place at the end — so the sorted region grows by one from the right every pass.",
+    },
     status: "live",
   },
   {
@@ -53,6 +60,11 @@ export const ALGORITHMS: AlgoMeta[] = [
     complexity: { time: "O(n²)", space: "O(1)" },
     defaultInput: "8 4 1 6 3 9 2",
     generate: selectionSort,
+    insight: {
+      idea: "Each pass scans the unsorted region for the smallest element and swaps it into place.",
+      eachPass:
+        "After pass k the k smallest elements are locked into their final positions at the front — the sorted region grows by one from the left each pass.",
+    },
     status: "live",
   },
   {
@@ -64,6 +76,11 @@ export const ALGORITHMS: AlgoMeta[] = [
     complexity: { time: "O(n²)", space: "O(1)" },
     defaultInput: "6 2 9 1 7 3 8",
     generate: insertionSort,
+    insight: {
+      idea: "Take each new element and slide it left into its correct spot among the already-sorted prefix.",
+      eachPass:
+        "After inserting the k-th element the first k+1 elements are sorted relative to each other — that sorted prefix grows by one each step (its values may still shift once later elements arrive).",
+    },
     status: "live",
   },
   {
@@ -75,6 +92,11 @@ export const ALGORITHMS: AlgoMeta[] = [
     complexity: { time: "O(n log n)", space: "O(n)" },
     defaultInput: "8 3 5 1 9 2 7 4",
     generate: mergeSort,
+    insight: {
+      idea: "Recursively split the array in half until each piece is a single element, then merge halves back together in order.",
+      eachPass:
+        "Each merge fuses two already-sorted sub-arrays into one bigger sorted sub-array. Working up the tree, the sorted runs double in size every level until the whole array is one sorted run.",
+    },
     status: "live",
   },
   {
@@ -86,6 +108,11 @@ export const ALGORITHMS: AlgoMeta[] = [
     complexity: { time: "O(n log n)", space: "O(log n)" },
     defaultInput: "8 3 5 1 9 2 7 4",
     generate: quickSort,
+    insight: {
+      idea: "Pick a pivot and partition the sub-array so smaller values move left and larger move right, then recurse on each side.",
+      eachPass:
+        "After each partition the pivot lands in its final sorted position — everything to its left is smaller and everything to its right is larger — so every partition permanently places at least one element. The two sides are then sorted the same way.",
+    },
     status: "live",
   },
   {
@@ -97,6 +124,11 @@ export const ALGORITHMS: AlgoMeta[] = [
     complexity: { time: "O(n log n)", space: "O(1)" },
     defaultInput: "4 10 3 5 1 8 2 7",
     generate: heapSort,
+    insight: {
+      idea: "First rearrange the array into a max-heap (every parent ≥ its children), then repeatedly pull out the largest element.",
+      eachPass:
+        "Once the heap is built, each iteration swaps the root (the current maximum) to the end of the heap, shrinks the heap by one, and sifts the new root down to restore the heap. So the array fills with the largest values from the back forward.",
+    },
     status: "live",
   },
 
@@ -111,6 +143,11 @@ export const ALGORITHMS: AlgoMeta[] = [
     defaultTarget: 5,
     needsTarget: true,
     generate: linearSearch,
+    insight: {
+      idea: "Check elements one by one from left to right until the target turns up.",
+      eachPass:
+        "Each step compares exactly one element to the target: a match ends the search, otherwise you move one position right. After k steps you know the target isn't in the first k elements.",
+    },
     status: "live",
   },
   {
@@ -125,6 +162,11 @@ export const ALGORITHMS: AlgoMeta[] = [
     needsTarget: true,
     requiresSorted: true,
     generate: binarySearch,
+    insight: {
+      idea: "On sorted data, compare the target to the middle element and throw away the half it can't be in.",
+      eachPass:
+        "Each step checks the middle of the current range and discards half the remaining elements, so the search space halves every iteration — n elements are exhausted in about log₂(n) steps.",
+    },
     status: "live",
   },
 
