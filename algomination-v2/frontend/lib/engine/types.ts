@@ -15,7 +15,11 @@ export type HighlightKind =
   | "min" // current minimum (selection sort)
   | "pivot" // pivot element (quick sort)
   | "found" // search hit
-  | "range"; // active sub-array / search window
+  | "range" // active sub-array / search window
+  | "window" // sliding-window members
+  | "less" // Dutch flag: < pivot region
+  | "equal" // Dutch flag: = pivot region
+  | "greater"; // Dutch flag: > pivot region
 
 /** A value with a stable identity, so reordering can animate by `id`. */
 export interface ArrayItem {

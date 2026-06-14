@@ -10,6 +10,10 @@ export const HIGHLIGHT_FILL: Record<HighlightKind, string> = {
   pivot: "var(--danger)",
   found: "var(--success)",
   range: "color-mix(in srgb, var(--brand) 35%, transparent)",
+  window: "color-mix(in srgb, var(--brand) 62%, transparent)",
+  less: "color-mix(in srgb, var(--brand-2) 60%, transparent)",
+  equal: "color-mix(in srgb, var(--warning) 62%, transparent)",
+  greater: "color-mix(in srgb, var(--danger) 58%, transparent)",
 };
 
 /** Human-readable legend label per highlight kind. */
@@ -22,6 +26,10 @@ export const HIGHLIGHT_LABEL: Record<HighlightKind, string> = {
   pivot: "Pivot",
   found: "Found",
   range: "Sub-array",
+  window: "Window",
+  less: "< pivot",
+  equal: "= pivot",
+  greater: "> pivot",
 };
 
 export const IDLE_FILL = "var(--surface-2)";

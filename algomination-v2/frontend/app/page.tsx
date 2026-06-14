@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   BarChart3,
   Search,
+  Brackets,
   Layers,
   SlidersHorizontal,
   Sparkles,
@@ -26,6 +27,12 @@ const CATEGORIES = [
     title: "Searching",
     icon: Search,
     desc: "Linear & Binary search — follow the pointers as they close in on a target.",
+  },
+  {
+    href: "/array",
+    title: "Array Algorithms",
+    icon: Brackets,
+    desc: "Two pointers, sliding windows & monotonic stacks — the patterns behind the classics.",
   },
   {
     href: "/data-structures",
@@ -195,10 +202,14 @@ export default function Home() {
             What you can explore
           </h3>
           <p className="text-muted">
-            Today you can visualize five sorting algorithms (Bubble, Selection,
-            Insertion, Merge, and Quick sort), two search algorithms (Linear and
-            Binary search), and two data structures (Stack and Queue). New
-            visualizers are added over time — and the project is open to
+            Today you can visualize six sorting algorithms (Bubble, Selection,
+            Insertion, Merge, Quick, and Heap sort), two search algorithms
+            (Linear and Binary search), a growing set of essential array
+            algorithms (Kadane&apos;s maximum subarray, two-pointer pair sum,
+            sliding window, Dutch National Flag, trapping rain water, and next
+            greater element), and a dozen data structures — from stacks and
+            queues to binary search trees, heaps, tries, and union-find. New
+            visualizers are added over time, and the project is open to
             community contributions.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">

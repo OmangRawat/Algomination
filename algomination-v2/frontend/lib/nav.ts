@@ -2,6 +2,7 @@ import {
   ArrowDownUp,
   Binary,
   Boxes,
+  Brackets,
   Info,
   Mail,
   Search,
@@ -18,11 +19,18 @@ export interface NavNode {
   children?: NavNode[];
 }
 
+/**
+ * Compact label for nav menus: drop the descriptive parenthetical that full
+ * titles carry (e.g. "Kadane's Algorithm (Maximum Subarray)" → "Kadane's
+ * Algorithm"). Cards and SEO copy still use the full registry title.
+ */
+const navLabel = (title: string) => title.replace(/\s*\([^)]*\)\s*$/, "");
+
 /** Live algorithms in a category as leaf links. */
 const leaves = (category: Category): NavNode[] =>
   algosByCategory(category)
     .filter((a) => a.status === "live")
-    .map((a) => ({ label: a.title, href: `/${category}/${a.slug}` }));
+    .map((a) => ({ label: navLabel(a.title), href: `/${category}/${a.slug}` }));
 
 /**
  * Hierarchical navigation shared by the header dropdowns and the side drawer.
@@ -46,6 +54,12 @@ export const NAV_TREE: NavNode[] = [
         icon: Search,
         children: leaves("searching"),
       },
+      {
+        label: "Array Algorithms",
+        href: "/array",
+        icon: Brackets,
+        children: leaves("array"),
+      },
     ],
   },
   {
@@ -66,6 +80,7 @@ export const SECONDARY_LINKS: NavNode[] = [
 export const NAV_LINKS = [
   { href: "/sorting", label: "Sorting" },
   { href: "/searching", label: "Searching" },
+  { href: "/array", label: "Array Algorithms" },
   { href: "/data-structures", label: "Data Structures" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

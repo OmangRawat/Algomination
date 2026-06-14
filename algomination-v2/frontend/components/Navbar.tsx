@@ -42,10 +42,14 @@ export function Navbar() {
           </div>
 
           {/* Desktop links */}
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-1.5 md:flex">
             {NAV_TREE.map((node) => (
               <NavDropdown key={node.label} node={node} />
             ))}
+            <span
+              aria-hidden
+              className="mx-1.5 h-5 w-px bg-border/70"
+            />
             {SECONDARY_LINKS.map((link) => (
               <Link
                 key={link.href}

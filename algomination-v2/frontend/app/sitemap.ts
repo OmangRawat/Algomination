@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/sorting",
     "/searching",
+    "/array",
     "/data-structures",
     "/about",
     "/contact",

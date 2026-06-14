@@ -7,8 +7,12 @@ import { quickSort } from "./quick";
 import { heapSort } from "./heap";
 import { linearSearch } from "./linear-search";
 import { binarySearch } from "./binary-search";
+import { kadaneMaxSubarray } from "./kadane";
+import { twoPointerPairSum } from "./two-pointer-pair-sum";
+import { slidingWindowMaxSum } from "./sliding-window";
+import { dutchNationalFlag } from "./dutch-flag";
 
-export type Category = "sorting" | "searching" | "data-structures";
+export type Category = "sorting" | "searching" | "array" | "data-structures";
 
 export interface AlgoMeta {
   slug: string;
@@ -166,6 +170,106 @@ export const ALGORITHMS: AlgoMeta[] = [
       idea: "On sorted data, compare the target to the middle element and throw away the half it can't be in.",
       eachPass:
         "Each step checks the middle of the current range and discards half the remaining elements, so the search space halves every iteration — n elements are exhausted in about log₂(n) steps.",
+    },
+    status: "live",
+  },
+
+  {
+    slug: "kadane",
+    title: "Kadane's Algorithm (Maximum Subarray)",
+    blurb:
+      "Finds the contiguous subarray with the largest sum in a single pass. Works with negative numbers by restarting the running window whenever it would only drag the total down.",
+    category: "array",
+    complexity: { time: "O(n)", space: "O(1)" },
+    defaultInput: "-2 1 -3 4 -1 2 1 -5 4",
+    generate: kadaneMaxSubarray,
+    insight: {
+      idea: "Sweep left to right keeping the best sum of a subarray that ends at the current element; whenever that running sum turns negative, start a fresh window here.",
+      eachPass:
+        "At each index you decide to either extend the current window or restart it, then compare against the best total seen so far. After visiting index i you know the maximum subarray sum within the first i+1 elements — so one full pass settles the whole array.",
+    },
+    status: "live",
+  },
+  {
+    slug: "two-pointer-pair-sum",
+    title: "Two-Pointer Pair Sum",
+    blurb:
+      "On a sorted array, finds two values that add up to a target using a pointer at each end — moving them inward based on whether the current sum is too small or too large.",
+    category: "array",
+    complexity: { time: "O(n)", space: "O(1)" },
+    defaultInput: "1 2 3 4 6 8 9 11",
+    defaultTarget: 10,
+    needsTarget: true,
+    requiresSorted: true,
+    generate: twoPointerPairSum,
+    insight: {
+      idea: "With the array sorted, one pointer starts at the smallest value and one at the largest; their sum tells you exactly which pointer to move.",
+      eachPass:
+        "If the pair sums too low, the left pointer steps right to a bigger value; if too high, the right pointer steps left to a smaller one. Every step permanently rules out one element, so the two pointers meet after at most n steps.",
+    },
+    status: "live",
+  },
+  {
+    slug: "sliding-window-max-sum",
+    title: "Sliding Window (Max Sum of K)",
+    blurb:
+      "Finds the maximum sum of any K consecutive elements. Instead of re-adding the whole window each time, it slides one step — subtracting the element that leaves and adding the one that enters.",
+    category: "array",
+    complexity: { time: "O(n)", space: "O(1)" },
+    defaultInput: "2 1 5 1 3 2 8 1",
+    defaultTarget: 3,
+    needsTarget: true,
+    generate: slidingWindowMaxSum,
+    insight: {
+      idea: "Sum the first K elements once, then reuse that sum: each slide drops the leftmost element and adds the next one on the right.",
+      eachPass:
+        "Every slide costs just one subtraction and one addition to get the new window's sum, which is compared against the best so far. The window visits each element once, so the whole array is scanned in O(n) rather than O(n·K).",
+    },
+    status: "live",
+  },
+  {
+    slug: "dutch-national-flag",
+    title: "Dutch National Flag (3-Way Partition)",
+    blurb:
+      "Partitions an array into three regions — less than, equal to, and greater than a pivot — in one pass with three pointers. The classic problem of sorting an array of 0s, 1s, and 2s.",
+    category: "array",
+    complexity: { time: "O(n)", space: "O(1)" },
+    defaultInput: "9 4 7 4 2 4 8 1 4 6",
+    generate: dutchNationalFlag,
+    insight: {
+      idea: "Three pointers (low, mid, high) carve the array into a smaller-than region on the left, an equal region in the middle, and a greater-than region on the right.",
+      eachPass:
+        "Each step inspects the value at mid: smaller values swap left and both low and mid advance; larger values swap to the right and high retreats (mid stays to re-check the value that came back); equal values just advance mid. One pass fully partitions the array.",
+    },
+    status: "live",
+  },
+  {
+    slug: "trapping-rain-water",
+    title: "Trapping Rain Water",
+    blurb:
+      "Computes how much water is trapped between bars of an elevation map. Two pointers walk inward from both ends, resolving the shorter side first since its limiting wall is already known.",
+    category: "array",
+    complexity: { time: "O(n)", space: "O(1)" },
+    defaultInput: "0 1 0 2 1 0 1 3 2 1 2 1",
+    insight: {
+      idea: "Water above a bar is capped by the shorter of the tallest wall to its left and the tallest to its right. Two pointers track those running maxima from each end.",
+      eachPass:
+        "Whichever side currently has the shorter bar is safe to settle: its bounding wall on that side is already final. Add (sideMax − barHeight) units of water there and move that pointer inward. Each bar is resolved exactly once.",
+    },
+    status: "live",
+  },
+  {
+    slug: "next-greater-element",
+    title: "Next Greater Element",
+    blurb:
+      "For each element, finds the first larger value to its right using a monotonic stack of indices that are still waiting for their answer. Each index is pushed and popped at most once.",
+    category: "array",
+    complexity: { time: "O(n)", space: "O(n)" },
+    defaultInput: "4 5 2 25 7 8",
+    insight: {
+      idea: "Keep a stack of indices whose next-greater element hasn't been found yet, ordered so their values decrease from bottom to top.",
+      eachPass:
+        "When a new value is larger than the value on top of the stack, it is that index's next greater element — pop and record it, repeating until the top is bigger. Then push the new index. Every index enters and leaves the stack once, giving O(n).",
     },
     status: "live",
   },

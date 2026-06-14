@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { Shuffle } from "lucide-react";
 import type { HighlightKind, Step } from "@/lib/engine/types";
 import { HIGHLIGHT_FILL, HIGHLIGHT_LABEL } from "@/lib/engine/highlight";
@@ -21,8 +21,16 @@ interface VisualizerShellProps {
   /** Show a target field and pass it to `generate` (search algorithms). */
   needsTarget?: boolean;
   defaultTarget?: number;
+  /** Placeholder / aria-label for the target field (defaults to "target"). */
+  targetLabel?: string;
   /** Note shown to the user that input will be sorted (binary search). */
   requiresSorted?: boolean;
+  /** Allow negative inputs (e.g. Kadane's maximum subarray). */
+  allowNegative?: boolean;
+  /** Custom canvas renderer for a step; defaults to the standard bar chart. */
+  renderStep?: (step: Step) => ReactNode;
+  /** Hide the auto-generated highlight legend (custom canvases label their own). */
+  hideLegend?: boolean;
 }
 
 function parseInput(raw: string): number[] {
@@ -43,7 +51,11 @@ export function VisualizerShell({
   complexity,
   needsTarget = false,
   defaultTarget = 0,
+  targetLabel = "target",
   requiresSorted = false,
+  allowNegative = false,
+  renderStep,
+  hideLegend = false,
 }: VisualizerShellProps) {
   const [inputText, setInputText] = useState(defaultInput);
   const [targetText, setTargetText] = useState(String(defaultTarget));
@@ -65,8 +77,11 @@ export function VisualizerShell({
       setError(`Please use at most ${maxItems} numbers.`);
       return;
     }
-    if (values.some((v) => v < 0 || v > 999)) {
-      setError("Use numbers between 0 and 999 for a clean visualization.");
+    const lo = allowNegative ? -99 : 0;
+    if (values.some((v) => v < lo || v > 999)) {
+      setError(
+        `Use numbers between ${lo} and 999 for a clean visualization.`,
+      );
       return;
     }
 
@@ -87,9 +102,10 @@ export function VisualizerShell({
 
   const randomize = () => {
     const len = 6 + Math.floor(Math.random() * 4); // 6–9 values
-    const values = Array.from(
-      { length: len },
-      () => 5 + Math.floor(Math.random() * 95),
+    const values = Array.from({ length: len }, () =>
+      allowNegative
+        ? Math.floor(Math.random() * 99) - 49 // -49..49
+        : 5 + Math.floor(Math.random() * 95),
     );
     const text = values.join(" ");
     setInputText(text);
@@ -151,8 +167,8 @@ export function VisualizerShell({
               onChange={(e) => setTargetText(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && validateAndGenerate()}
               inputMode="numeric"
-              placeholder="target"
-              aria-label="Target value"
+              placeholder={targetLabel}
+              aria-label={targetLabel}
               className="h-11 w-full rounded-xl border border-border bg-surface-2 px-4 text-sm text-foreground placeholder:text-muted/60 focus-visible:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 sm:w-28"
             />
           )}
@@ -172,7 +188,7 @@ export function VisualizerShell({
 
       {/* Canvas */}
       <div className="rounded-2xl border border-border bg-surface/60 p-4">
-        {step && <ArrayBars step={step} />}
+        {step && (renderStep ? renderStep(step) : <ArrayBars step={step} />)}
 
         {/* Caption */}
         <div className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-surface-2 px-4 py-2 text-center text-sm text-foreground">
@@ -183,7 +199,7 @@ export function VisualizerShell({
       {/* Controls */}
       <PlayerControls player={player} />
 
-      <Legend kinds={usedKinds} />
+      {!hideLegend && <Legend kinds={usedKinds} />}
     </div>
   );
 }
