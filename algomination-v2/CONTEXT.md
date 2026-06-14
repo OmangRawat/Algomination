@@ -241,10 +241,10 @@ Admin: `python manage.py createsuperuser`, then `/admin/`.
 |----------|-------------|
 | Sorting | Bubble, Selection, Insertion, **Merge** (recursion-tree view), Quick (pivot + i/j pointers + active sub-array), **Heap** (binary-heap-tree view) |
 | Searching | Linear, Binary |
-| Array Techniques | Kadane (max subarray, negatives → `ArrayBars` zero-baseline branch), Two-Pointer Pair Sum (`needsTarget`+`requiresSorted`), Sliding Window Max-Sum (`target`=window size K, `targetLabel`), Dutch National Flag (3-way partition, median pivot), **Trapping Rain Water** (custom water-level canvas), **Next Greater Element** (custom monotonic-stack canvas) |
+| Array Algorithms | Kadane (max subarray, negatives → `ArrayBars` zero-baseline branch), Two-Pointer Pair Sum (`needsTarget`+`requiresSorted`), Sliding Window Max-Sum (`target`=window size K, `targetLabel`, window-frame overlay), Dutch National Flag (3-way partition, median pivot, region-band overlay), **Trapping Rain Water** (custom water-level canvas), **Next Greater Element** (custom monotonic-stack canvas) |
 | Data Structures | Stack, Queue, Linked List, Doubly Linked List, BST (+ BFS/DFS traversals), AVL Tree (rotations), Hash Table (chaining), Priority Queue / Heap (min+max), Trie, Graph (BFS & DFS), Union-Find |
 
-**Array Techniques wiring:** new `Category` value `"array"`, routes `app/array/{page,[slug]/page}.tsx`,
+**Array Algorithms wiring:** new `Category` value `"array"` (displayed as "Array Algorithms"), routes `app/array/{page,[slug]/page}.tsx`,
 client bridge `components/viz/ArrayAlgorithmVisualizer.tsx` (Tier-1 → shared `VisualizerShell`;
 Trapping/Next-Greater → bespoke components). Tier-1 generators are pure `(values, target?) => Step[]`
 in `lib/algorithms/{kadane,two-pointer-pair-sum,sliding-window,dutch-flag}.ts`; the two custom ones
@@ -253,7 +253,7 @@ in `lib/algorithms/{kadane,two-pointer-pair-sum,sliding-window,dutch-flag}.ts`; 
 `targetLabel` + `allowNegative` props.
 
 Navigation: a **slide-in side drawer** (`components/nav/SideNav.tsx`) with a collapsible
-tree — *Algorithms ▸ Sorting / Searching / Array Techniques*, *Data Structures* — plus icons, a
+tree — *Algorithms ▸ Sorting / Searching / Array Algorithms*, *Data Structures* — plus icons, a
 section header, and active highlighting; and **header mega-menu dropdowns** (`NavDropdown.tsx`).
 "Algorithms" is a presentational umbrella only — URLs stay flat (`/sorting`, `/searching`,
 `/array`, `/data-structures`) so the SEO/canonical/sitemap work is untouched.
